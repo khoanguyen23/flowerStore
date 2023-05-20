@@ -1,27 +1,18 @@
 package com.uit.flowerstore.domain;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.uit.flowerstore.domain.security.Authority;
-import com.uit.flowerstore.domain.security.UserRole;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+
 
 @Entity
-public class User implements UserDetails {
+public class User  {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -32,14 +23,8 @@ public class User implements UserDetails {
 	private String firstName;
 	private String lastName;
 	
-	@Column(name="email", nullable = false, updatable = false)
-	private String email;
-	private String phone;
-	private boolean enabled=true;
 	
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JsonIgnore
-	private Set<UserRole> userRoles = new HashSet<>();
+	
 	
 	public Long getId() {
 		return id;
@@ -71,56 +56,10 @@ public class User implements UserDetails {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
-	public Set<UserRole> getUserRoles() {
-		return userRoles;
-	}
-	public void setUserRoles(Set<UserRole> userRoles) {
-		this.userRoles = userRoles;
-	}
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		Set<GrantedAuthority> authorites = new HashSet<>();
-		userRoles.forEach(ur -> authorites.add(new Authority(ur.getRole().getName())));
-		return authorites;
-	}
-	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	@Override
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	@Override
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-	
-	@Override
-	public boolean isEnabled() {
-		return enabled;
-	}
 	
 	
 	
 
 }
+
+

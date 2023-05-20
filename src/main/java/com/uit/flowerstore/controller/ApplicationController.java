@@ -19,5 +19,13 @@ public class ApplicationController {
 	public String index2() {
 		return "index-2";
 	}
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
+	@GetMapping("/register")
+	public String register() {
+		return "register";
+	}
 
 }
