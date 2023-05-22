@@ -29,7 +29,6 @@
     <!-- Add your site or application content here -->
 
 <!-- Body main wrapper start -->
-
 <div class="body-wrapper">
 
     <!-- HEADER AREA START (header-3) -->
@@ -40,7 +39,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="site-logo">
-                            <a th:href="@{/index}"><img src="img/logo.png" alt="Logo"></a>
+                            <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
                         </div>
                     </div>
                     <div class="col header-contact-serarch-column d-none d-xl-block">
@@ -51,14 +50,14 @@
                                     <i class="icon-phone"></i>
                                 </div>
                                 <div class="header-feature-info">
-                                    <h6>Điện thoại</h6>
+                                    <h6>Phone</h6>
                                     <p><a href="tel:0123456789">+0123-456-789</a></p>
                                 </div>
                             </div>
                             <!-- header-search-2 -->
                             <div class="header-search-2">
                                 <form id="#123" method="get"  action="#">
-                                    <input type="text" name="search" value="" placeholder="Tìm kiếm ..."/>
+                                    <input type="text" name="search" value="" placeholder="Search here..."/>
                                     <button type="submit">
                                         <span><i class="icon-magnifier"></i></span>
                                     </button>
@@ -67,16 +66,15 @@
                         </div>
                     </div>
                     <div class="col">
-                        <!-- header-options -->
                         <div class="ltn__header-options">
                             <ul>
                                 <li class="d-none">
                                     <!-- ltn__currency-menu -->
                                     <div class="ltn__drop-menu ltn__currency-menu">
                                         <ul>
-                                            <li><a href="#" class="dropdown-toggle"><span class="active-currency">VND</span></a>
+                                            <li><a href="#" class="dropdown-toggle"><span class="active-currency">USD</span></a>
                                                 <ul>
-                                                    <li><a href="login.html">VND - VietNamDong</a></li>
+                                                    <li><a href="login.html">USD - US Dollar</a></li>
                                                     <li><a href="wishlist.html">CAD - Canada Dollar</a></li>
                                                     <li><a href="register.html">EUR - Euro</a></li>
                                                     <li><a href="account.html">GBP - British Pound</a></li>
@@ -100,7 +98,7 @@
                                         </div>
                                         <div class="header-search-1-form">
                                             <form id="#" method="get"  action="#">
-                                                <input type="text" name="search" value="" placeholder="Tìm kiếm ..."/>
+                                                <input type="text" name="search" value="" placeholder="Search here..."/>
                                                 <button type="submit">
                                                     <span><i class="icon-magnifier"></i></span>
                                                 </button>
@@ -115,10 +113,10 @@
                                             <li>
                                                 <a href="#"><i class="icon-user"></i></a>
                                                 <ul>
-                                                    <li><a href="login.html">Đăng nhập</a></li>
-                                                    <li><a href="register.html">Đăng kí </a></li>
-                                                    <li><a href="account.html">Tài khoản </a></li>
-                                                    <li><a href="wishlist.html">Danh sách yêu thích </a></li>
+                                                    <li><a href="login.html">Sign in</a></li>
+                                                    <li><a href="register.html">Register</a></li>
+                                                    <li><a href="account.html">My Account</a></li>
+                                                    <li><a href="wishlist.html">Wishlist</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -132,7 +130,7 @@
                                                 <i class="icon-handbag"></i>
                                                 <sup>2</sup>
                                             </span>
-                                            <h6><span>Giỏ hàng </span> <span class="ltn__secondary-color">300.000 VND</span></h6>
+                                            <h6><span>Your Cart</span> <span class="ltn__secondary-color">$89.25</span></h6>
                                         </a>
                                     </div>
                                 </li>
@@ -170,12 +168,19 @@
                             <nav>
                                 <div class="ltn__main-menu">
                                     <ul>
-                                        
-                                        <li class="menu-icon"><a href="#">Trang</a>
+                                        <li class="menu-icon"><a href="#">Home</a>
+                                            <ul>
+                                                <li><a href="index.html">Home Style - 01</a></li>
+                                                <li><a href="index-2.html">Home Style - 02</a></li>
+                                                <li><a href="index-3.html">Home Style - 03</a></li>
+                                                <li><a href="index-4.html">Home Style - 04</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-icon"><a href="#">Pages</a>
                                             <ul class="mega-menu">
                                                 <li><a href="#">Inner Pages</a>
                                                     <ul>
-                                                        <li><a th:href="@{/about}">Về chúng tôi </a></li>
+                                                        <li><a href="about.html">About Us</a></li>
                                                         <li><a href="portfolio.html">Portfolio</a></li>
                                                         <li><a href="portfolio-2.html">Portfolio - 02</a></li>
                                                         <li><a href="portfolio-details.html">Portfolio Details</a></li>
@@ -190,9 +195,9 @@
                                                         <li><a href="coming-soon.html">Coming Soon</a></li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="#">Cửa hàng </a>
+                                                <li><a href="#">Shop Pages</a>
                                                     <ul>
-                                                        <li><a href="shop.html">Cửa hàng </a></li>
+                                                        <li><a href="shop.html">Shop</a></li>
                                                         <li><a href="shop-grid.html">Shop Grid</a></li>
                                                         <li><a href="shop-left-sidebar.html">Shop Left sidebar</a></li>
                                                         <li><a href="shop-right-sidebar.html">Shop right sidebar</a></li>
@@ -201,7 +206,7 @@
                                                 </li>
                                                 <li><a href="#">Blog Pages</a>
                                                     <ul>
-                                                   		<li><a th:href="@{blog}">News</a></li>                                                   
+                                                        <li><a href="blog.html">News</a></li>
                                                         <li><a href="blog-grid.html">News Grid</a></li>
                                                         <li><a href="blog-left-sidebar.html">News Left sidebar</a></li>
                                                         <li><a href="blog-right-sidebar.html">News Right sidebar</a></li>
@@ -230,14 +235,14 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li class="menu-icon"><a href="#">Danh mục </a>
+                                        <li class="menu-icon"><a href="#">Portfolio</a>
                                             <ul>
                                                 <li><a href="portfolio.html">Portfolio</a></li>
                                                 <li><a href="portfolio-2.html">Portfolio - 02</a></li>
                                                 <li><a href="portfolio-details.html">Portfolio Details</a></li>
                                             </ul>
                                         </li>
-                                        <li class="menu-icon"><a href="#">Tin tức</a>
+                                        <li class="menu-icon"><a href="#">News</a>
                                             <ul>
                                                 <li><a href="blog.html">News</a></li>
                                                 <li><a href="blog-grid.html">News Grid</a></li>
@@ -246,7 +251,7 @@
                                                 <li><a href="blog-details.html">News details</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">Liên hệ </a></li>
+                                        <li><a href="contact.html">Contact</a></li>
                                     </ul>
                                 </div>
                             </nav>
@@ -263,13 +268,13 @@
     <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
         <div class="ltn__utilize-menu-inner ltn__scrollbar">
             <div class="ltn__utilize-menu-head">
-                <span class="ltn__utilize-menu-title">Giỏ hàng </span>
+                <span class="ltn__utilize-menu-title">Cart</span>
                 <button class="ltn__utilize-close">×</button>
             </div>
             <div class="mini-cart-product-area ltn__scrollbar">
                 <div class="mini-cart-item clearfix">
                     <div class="mini-cart-img">
-                        <a href="#"><img src="${pageContext.request.contextPath}img/product/Hoa2.jpg" alt="Image"></a>
+                        <a href="#"><img src="img/product/1.png" alt="Image"></a>
                         <span class="mini-cart-item-delete"><i class="icon-trash"></i></span>
                     </div>
                     <div class="mini-cart-info">
@@ -279,7 +284,7 @@
                 </div>
                 <div class="mini-cart-item clearfix">
                     <div class="mini-cart-img">
-                        <a href="#"><img src="img/product/hoa1.jpg" alt="Image"></a>
+                        <a href="#"><img src="img/product/2.png" alt="Image"></a>
                         <span class="mini-cart-item-delete"><i class="icon-trash"></i></span>
                     </div>
                     <div class="mini-cart-info">
@@ -289,7 +294,7 @@
                 </div>
                 <div class="mini-cart-item clearfix">
                     <div class="mini-cart-img">
-                        <a href="#"><img src="img/product/hoa3.png" alt="Image"></a>
+                        <a href="#"><img src="img/product/3.png" alt="Image"></a>
                         <span class="mini-cart-item-delete"><i class="icon-trash"></i></span>
                     </div>
                     <div class="mini-cart-info">
@@ -313,10 +318,10 @@
                     <h5>Subtotal: <span>$310.00</span></h5>
                 </div>
                 <div class="btn-wrapper">
-                    <a th:href="@{/cart}" class="theme-btn-1 btn btn-effect-1">Xem giỏ hàng </a>
-                    <a th:href="@{/checkout}" class="theme-btn-2 btn btn-effect-2">Thanh toán </a>
+                    <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View Cart</a>
+                    <a href="cart.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>
                 </div>
-                <p>Miễn phí mọi đơn hàng giá trị trên 500.000 VND!</p>
+                <p>Free Shipping on All Orders Over $100!</p>
             </div>
 
         </div>
@@ -334,13 +339,13 @@
             </div>
             <div class="ltn__utilize-menu-search-form">
                 <form action="#">
-                    <input type="text" placeholder="Tìm kiếm ...">
+                    <input type="text" placeholder="Search...">
                     <button><i class="icon-magnifier"></i></button>
                 </form>
             </div>
             <div class="ltn__utilize-menu">
                 <ul>
-                    <li><a href="#">Trang chủ </a>
+                    <li><a href="#">Home</a>
                         <ul class="sub-menu">
                             <li><a href="index.html">Home Style - 01</a></li>
                             <li><a href="index-2.html">Home Style - 02</a></li>
@@ -348,8 +353,8 @@
                             <li><a href="index-4.html">Home Style - 04</a></li>
                         </ul>
                     </li>
-                    <li><a href="about.html">Về chúng tôi </a></li>
-                    <li><a href="#">Cửa hàng </a>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Shop</a>
                         <ul class="sub-menu">
                             <li><a href="shop.html">Shop</a></li>
                             <li><a href="shop-grid.html">Shop Grid</a></li>
@@ -365,7 +370,7 @@
                             <li><a href="register.html">Register</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Tin tức</a>
+                    <li><a href="#">News</a>
                         <ul class="sub-menu">
                             <li><a href="blog.html">News</a></li>
                             <li><a href="blog-grid.html">News Grid</a></li>
@@ -374,7 +379,7 @@
                             <li><a href="blog-details.html">News details</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Trang</a>
+                    <li><a href="#">Pages</a>
                         <ul class="sub-menu">
                             <li><a href="about.html">About Us</a></li>
                             <li><a href="portfolio.html">Portfolio</a></li>
@@ -387,7 +392,7 @@
                             <li><a href="coming-soon.html">Coming Soon</a></li>
                         </ul>
                     </li>
-                    <li><a href="contact.html">Liên hệ </a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
@@ -397,7 +402,7 @@
                             <span class="utilize-btn-icon">
                                 <i class="icon-user"></i>
                             </span>
-                           Tài khoản 
+                            My Account
                         </a>
                     </li>
                     <li>
@@ -406,7 +411,7 @@
                                 <i class="icon-heart"></i>
                                 <sup>3</sup>
                             </span>
-                            Danh sách yêu thích 
+                            Wishlist
                         </a>
                     </li>
                     <li>
@@ -415,7 +420,7 @@
                                 <i class="icon-handbag"></i>
                                 <sup>5</sup>
                             </span>
-                            Giỏ hàng 
+                            Shoping Cart
                         </a>
                     </li>
                 </ul>
@@ -434,545 +439,588 @@
 
     <div class="ltn__utilize-overlay"></div>
 
-    <!-- SLIDER AREA START (slider-6) -->
-    <div class="ltn__slider-area ltn__slider-3 ltn__slider-6 section-bg-1">
-        <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1 arrow-white---">
-            <!-- ltn__slide-item  -->
-            <div class="ltn__slide-item ltn__slide-item-8 text-color-white---- bg-image bg-overlay-theme-black-80---" data-bs-bg="img/banner/banner1.jpg">
-                <div class="ltn__slide-item-inner">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 align-self-center">
-                                <div class="slide-item-info">
-                                    <div class="slide-item-info-inner ltn__slide-animation">
-                                        <div class="slide-item-info">
-                                            <div class="slide-item-info-inner ltn__slide-animation">
-                                                <h1 class="slide-title animated ">Fresh Flower</h1>
-                                                <h6 class="slide-sub-title ltn__body-color slide-title-line animated">Natural & Beautiful Flower Here</h6>
-                                                <div class="slide-brief animated">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                                </div>
-                                                <div class="btn-wrapper animated">
-                                                    <a href="service.html" class="theme-btn-1 btn btn-round">Shop Now</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <div class="slide-item-img">
-                                    <img src="img/slider/41-1.png" alt="#">
-                                    <span class="call-to-circle-1"></span>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ltn__slide-item  -->
-            <div class="ltn__slide-item ltn__slide-item-8 text-color-white---- bg-image bg-overlay-theme-black-80---" data-bs-bg="img/banner/banner3.jpg">
-                <div class="ltn__slide-item-inner">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 align-self-center">
-                                <div class="slide-item-info">
-                                    <div class="slide-item-info-inner ltn__slide-animation">
-                                        <div class="slide-item-info">
-                                            <div class="slide-item-info-inner ltn__slide-animation">
-                                                <h1 class="slide-title animated ">Fresh Flower</h1>
-                                                <h6 class="slide-sub-title ltn__body-color slide-title-line animated">Natural & Beautiful Flower Here</h6>
-                                                <div class="slide-brief animated">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                                </div>
-                                                <div class="btn-wrapper animated">
-                                                    <a href="service.html" class="theme-btn-1 btn btn-round">Shop Now</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <div class="slide-item-img">
-                                    <img src="img/slider/41-1.png" alt="#">
-                                    <span class="call-to-circle-1"></span>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--  -->
-        </div>
-    </div>
-    <!-- SLIDER AREA END -->
-
-    <!-- FEATURE AREA START ( Feature - 3) -->
-    <div class="ltn__feature-area mt-100 mt--65">
+    <!-- BREADCRUMB AREA START -->
+    <div class="ltn__breadcrumb-area ltn__breadcrumb-area-4 ltn__breadcrumb-color-white---">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="ltn__feature-item-box-wrap ltn__feature-item-box-wrap-2 ltn__border section-bg-6 position-relative">
-                        <div class="ltn__feature-item ltn__feature-item-8">
-                            <div class="ltn__feature-icon">
-                                <img src="img/icons/svg/8-trolley.svg" alt="#">
-                            </div>
-                            <div class="ltn__feature-info">
-                                <h4>Free shipping</h4>
-                                <p>On all orders over $49.00</p>
-                            </div>
-                        </div>
-                        <div class="ltn__feature-item ltn__feature-item-8">
-                            <div class="ltn__feature-icon">
-                                <img src="img/icons/svg/9-money.svg" alt="#">
-                            </div>
-                            <div class="ltn__feature-info">
-                                <h4>15 days returns</h4>
-                                <p>Moneyback guarantee</p>
-                            </div>
-                        </div>
-                        <div class="ltn__feature-item ltn__feature-item-8">
-                            <div class="ltn__feature-icon">
-                                <img src="img/icons/svg/10-credit-card.svg" alt="#">
-                            </div>
-                            <div class="ltn__feature-info">
-                                <h4>Secure checkout</h4>
-                                <p>Protected by Paypal</p>
-                            </div>
-                        </div>
-                        <div class="ltn__feature-item ltn__feature-item-8">
-                            <div class="ltn__feature-icon">
-                                <img src="img/icons/svg/11-gift-card.svg" alt="#">
-                            </div>
-                            <div class="ltn__feature-info">
-                                <h4>Offer & gift here</h4>
-                                <p>On all orders over</p>
-                            </div>
+                    <div class="ltn__breadcrumb-inner text-center">
+                        <h1 class="ltn__page-title">Products</h1>
+                        <div class="ltn__breadcrumb-list">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li>Products</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- FEATURE AREA END -->
+    <!-- BREADCRUMB AREA END -->
 
-    <!-- BANNER AREA START -->
-    <div class="ltn__banner-area  mt-80">
+    <!-- SHOP DETAILS AREA START -->
+    <div class="ltn__shop-details-area pb-70">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="ltn__banner-item">
-                        <div class="ltn__banner-img">
-                            <a href="shop.html"><img src="img/banner/banner1.jpg" alt="Banner Image"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="ltn__banner-item">
-                        <div class="ltn__banner-img">
-                            <a href="shop.html"><img src="img/banner/2.jpg" alt="Banner Image"></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6">
-                    <div class="ltn__banner-item">
-                        <div class="ltn__banner-img">
-                            <a href="shop.html"><img src="img/banner/3.jpg" alt="Banner Image"></a>
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="ltn__shop-details-inner">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="ltn__shop-details-img-gallery ltn__shop-details-img-gallery-2">
+                                    <div class="ltn__shop-details-small-img slick-arrow-2">
+                                        <div class="single-small-img">
+                                            <img src="img/product/1.png" alt="Image">
+                                        </div>
+                                        <div class="single-small-img">
+                                            <img src="img/product/2.png" alt="Image">
+                                        </div>
+                                        <div class="single-small-img">
+                                            <img src="img/product/3.png" alt="Image">
+                                        </div>
+                                        <div class="single-small-img">
+                                            <img src="img/product/4.png" alt="Image">
+                                        </div>
+                                        <div class="single-small-img">
+                                            <img src="img/product/5.png" alt="Image">
+                                        </div>
+                                        <div class="single-small-img">
+                                            <img src="img/product/6.png" alt="Image">
+                                        </div>
+                                        <div class="single-small-img">
+                                            <img src="img/product/7.png" alt="Image">
+                                        </div>
+                                    </div>
+                                    <div class="ltn__shop-details-large-img">
+                                        <div class="single-large-img">
+                                            <a href="img/product/1.png" data-rel="lightcase:myCollection">
+                                                <img src="img/product/1.png" alt="Image">
+                                            </a>
+                                        </div>
+                                        <div class="single-large-img">
+                                            <a href="img/product/2.png" data-rel="lightcase:myCollection">
+                                                <img src="img/product/2.png" alt="Image">
+                                            </a>
+                                        </div>
+                                        <div class="single-large-img">
+                                            <a href="img/product/3.png" data-rel="lightcase:myCollection">
+                                                <img src="img/product/3.png" alt="Image">
+                                            </a>
+                                        </div>
+                                        <div class="single-large-img">
+                                            <a href="img/product/4.png" data-rel="lightcase:myCollection">
+                                                <img src="img/product/4.png" alt="Image">
+                                            </a>
+                                        </div>
+                                        <div class="single-large-img">
+                                            <a href="img/product/5.png" data-rel="lightcase:myCollection">
+                                                <img src="img/product/5.png" alt="Image">
+                                            </a>
+                                        </div>
+                                        <div class="single-large-img">
+                                            <a href="img/product/6.png" data-rel="lightcase:myCollection">
+                                                <img src="img/product/6.png" alt="Image">
+                                            </a>
+                                        </div>
+                                        <div class="single-large-img">
+                                            <a href="img/product/7.png" data-rel="lightcase:myCollection">
+                                                <img src="img/product/7.png" alt="Image">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="modal-product-info shop-details-info pl-0">
+                                    <h3>Pink Flower Tree Red</h3>
+                                    <div class="product-price-ratting mb-20">
+                                        <ul>
+                                            <li>
+                                                <div class="product-price">
+                                                    <span>$49.00</span>
+                                                    <del>$65.00</del>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="product-ratting">
+                                                    <ul>
+                                                        <li><a href="#"><i class="icon-star"></i></a></li>
+                                                        <li><a href="#"><i class="icon-star"></i></a></li>
+                                                        <li><a href="#"><i class="icon-star"></i></a></li>
+                                                        <li><a href="#"><i class="icon-star"></i></a></li>
+                                                        <li><a href="#"><i class="icon-star"></i></a></li>
+                                                        <li class="review-total"> <a href="#"> ( 95 Reviews )</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-product-brief">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos repellendus repudiandae incidunt quidem pariatur expedita, quo quis modi tempore non.</p>
+                                    </div>
+                                    <div class="modal-product-meta ltn__product-details-menu-1 mb-20">
+                                        <ul>
+                                            <li>
+                                                <div class="ltn__color-widget clearfix">
+                                                    <strong class="d-meta-title">Color</strong>
+                                                    <ul>
+                                                        <li class="theme"><a href="#"></a></li>
+                                                        <li class="green-2"><a href="#"></a></li>
+                                                        <li class="blue-2"><a href="#"></a></li>
+                                                        <li class="white"><a href="#"></a></li>
+                                                        <li class="red"><a href="#"></a></li>
+                                                        <li class="yellow"><a href="#"></a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="ltn__size-widget clearfix mt-25">
+                                                    <strong class="d-meta-title">Size</strong>
+                                                    <ul>
+                                                        <li><a href="#">S</a></li>
+                                                        <li><a href="#">M</a></li>
+                                                        <li><a href="#">L</a></li>
+                                                        <li><a href="#">XL</a></li>
+                                                        <li><a href="#">XXL</a></li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ltn__product-details-menu-2 product-cart-wishlist-btn mb-30">
+                                        <ul>
+                                            <li>
+                                                <div class="cart-plus-minus">
+                                                    <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="theme-btn-1 btn btn-effect-1 d-add-to-cart" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
+                                                    <span>ADD TO CART</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="btn btn-effect-1 d-add-to-wishlist" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
+                                                    <i class="icon-heart"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ltn__social-media mb-30">
+                                        <ul>
+                                            <li class="d-meta-title">Share:</li>
+                                            <li><a href="#" title="Facebook"><i class="icon-social-facebook"></i></a></li>
+                                            <li><a href="#" title="Twitter"><i class="icon-social-twitter"></i></a></li>
+                                            <li><a href="#" title="Pinterest"><i class="icon-social-pinterest"></i></a></li>
+                                            <li><a href="#" title="Instagram"><i class="icon-social-instagram"></i></a></li>
+                                            
+                                        </ul>
+                                    </div>
+                                    <div class="modal-product-meta ltn__product-details-menu-1 mb-30">
+                                        <ul>
+                                            <li><strong>SKU:</strong> <span>12345</span></li>
+                                            <li>
+                                                <strong>Categories:</strong> 
+                                                <span>
+                                                    <a href="#">Flower</a>
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <strong>Tags:</strong> 
+                                                <span>
+                                                    <a href="#">Love</a>
+                                                    <a href="#">Flower</a>
+                                                    <a href="#">Heart</a>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="ltn__safe-checkout d-none">
+                                        <h5>Guaranteed Safe Checkout</h5>
+                                        <img src="img/icons/payment-2.png" alt="Payment Image">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- BANNER AREA END -->
+    <!-- SHOP DETAILS AREA END -->
 
-    <!-- PRODUCT AREA START -->
-    <div class="ltn__product-area ltn__product-gutter  pt-65 pb-40">
+    <!-- SHOP DETAILS TAB AREA START -->
+    <div class="ltn__shop-details-tab-area pb-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ltn__shop-details-tab-inner">
+                        <div class="ltn__shop-details-tab-menu">
+                            <div class="nav">
+                                <a class="active show" data-bs-toggle="tab" href="#liton_tab_details_1_1">Description</a>
+                                <a data-bs-toggle="tab" href="#liton_tab_details_1_2" class="">Reviews</a>
+                                <!-- <a data-bs-toggle="tab" href="#liton_tab_details_1_3" class="">Comments</a> -->
+                                <a data-bs-toggle="tab" href="#liton_tab_details_1_4" class="">Shipping</a>
+                                <!-- <a data-bs-toggle="tab" href="#liton_tab_details_1_5" class="">Size Chart</a> -->
+                            </div>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade active show" id="liton_tab_details_1_1">
+                                <div class="ltn__shop-details-tab-content-inner text-center">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost exercit ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepte sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit volu accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explica Nemllo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="liton_tab_details_1_2">
+                                <div class="ltn__shop-details-tab-content-inner">
+                                    <div class="customer-reviews-head text-center">
+                                        <h4 class="title-2">Customer Reviews</h4>
+                                        <div class="product-ratting">
+                                            <ul>
+                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
+                                                <li><a href="#"><i class="far fa-star"></i></a></li>
+                                                <li class="review-total"> <a href="#"> ( 95 Reviews )</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-lg-7">
+                                            <!-- comment-area -->
+                                            <div class="ltn__comment-area mb-30">
+                                                <div class="ltn__comment-inner">
+                                                    <ul>
+                                                        <li>
+                                                            <div class="ltn__comment-item clearfix">
+                                                                <div class="ltn__commenter-img">
+                                                                    <img src="img/testimonial/1.jpg" alt="Image">
+                                                                </div>
+                                                                <div class="ltn__commenter-comment">
+                                                                    <h6><a href="#">Adam Smit</a></h6>
+                                                                    <div class="product-ratting">
+                                                                        <ul>
+                                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                                            <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
+                                                                            <li><a href="#"><i class="far fa-star"></i></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, omnis fugit corporis iste magnam ratione.</p>
+                                                                    <span class="ltn__comment-reply-btn">September 3, 2020</span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="ltn__comment-item clearfix">
+                                                                <div class="ltn__commenter-img">
+                                                                    <img src="img/testimonial/3.jpg" alt="Image">
+                                                                </div>
+                                                                <div class="ltn__commenter-comment">
+                                                                    <h6><a href="#">Adam Smit</a></h6>
+                                                                    <div class="product-ratting">
+                                                                        <ul>
+                                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                                            <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
+                                                                            <li><a href="#"><i class="far fa-star"></i></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, omnis fugit corporis iste magnam ratione.</p>
+                                                                    <span class="ltn__comment-reply-btn">September 2, 2020</span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="ltn__comment-item clearfix">
+                                                                <div class="ltn__commenter-img">
+                                                                    <img src="img/testimonial/2.jpg" alt="Image">
+                                                                </div>
+                                                                <div class="ltn__commenter-comment">
+                                                                    <h6><a href="#">Adam Smit</a></h6>
+                                                                    <div class="product-ratting">
+                                                                        <ul>
+                                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                                            <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
+                                                                            <li><a href="#"><i class="far fa-star"></i></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, omnis fugit corporis iste magnam ratione.</p>
+                                                                    <span class="ltn__comment-reply-btn">September 2, 2020</span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <!-- comment-reply -->
+                                            <div class="ltn__comment-reply-area ltn__form-box mb-60">
+                                                <form action="#">
+                                                    <h4 class="title-2">Add a Review</h4>
+                                                    <div class="mb-30">
+                                                        <div class="add-a-review">
+                                                            <h6>Your Ratings:</h6>
+                                                            <div class="product-ratting">
+                                                                <ul>
+                                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                                    <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
+                                                                    <li><a href="#"><i class="far fa-star"></i></a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-item input-item-textarea ltn__custom-icon">
+                                                        <textarea placeholder="Type your comments...."></textarea>
+                                                    </div>
+                                                    <div class="input-item input-item-name ltn__custom-icon">
+                                                        <input type="text" placeholder="Type your name....">
+                                                    </div>
+                                                    <div class="input-item input-item-email ltn__custom-icon">
+                                                        <input type="email" placeholder="Type your email....">
+                                                    </div>
+                                                    <div class="input-item input-item-website ltn__custom-icon">
+                                                        <input type="text" name="website" placeholder="Type your website....">
+                                                    </div>
+                                                    <label class="mb-0"><input type="checkbox" name="agree"> Save my name, email, and website in this browser for the next time I comment.</label>
+                                                    <div class="btn-wrapper">
+                                                        <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit">Submit</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="liton_tab_details_1_3">
+                                <div class="ltn__shop-details-tab-content-inner">
+                                    <!-- comment-area -->
+                                    <div class="ltn__comment-area mb-30">
+                                        <h4 class="title-2">Comments (5)</h4>
+                                        <div class="ltn__comment-inner">
+                                            <ul>
+                                                <li>
+                                                    <div class="ltn__comment-item clearfix">
+                                                        <div class="ltn__commenter-img">
+                                                            <img src="img/testimonial/1.jpg" alt="Image">
+                                                        </div>
+                                                        <div class="ltn__commenter-comment">
+                                                            <h6><a href="#">Adam Smit</a></h6>
+                                                            <span class="comment-date">20th May 2020</span>
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, omnis fugit corporis iste magnam ratione.</p>
+                                                            <a href="#" class="ltn__comment-reply-btn"><i class="fas fa-reply"></i>Reply</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="ltn__comment-item clearfix">
+                                                        <div class="ltn__commenter-img">
+                                                            <img src="img/testimonial/3.jpg" alt="Image">
+                                                        </div>
+                                                        <div class="ltn__commenter-comment">
+                                                            <h6><a href="#">Adam Smit</a></h6>
+                                                            <span class="comment-date">20th May 2020</span>
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, omnis fugit corporis iste magnam ratione.</p>
+                                                            <a href="#" class="ltn__comment-reply-btn"><i class="fas fa-reply"></i>Reply</a>
+                                                        </div>
+                                                    </div>
+                                                    <ul>
+                                                        <li>
+                                                            <div class="ltn__comment-item clearfix">
+                                                                <div class="ltn__commenter-img">
+                                                                    <img src="img/testimonial/4.jpg" alt="Image">
+                                                                </div>
+                                                                <div class="ltn__commenter-comment">
+                                                                    <h6><a href="#">Adam Smit</a></h6>
+                                                                    <span class="comment-date">20th May 2020</span>
+                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, omnis fugit corporis iste magnam ratione.</p>
+                                                                    <a href="#" class="ltn__comment-reply-btn"><i class="fas fa-reply"></i>Reply</a>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="ltn__comment-item clearfix">
+                                                                <div class="ltn__commenter-img">
+                                                                    <img src="img/testimonial/1.jpg" alt="Image">
+                                                                </div>
+                                                                <div class="ltn__commenter-comment">
+                                                                    <h6><a href="#">Adam Smit</a></h6>
+                                                                    <span class="comment-date">20th May 2020</span>
+                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, omnis fugit corporis iste magnam ratione.</p>
+                                                                    <a href="#" class="ltn__comment-reply-btn"><i class="fas fa-reply"></i>Reply</a>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <div class="ltn__comment-item clearfix">
+                                                        <div class="ltn__commenter-img">
+                                                            <img src="img/testimonial/2.jpg" alt="Image">
+                                                        </div>
+                                                        <div class="ltn__commenter-comment">
+                                                            <h6><a href="#">Adam Smit</a></h6>
+                                                            <span class="comment-date">20th May 2020</span>
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, omnis fugit corporis iste magnam ratione.</p>
+                                                            <a href="#" class="ltn__comment-reply-btn"><i class="fas fa-reply"></i>Reply</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- comment-reply -->
+                                    <div class="ltn__comment-reply-area ltn__form-box mb-60">
+                                        <form action="#">
+                                            <h4 class="title-2">Leave a Reply</h4>
+                                            <div class="input-item input-item-textarea ltn__custom-icon">
+                                                <textarea placeholder="Type your comments...."></textarea>
+                                            </div>
+                                            <div class="input-item input-item-name ltn__custom-icon">
+                                                <input type="text" placeholder="Type your name....">
+                                            </div>
+                                            <div class="input-item input-item-email ltn__custom-icon">
+                                                <input type="email" placeholder="Type your email....">
+                                            </div>
+                                            <div class="input-item input-item-website ltn__custom-icon">
+                                                <input type="text" name="website" placeholder="Type your website....">
+                                            </div>
+                                            <label class="mb-0"><input type="checkbox" name="agree"> Save my name, email, and website in this browser for the next time I comment.</label>
+                                            <div class="btn-wrapper">
+                                                <button class="btn theme-btn-1 btn-effect-1 text-uppercase" type="submit"><i class="far fa-comments"></i> Post Comment</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="liton_tab_details_1_4">
+                                <div class="ltn__shop-details-tab-content-inner">
+                                    <h4 class="title-2">Shipping policy for our store</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam voluptates rerum neque ea libero numquam officiis ipsum, consectetur ducimus dicta in earum repellat sunt ab odit laboriosam cupiditate ipsam, doloremque.</p>
+                                    <ul>
+                                        <li>1-2 business days (Typically by end of day)</li>
+                                        <li><a href="#">30 days money back guaranty</a></li>
+                                        <li>24/7 live support</li>
+                                        <li>odio dignissim qui blandit praesent</li>
+                                        <li>luptatum zzril delenit augue duis dolore</li>
+                                        <li>te feugait nulla facilisi.</li>
+                                    </ul>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, quia vel eligendi ipsam. Ea, quasi quam ducimus recusandae unde ipsa nam rem a minus tenetur quae sint voluptatem voluptate inventore.</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="liton_tab_details_1_5">
+                                <div class="ltn__shop-details-tab-content-inner">
+
+                                    <div class="table-1 mb-20">
+                                        <table class="">
+                                            <tbody>
+                                                <tr>
+                                                    <th>SIZE</th>
+                                                    <th>XS</th>
+                                                    <th>S</th>
+                                                    <th>S/M</th>
+                                                    <th>M</th>
+                                                    <th>M/L</th>
+                                                    <th>L</th>
+                                                    <th>XL</th>
+                                                </tr>
+                                                <tr data-bs-region="uk">
+                                                    <th>UK</th>
+                                                    <td>4</td>
+                                                    <td>6 - 8</td>
+                                                    <td>6 - 10</td>
+                                                    <td>10 - 12</td>
+                                                    <td>12 - 16</td>
+                                                    <td>14 - 16</td>
+                                                    <td>18</td>
+                                                </tr>
+                                                <tr data-bs-region="eur">
+                                                    <th>
+                                                        <span class="mobile-show">EUR</span><span class="mobile-none">EUROPE</span>
+                                                    </th>
+                                                    <td>32</td>
+                                                    <td>34 - 36</td>
+                                                    <td>34 - 38</td>
+                                                    <td>38 - 40</td>
+                                                    <td>40 - 44</td>
+                                                    <td>42 - 44</td>
+                                                    <td>46</td>
+                                                </tr>
+                                                <tr data-bs-region="usa">
+                                                    <th>
+                                                        <span>USA/</span><span class="mobile-none">CANADA</span><span class="mobile-show"> CA</span>
+                                                    </th>
+                                                    <td>0</td>
+                                                    <td>2 - 4</td>
+                                                    <td>2 - 6</td>
+                                                    <td>6 - 8</td>
+                                                    <td>8 - 12</td>
+                                                    <td>10 - 12</td>
+                                                    <td>14</td>
+                                                </tr>
+                                                <tr data-bs-region="aus">
+                                                    <th>AUS / NZ</th>
+                                                    <td>4</td>
+                                                    <td>6 - 8</td>
+                                                    <td>6 - 10</td>
+                                                    <td>10 - 12</td>
+                                                    <td>12 - 16</td>
+                                                    <td>14 - 16</td>
+                                                    <td>18</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- SHOP DETAILS TAB AREA END -->
+
+    <!-- PRODUCT SLIDER AREA START -->
+    <div class="ltn__product-slider-area pb-40">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title-area text-center">
-                        <h1 class="section-title section-title-border">new arrival items</h1>
+                        <h1 class="section-title section-title-border">related products</h1>
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-center">
+            <div class="row ltn__related-product-slider-one-active slick-arrow-1">
                 <!-- ltn__product-item -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__product-item text-center">
-                        <div class="product-img">
-                            <a href="product-details.html"><img src="img/product/hoa1.png" alt="#"></a>
-                            <div class="product-badge">
-                                <ul>
-                                    <li class="badge-2">10%</li>
-                                </ul>
-                            </div>
-                            <div class="product-hover-action product-hover-action-2">
-                                <ul>
-                                    <li>
-                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                            <i class="icon-magnifier"></i>
-                                        </a>
-                                    </li>
-                                    <li class="add-to-cart">
-                                        <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                            <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                            <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                            <i class="icon-shuffle"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h2 class="product-title"><a href="product-details.html">Pink Flower Tree</a></h2>
-                            <div class="product-price">
-                                <span>$18.00</span>
-                                <del>$21.00</del>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ltn__product-item -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__product-item text-center">
-                        <div class="product-img">
-                            <a href="product-details.html"><img src="img/product/hoa1.png" alt="#"></a>
-                            <div class="product-badge">
-                                <ul>
-                                    <li class="badge-1">Hot</li>
-                                </ul>
-                            </div>
-                            <div class="product-hover-action product-hover-action-2">
-                                <ul>
-                                    <li>
-                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                            <i class="icon-magnifier"></i>
-                                        </a>
-                                    </li>
-                                    <li class="add-to-cart">
-                                        <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                            <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                            <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                            <i class="icon-shuffle"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h2 class="product-title"><a href="product-details.html">Premium Joyful</a></h2>
-                            <div class="product-price">
-                                <span>$18.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ltn__product-item -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__product-item text-center">
-                        <div class="product-img">
-                            <a href="product-details.html"><img src="img/product/3.png" alt="#"></a>
-                            <div class="product-badge">
-                                <ul>
-                                    <li class="badge-2">12%</li>
-                                </ul>
-                            </div>
-                            <div class="product-hover-action product-hover-action-2">
-                                <ul>
-                                    <li>
-                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                            <i class="icon-magnifier"></i>
-                                        </a>
-                                    </li>
-                                    <li class="add-to-cart">
-                                        <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                            <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                            <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                            <i class="icon-shuffle"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h2 class="product-title"><a href="product-details.html">The White Rose</a></h2>
-                            <div class="product-price">
-                                <span>$16.00</span>
-                                <del>$19.00</del>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ltn__product-item -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__product-item text-center">
-                        <div class="product-img">
-                            <a href="product-details.html"><img src="img/product/4.png" alt="#"></a>
-                            <div class="product-badge">
-                                <ul>
-                                    <li class="badge-1">Hot</li>
-                                </ul>
-                            </div>
-                            <div class="product-hover-action product-hover-action-2">
-                                <ul>
-                                    <li>
-                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                            <i class="icon-magnifier"></i>
-                                        </a>
-                                    </li>
-                                    <li class="add-to-cart">
-                                        <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                            <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                            <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                            <i class="icon-shuffle"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h2 class="product-title"><a href="product-details.html">Red Rose Bouquet</a></h2>
-                            <div class="product-price">
-                                <span>$20.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ltn__product-item -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__product-item text-center">
-                        <div class="product-img">
-                            <a href="product-details.html"><img src="img/product/5.png" alt="#"></a>
-                            <div class="product-badge">
-                                <ul>
-                                    <li class="badge-1">Hot</li>
-                                </ul>
-                            </div>
-                            <div class="product-hover-action product-hover-action-2">
-                                <ul>
-                                    <li>
-                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                            <i class="icon-magnifier"></i>
-                                        </a>
-                                    </li>
-                                    <li class="add-to-cart">
-                                        <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                            <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                            <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                            <i class="icon-shuffle"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h2 class="product-title"><a href="product-details.html">Heart's Desire</a></h2>
-                            <div class="product-price">
-                                <span>$15.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ltn__product-item -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__product-item text-center">
-                        <div class="product-img">
-                            <a href="product-details.html"><img src="img/product/6.png" alt="#"></a>
-                            <div class="product-badge">
-                                <ul>
-                                    <li class="badge-2">15%</li>
-                                </ul>
-                            </div>
-                            <div class="product-hover-action product-hover-action-2">
-                                <ul>
-                                    <li>
-                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                            <i class="icon-magnifier"></i>
-                                        </a>
-                                    </li>
-                                    <li class="add-to-cart">
-                                        <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                            <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                            <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                            <i class="icon-shuffle"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="ltn__product-countdown">
-                                <div class="ltn__countdown" data-countdown="2021/12/25"></div>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h2 class="product-title"><a href="product-details.html">Assorted Roses</a></h2>
-                            <div class="product-price">
-                                <span>$17.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ltn__product-item -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__product-item text-center">
+                <div class="col-12">
+                    <div class="ltn__product-item ltn__product-item-4">
                         <div class="product-img">
                             <a href="product-details.html"><img src="img/product/7.png" alt="#"></a>
                             <div class="product-badge">
                                 <ul>
-                                    <li class="badge-1">Hot</li>
-                                </ul>
-                            </div>
-                            <div class="product-hover-action product-hover-action-2">
-                                <ul>
-                                    <li>
-                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                            <i class="icon-magnifier"></i>
-                                        </a>
-                                    </li>
-                                    <li class="add-to-cart">
-                                        <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                            <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                            <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                            <i class="icon-shuffle"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h2 class="product-title"><a href="product-details.html">Roses Surprise</a></h2>
-                            <div class="product-price">
-                                <span>$12.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ltn__product-item -->
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__product-item text-center">
-                        <div class="product-img">
-                            <a href="product-details.html"><img src="img/product/8.png" alt="#"></a>
-                            <div class="product-badge">
-                                <ul>
-                                    <li class="badge-1">12%</li>
-                                </ul>
-                            </div>
-                            <div class="product-hover-action product-hover-action-2">
-                                <ul>
-                                    <li>
-                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                            <i class="icon-magnifier"></i>
-                                        </a>
-                                    </li>
-                                    <li class="add-to-cart">
-                                        <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                            <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                            <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
-                                            <i class="icon-shuffle"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <h2 class="product-title"><a href="product-details.html">Tropical Peace Lily</a></h2>
-                            <div class="product-price">
-                                <span>$14</span>
-                                <del>$25.00</del>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- PRODUCT SLIDER AREA END -->
-
-    <!-- BANNER AREA START -->
-    <div class="ltn__banner-area ">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="ltn__banner-item">
-                        <div class="ltn__banner-img">
-                            <a href="shop.html"><img src="img/banner/6.jpg" alt="Banner Image"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="ltn__banner-item">
-                        <div class="ltn__banner-img">
-                            <a href="shop.html"><img src="img/banner/7.jpg" alt="Banner Image"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- BANNER AREA END -->
-
-    <!-- PRODUCT SLIDER AREA START -->
-    <div class="ltn__product-slider-area ltn__product-gutter  pt-60 pb-40">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title-area text-center">
-                        <h1 class="section-title section-title-border">top products</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="row ltn__product-slider-item-four-active slick-arrow-1">
-                <!-- ltn__product-item -->
-                <div class="col-12">
-                    <div class="ltn__product-item text-center">
-                        <div class="product-img">
-                            <a href="product-details.html"><img src="img/product/1.png" alt="#"></a>
-                            <div class="product-badge">
-                                <ul>
                                     <li class="badge-2">10%</li>
                                 </ul>
                             </div>
-                            <div class="product-hover-action product-hover-action-2">
+                            <div class="product-hover-action product-hover-action-3">
                                 <ul>
                                     <li>
                                         <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
                                             <i class="icon-magnifier"></i>
                                         </a>
                                     </li>
-                                    <li class="add-to-cart">
+                                    <li>
                                         <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                            <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                            <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
+                                            <i class="icon-handbag"></i>
                                         </a>
                                     </li>
                                     <li>
@@ -984,6 +1032,15 @@
                             </div>
                         </div>
                         <div class="product-info">
+                            <div class="product-ratting">
+                                <ul>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                </ul>
+                            </div>
                             <h2 class="product-title"><a href="product-details.html">Pink Flower Tree</a></h2>
                             <div class="product-price">
                                 <span>$18.00</span>
@@ -994,25 +1051,24 @@
                 </div>
                 <!-- ltn__product-item -->
                 <div class="col-12">
-                    <div class="ltn__product-item text-center">
+                    <div class="ltn__product-item ltn__product-item-4">
                         <div class="product-img">
-                            <a href="product-details.html"><img src="img/product/2.png" alt="#"></a>
+                            <a href="product-details.html"><img src="img/product/4.png" alt="#"></a>
                             <div class="product-badge">
                                 <ul>
                                     <li class="badge-1">Hot</li>
                                 </ul>
                             </div>
-                            <div class="product-hover-action product-hover-action-2">
+                            <div class="product-hover-action product-hover-action-3">
                                 <ul>
                                     <li>
                                         <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
                                             <i class="icon-magnifier"></i>
                                         </a>
                                     </li>
-                                    <li class="add-to-cart">
+                                    <li>
                                         <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                            <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                            <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
+                                            <i class="icon-handbag"></i>
                                         </a>
                                     </li>
                                     <li>
@@ -1024,6 +1080,15 @@
                             </div>
                         </div>
                         <div class="product-info">
+                            <div class="product-ratting">
+                                <ul>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                </ul>
+                            </div>
                             <h2 class="product-title"><a href="product-details.html">Premium Joyful</a></h2>
                             <div class="product-price">
                                 <span>$18.00</span>
@@ -1033,25 +1098,24 @@
                 </div>
                 <!-- ltn__product-item -->
                 <div class="col-12">
-                    <div class="ltn__product-item text-center">
+                    <div class="ltn__product-item ltn__product-item-4">
                         <div class="product-img">
-                            <a href="product-details.html"><img src="img/product/3.png" alt="#"></a>
+                            <a href="product-details.html"><img src="img/product/6.png" alt="#"></a>
                             <div class="product-badge">
                                 <ul>
                                     <li class="badge-2">12%</li>
                                 </ul>
                             </div>
-                            <div class="product-hover-action product-hover-action-2">
+                            <div class="product-hover-action product-hover-action-3">
                                 <ul>
                                     <li>
                                         <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
                                             <i class="icon-magnifier"></i>
                                         </a>
                                     </li>
-                                    <li class="add-to-cart">
+                                    <li>
                                         <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                            <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                            <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
+                                            <i class="icon-handbag"></i>
                                         </a>
                                     </li>
                                     <li>
@@ -1063,6 +1127,15 @@
                             </div>
                         </div>
                         <div class="product-info">
+                            <div class="product-ratting">
+                                <ul>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                </ul>
+                            </div>
                             <h2 class="product-title"><a href="product-details.html">The White Rose</a></h2>
                             <div class="product-price">
                                 <span>$16.00</span>
@@ -1073,25 +1146,24 @@
                 </div>
                 <!-- ltn__product-item -->
                 <div class="col-12">
-                    <div class="ltn__product-item text-center">
+                    <div class="ltn__product-item ltn__product-item-4">
                         <div class="product-img">
-                            <a href="product-details.html"><img src="img/product/4.png" alt="#"></a>
+                            <a href="product-details.html"><img src="img/product/10.png" alt="#"></a>
                             <div class="product-badge">
                                 <ul>
                                     <li class="badge-1">Hot</li>
                                 </ul>
                             </div>
-                            <div class="product-hover-action product-hover-action-2">
+                            <div class="product-hover-action product-hover-action-3">
                                 <ul>
                                     <li>
                                         <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
                                             <i class="icon-magnifier"></i>
                                         </a>
                                     </li>
-                                    <li class="add-to-cart">
+                                    <li>
                                         <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                            <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                            <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
+                                            <i class="icon-handbag"></i>
                                         </a>
                                     </li>
                                     <li>
@@ -1103,6 +1175,15 @@
                             </div>
                         </div>
                         <div class="product-info">
+                            <div class="product-ratting">
+                                <ul>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                </ul>
+                            </div>
                             <h2 class="product-title"><a href="product-details.html">Red Rose Bouquet</a></h2>
                             <div class="product-price">
                                 <span>$20.00</span>
@@ -1112,25 +1193,24 @@
                 </div>
                 <!-- ltn__product-item -->
                 <div class="col-12">
-                    <div class="ltn__product-item text-center">
+                    <div class="ltn__product-item ltn__product-item-4">
                         <div class="product-img">
-                            <a href="product-details.html"><img src="img/product/5.png" alt="#"></a>
+                            <a href="product-details.html"><img src="img/product/12.png" alt="#"></a>
                             <div class="product-badge">
                                 <ul>
                                     <li class="badge-1">Hot</li>
                                 </ul>
                             </div>
-                            <div class="product-hover-action product-hover-action-2">
+                            <div class="product-hover-action product-hover-action-3">
                                 <ul>
                                     <li>
                                         <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
                                             <i class="icon-magnifier"></i>
                                         </a>
                                     </li>
-                                    <li class="add-to-cart">
+                                    <li>
                                         <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                            <span class="cart-text d-none d-xl-block">Add to Cart</span>
-                                            <span class="d-block d-xl-none"><i class="icon-handbag"></i></span>
+                                            <i class="icon-handbag"></i>
                                         </a>
                                     </li>
                                     <li>
@@ -1142,162 +1222,19 @@
                             </div>
                         </div>
                         <div class="product-info">
+                            <div class="product-ratting">
+                                <ul>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                    <li><a href="#"><i class="icon-star"></i></a></li>
+                                </ul>
+                            </div>
                             <h2 class="product-title"><a href="product-details.html">Heart's Desire</a></h2>
                             <div class="product-price">
                                 <span>$15.00</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- PRODUCT SLIDER AREA END -->
-
-    <!-- BANNER AREA START -->
-    <div class="ltn__banner-area ">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="ltn__banner-item">
-                        <div class="ltn__banner-img">
-                            <a href="shop.html"><img src="img/banner/10.jpg" alt="Banner Image"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- BANNER AREA END -->
-
-    <!-- BLOG AREA START (blog-3) -->
-    <div class="ltn__blog-area  pt-60 pb-30">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title-area text-center">
-                        <h1 class="section-title section-title-border">latest news</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="row  ltn__blog-slider-one-active slick-arrow-1">
-                <!-- Blog Item -->
-                <div class="col-lg-12">
-                    <div class="ltn__blog-item">
-                        <div class="ltn__blog-img">
-                            <a href="blog-details.html"><img src="img/blog/1.jpg" alt="#"></a>
-                        </div>
-                        <div class="ltn__blog-brief">
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li class="ltn__blog-author d-none">
-                                        <a href="#">by: Admin</a>
-                                    </li>
-                                    <li>
-                                        <span> Nov 18, 2020</span>
-                                    </li>
-                                    <li class="ltn__blog-comment">
-                                        <a href="#"><i class="icon-speech"></i> 2</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3 class="ltn__blog-title blog-title-line"><a href="blog-details.html">Lorem ipsum dolor sit amet con adipisicing elit sed </a></h3>
-                        </div>
-                    </div>
-                </div>
-                <!-- Blog Item -->
-                <div class="col-lg-12">
-                    <div class="ltn__blog-item">
-                        <div class="ltn__blog-img">
-                            <a href="blog-details.html"><img src="img/blog/2.jpg" alt="#"></a>
-                        </div>
-                        <div class="ltn__blog-brief">
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li class="ltn__blog-author d-none">
-                                        <a href="#">by: Admin</a>
-                                    </li>
-                                    <li>
-                                        <span> Nov 18, 2020</span>
-                                    </li>
-                                    <li class="ltn__blog-comment">
-                                        <a href="#"><i class="icon-speech"></i> 2</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3 class="ltn__blog-title blog-title-line"><a href="blog-details.html">Lorem ipsum dolor sit amet con adipisicing elit sed </a></h3>
-                        </div>
-                    </div>
-                </div>
-                <!-- Blog Item -->
-                <div class="col-lg-12">
-                    <div class="ltn__blog-item">
-                        <div class="ltn__blog-img">
-                            <a href="blog-details.html"><img src="img/blog/3.jpg" alt="#"></a>
-                        </div>
-                        <div class="ltn__blog-brief">
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li class="ltn__blog-author d-none">
-                                        <a href="#">by: Admin</a>
-                                    </li>
-                                    <li>
-                                        <span> Nov 18, 2020</span>
-                                    </li>
-                                    <li class="ltn__blog-comment">
-                                        <a href="#"><i class="icon-speech"></i> 2</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3 class="ltn__blog-title blog-title-line"><a href="blog-details.html">Lorem ipsum dolor sit amet con adipisicing elit sed </a></h3>
-                        </div>
-                    </div>
-                </div>
-                <!-- Blog Item -->
-                <div class="col-lg-12">
-                    <div class="ltn__blog-item">
-                        <div class="ltn__blog-img">
-                            <a href="blog-details.html"><img src="img/blog/4.jpg" alt="#"></a>
-                        </div>
-                        <div class="ltn__blog-brief">
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li class="ltn__blog-author d-none">
-                                        <a href="#">by: Admin</a>
-                                    </li>
-                                    <li>
-                                        <span> Nov 18, 2020</span>
-                                    </li>
-                                    <li class="ltn__blog-comment">
-                                        <a href="#"><i class="icon-speech"></i> 2</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3 class="ltn__blog-title blog-title-line"><a href="blog-details.html">Lorem ipsum dolor sit amet con adipisicing elit sed </a></h3>
-                        </div>
-                    </div>
-                </div>
-                <!-- Blog Item -->
-                <div class="col-lg-12">
-                    <div class="ltn__blog-item">
-                        <div class="ltn__blog-img">
-                            <a href="blog-details.html"><img src="img/blog/5.jpg" alt="#"></a>
-                        </div>
-                        <div class="ltn__blog-brief">
-                            <div class="ltn__blog-meta">
-                                <ul>
-                                    <li class="ltn__blog-author d-none">
-                                        <a href="#">by: Admin</a>
-                                    </li>
-                                    <li>
-                                        <span> Nov 18, 2020</span>
-                                    </li>
-                                    <li class="ltn__blog-comment">
-                                        <a href="#"><i class="icon-speech"></i> 2</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <h3 class="ltn__blog-title blog-title-line"><a href="blog-details.html">Lorem ipsum dolor sit amet con adipisicing elit sed </a></h3>
                         </div>
                     </div>
                 </div>
@@ -1305,7 +1242,7 @@
             </div>
         </div>
     </div>
-    <!-- BLOG AREA END -->
+    <!-- PRODUCT SLIDER AREA END -->
 
     <!-- BRAND LOGO AREA START -->
     <div class="ltn__brand-logo-area  ltn__brand-logo-1 section-bg-1 pt-35 pb-35 plr--5">
@@ -1748,7 +1685,7 @@
     <script src="js/plugins.js"></script>
     <!-- Main JS -->
     <script src="js/main.js"></script>
-	<script src="js/cart.js"></script>
+  
 </body>
 </html>
 

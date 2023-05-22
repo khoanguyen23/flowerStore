@@ -27,5 +27,13 @@ public class ApplicationController {
 	public String register() {
 		return "register";
 	}
+	@GetMapping("/checkout")
+	public String checkout() {
+		return "checkout";
+	}
+	@GetMapping("/cart")
+	public String cart() {
+		return "cart";
+	}
 
 }
