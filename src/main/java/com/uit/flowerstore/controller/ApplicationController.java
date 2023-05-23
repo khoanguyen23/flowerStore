@@ -35,5 +35,9 @@ public class ApplicationController {
 	public String cart() {
 		return "cart";
 	}
-
+	@GetMapping("/faq")
+	public String faq() {
+		return "faq";
+	}
+	
 }
