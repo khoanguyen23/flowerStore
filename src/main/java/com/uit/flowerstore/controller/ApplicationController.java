@@ -44,5 +44,28 @@ public class ApplicationController {
 		return "contact";
 	}
 	
-	
+	@GetMapping("/locations")
+	public String locations() {
+		return "locations";
+	}
+	@GetMapping("/order-tracking")
+	public String orderTracking() {
+		return "order-tracking";
+	}
+	@GetMapping("/account")
+	public String account() {
+		return "account";
+	}
+	@GetMapping("/wishlist")
+	public String wishlist() {
+		return "wishlist";
+	}
+	@GetMapping("/product-details")
+	public String productDetails() {
+		return "product-details";
+	}
+	@GetMapping("/portfolio")
+	public String portfolio() {
+		return "portfolio";
+	}
 }
