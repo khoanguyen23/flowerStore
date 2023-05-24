@@ -204,17 +204,17 @@
         <!-- header-bottom-area end -->
     </header>
     <!-- HEADER AREA END -->
-    <!-- Utilize Cart Menu Start -->
+   <!-- Utilize Cart Menu Start -->
     <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
         <div class="ltn__utilize-menu-inner ltn__scrollbar">
             <div class="ltn__utilize-menu-head">
-                <span class="ltn__utilize-menu-title">Cart</span>
+                <span class="ltn__utilize-menu-title">Giỏ hàng </span>
                 <button class="ltn__utilize-close">×</button>
             </div>
             <div class="mini-cart-product-area ltn__scrollbar">
                 <div class="mini-cart-item clearfix">
                     <div class="mini-cart-img">
-                        <a href="#"><img src="img/product/1.png" alt="Image"></a>
+                        <a href="#"><img src="${pageContext.request.contextPath}img/product/Hoa2.jpg" alt="Image"></a>
                         <span class="mini-cart-item-delete"><i class="icon-trash"></i></span>
                     </div>
                     <div class="mini-cart-info">
@@ -224,7 +224,7 @@
                 </div>
                 <div class="mini-cart-item clearfix">
                     <div class="mini-cart-img">
-                        <a href="#"><img src="img/product/2.png" alt="Image"></a>
+                        <a href="#"><img src="img/product/hoa1.jpg" alt="Image"></a>
                         <span class="mini-cart-item-delete"><i class="icon-trash"></i></span>
                     </div>
                     <div class="mini-cart-info">
@@ -234,7 +234,7 @@
                 </div>
                 <div class="mini-cart-item clearfix">
                     <div class="mini-cart-img">
-                        <a href="#"><img src="img/product/3.png" alt="Image"></a>
+                        <a href="#"><img src="img/product/hoa3.png" alt="Image"></a>
                         <span class="mini-cart-item-delete"><i class="icon-trash"></i></span>
                     </div>
                     <div class="mini-cart-info">
@@ -255,20 +255,20 @@
             </div>
             <div class="mini-cart-footer">
                 <div class="mini-cart-sub-total">
-                    <h5>Subtotal: <span>$310.00</span></h5>
+                    <h5>Tổng tiền: <span>$310.00</span></h5>
                 </div>
                 <div class="btn-wrapper">
-                    <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View Cart</a>
-                    <a href="cart.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>
+                    <a th:href="@{/cart}" class="theme-btn-1 btn btn-effect-1">Xem giỏ hàng </a>
+                    <a th:href="@{/checkout}" class="theme-btn-2 btn btn-effect-2">Thanh toán </a>
                 </div>
-                <p>Free Shipping on All Orders Over $100!</p>
+                <p>Miễn phí mọi đơn hàng giá trị trên 500.000 VND!</p>
             </div>
 
         </div>
     </div>
     <!-- Utilize Cart Menu End -->
 
-    <!-- Utilize Mobile Menu Start -->
+   <!-- Utilize Mobile Menu Start -->
     <div id="ltn__utilize-mobile-menu" class="ltn__utilize ltn__utilize-mobile-menu">
         <div class="ltn__utilize-menu-inner ltn__scrollbar">
             <div class="ltn__utilize-menu-head">
@@ -285,82 +285,48 @@
             </div>
             <div class="ltn__utilize-menu">
                 <ul>
-                    <li><a href="#">Home</a>
-                        <ul class="sub-menu">
-                            <li><a href="index.html">Home Style - 01</a></li>
-                            <li><a href="index-2.html">Home Style - 02</a></li>
-                            <li><a href="index-3.html">Home Style - 03</a></li>
-                            <li><a href="index-4.html">Home Style - 04</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#">Shop</a>
-                        <ul class="sub-menu">
-                            <li><a href="shop.html">Shop</a></li>
-                            <li><a href="shop-grid.html">Shop Grid</a></li>
-                            <li><a href="shop-left-sidebar.html">Shop Left sidebar</a></li>
-                            <li><a href="shop-right-sidebar.html">Shop right sidebar</a></li>
-                            <li><a href="product-details.html">Shop details </a></li>
-                            <li><a href="cart.html">Cart</a></li>
-                            <li><a href="wishlist.html">Wishlist</a></li>
-                            <li><a href="checkout.html">Checkout</a></li>
-                            <li><a href="order-tracking.html">Order Tracking</a></li>
-                            <li><a href="account.html">My Account</a></li>
-                            <li><a href="login.html">Sign in</a></li>
-                            <li><a href="register.html">Register</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">News</a>
-                        <ul class="sub-menu">
-                            <li><a href="blog.html">News</a></li>
-                            <li><a href="blog-grid.html">News Grid</a></li>
-                            <li><a href="blog-left-sidebar.html">News Left sidebar</a></li>
-                            <li><a href="blog-right-sidebar.html">News Right sidebar</a></li>
-                            <li><a href="blog-details.html">News details</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Pages</a>
-                        <ul class="sub-menu">
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="portfolio.html">Portfolio</a></li>
-                            <li><a href="portfolio-2.html">Portfolio - 02</a></li>
-                            <li><a href="portfolio-details.html">Portfolio Details</a></li>
-                            <li><a href="faq.html">FAQ</a></li>
-                            <li><a href="locations.html">Google Map Locations</a></li>
-                            <li><a href="404.html">404</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="coming-soon.html">Coming Soon</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
+                                        
+                                        
+                                        <li class="menu-icon"><a th:href="@{/shop}">Cửa hàng</a>
+                                            
+                                        </li>
+                                        <li class="menu-icon"><a th:href="@{/portfolio}">Danh mục </a>
+                                            
+                                        </li>
+                                        <li class="menu-icon"><a th:href="@{/about}">Về chúng tôi </a>
+                                            
+                                        </li>
+                                        
+                                        <li class="menu-icon"><a th:href="@{/contact}">Liên hệ </a></li>
+                                        
+                                    </ul>
             </div>
             <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
                 <ul>
                     <li>
-                        <a href="account.html" title="My Account">
+                        <a th:href="@{/account}" title="My Account">
                             <span class="utilize-btn-icon">
                                 <i class="icon-user"></i>
                             </span>
-                            My Account
+                           Tài khoản
                         </a>
                     </li>
                     <li>
-                        <a href="wishlist.html" title="Wishlist">
+                        <a th:href="@{/wishlist}" title="Wishlist">
                             <span class="utilize-btn-icon">
                                 <i class="icon-heart"></i>
                                 <sup>3</sup>
                             </span>
-                            Wishlist
+                           Danh sách yêu thích
                         </a>
                     </li>
                     <li>
-                        <a href="cart.html" title="Shoping Cart">
+                        <a th:href="@{/cart}" title="Shoping Cart">
                             <span class="utilize-btn-icon">
                                 <i class="icon-handbag"></i>
                                 <sup>5</sup>
                             </span>
-                            Shoping Cart
+                           Giỏ hàng
                         </a>
                     </li>
                 </ul>
@@ -376,6 +342,7 @@
         </div>
     </div>
     <!-- Utilize Mobile Menu End -->
+
 
     <div class="ltn__utilize-overlay"></div>
 
