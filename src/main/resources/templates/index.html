@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="header-feature-info">
                                     <h6>Điện thoại</h6>
-                                    <p><a href="tel:0123456789">+0123-456-789</a></p>
+                                    <p><a href="tel:0123456789">+09876-543 210</a></p>
                                 </div>
                             </div>
                             <!-- header-search-2 -->
@@ -163,7 +163,7 @@
                     <div class="col header-menu-column justify-content-center">
                         <div class="sticky-logo">
                             <div class="site-logo">
-                                <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+                                <a th:href="@{/index}"><img src="img/logo.png" alt="Logo"></a>
                             </div>
                         </div>
                         <div class="header-menu header-menu-2">
@@ -172,46 +172,28 @@
                                     <ul>
                                         
                                         
-                                        <li class="menu-icon"><a href="#">Cửa hàng</a>
-                                            <ul>
-                                                <li><a href="shop.html">Shop</a></li>
-                                                <li><a href="shop-grid.html">Shop Grid</a></li>
-                                                <li><a href="shop-left-sidebar.html">Shop Left sidebar</a></li>
-                                                <li><a href="shop-right-sidebar.html">Shop right sidebar</a></li>
-                                                <li><a href="product-details.html">Shop details </a></li>
-                                                <li><a href="#">Other Pages <span class="float-right">>></span></a>
-                                                    <ul>
-                                                        <li><a href="cart.html">Cart</a></li>
-                                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                                        <li><a href="checkout.html">Checkout</a></li>
-                                                        <li><a href="order-tracking.html">Order Tracking</a></li>
-                                                        <li><a href="account.html">My Account</a></li>
-                                                        <li><a href="login.html">Sign in</a></li>
-                                                        <li><a href="register.html">Register</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
+                                        <li class="menu-icon"><a th:href="@{/shop}">Cửa hàng</a>
+                                            
                                         </li>
-                                        <li class="menu-icon"><a href="#">Danh mục </a>
-                                            <ul>
-                                                <li><a href="portfolio.html">Portfolio</a></li>
-                                                <li><a href="portfolio-2.html">Portfolio - 02</a></li>
-                                                <li><a href="portfolio-details.html">Portfolio Details</a></li>
-                                            </ul>
+                                        <li class="menu-icon"><a th:href="@{/portfolio}">Danh mục </a>
+                                            
                                         </li>
                                         <li class="menu-icon"><a th:href="@{/about}">Về chúng tôi </a>
                                             
                                         </li>
-                                        <li class="menu-icon"><a href="#">Tin tức</a>
+                                        
+                                        <li class="menu-icon"><a th:href="@{/contact}">Liên hệ </a></li>
+                                        <li class="menu-icon"><a th:href="@{/account}">Tài khoản</a>
                                             <ul>
-                                                <li><a href="blog.html">News</a></li>
-                                                <li><a href="blog-grid.html">News Grid</a></li>
-                                                <li><a href="blog-left-sidebar.html">News Left sidebar</a></li>
-                                                <li><a href="blog-right-sidebar.html">News Right sidebar</a></li>
-                                                <li><a href="blog-details.html">News details</a></li>
+                                                		<li><a th:href="@{/cart}">Giỏ hàng </a></li>
+                                                        <li><a th:href="@{/wishlist}">Danh sách yêu thích</a></li>
+                                                        <li><a th:href="@{/checkout}">Thanh toán</a></li>
+                                                        <li><a th:href="@{/order-tracking}">Theo dõi đơn hàng</a></li>
+                                                     
+                                                        <li><a th:href="@{/login}">Đăng nhập</a></li>
+                                                        <li><a th:href="@{/register}">Đăng kí</a></li>
                                             </ul>
                                         </li>
-                                        <li><a th:href="@{/contact}">Liên hệ </a></li>
                                     </ul>
                                 </div>
                             </nav>
@@ -469,46 +451,46 @@
     </div>
     <!-- SLIDER AREA END -->
 
-    <!-- FEATURE AREA START ( Feature - 3) -->
-    <div class="ltn__feature-area mt-100 mt--65">
+     <!-- FEATURE AREA START ( Feature - 3) -->
+    <div class="ltn__feature-area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="ltn__feature-item-box-wrap ltn__feature-item-box-wrap-2 ltn__border section-bg-6 position-relative">
+                    <div class="ltn__feature-item-box-wrap ltn__feature-item-box-wrap-2 ltn__border section-bg-6">
                         <div class="ltn__feature-item ltn__feature-item-8">
                             <div class="ltn__feature-icon">
-                                <img src="img/icons/svg/8-trolley.svg" alt="#">
+                                <img src="https://img.icons8.com/?size=512&id=pqjaVOdRmFRH&format=png" alt="#">
                             </div>
                             <div class="ltn__feature-info">
-                                <h4>Free shipping</h4>
-                                <p>On all orders over $49.00</p>
+                                <h4><strong>Miễn phí vận chuyển</strong></h4>
+                                <p>Đối với đơn >500.000 VND</p>
                             </div>
                         </div>
                         <div class="ltn__feature-item ltn__feature-item-8">
                             <div class="ltn__feature-icon">
-                                <img src="img/icons/svg/9-money.svg" alt="#">
+                                <img src="https://img.icons8.com/?size=512&id=f5B1aybdmeAV&format=png" alt="#">
                             </div>
                             <div class="ltn__feature-info">
-                                <h4>15 days returns</h4>
-                                <p>Moneyback guarantee</p>
+                                <h4><strong>15 ngày trả hàng</strong></h4>
+                                <p>Đảm bảo hoàn tiền</p>
                             </div>
                         </div>
                         <div class="ltn__feature-item ltn__feature-item-8">
                             <div class="ltn__feature-icon">
-                                <img src="img/icons/svg/10-credit-card.svg" alt="#">
+                                <img src="https://img.icons8.com/?size=512&id=xXolQILaFzkA&format=png" alt="#">
                             </div>
                             <div class="ltn__feature-info">
-                                <h4>Secure checkout</h4>
-                                <p>Protected by Paypal</p>
+                                <h4><strong>Thanh toán bảo mật</strong></h4>
+                                <p>Được bảo vệ bởi Paypal</p>
                             </div>
                         </div>
                         <div class="ltn__feature-item ltn__feature-item-8">
                             <div class="ltn__feature-icon">
-                                <img src="img/icons/svg/11-gift-card.svg" alt="#">
+                                <img src="https://img.icons8.com/?size=512&id=DRyDxSR9Q7aS&format=png" alt="#">
                             </div>
                             <div class="ltn__feature-info">
-                                <h4>Offer & gift here</h4>
-                                <p>On all orders over</p>
+                                <h4><strong>Ưu đãi & quà tặng tại đây</strong></h4>
+                                <p>Trên tất cả các đơn đặt hàng</p>
                             </div>
                         </div>
                     </div>
@@ -517,6 +499,7 @@
         </div>
     </div>
     <!-- FEATURE AREA END -->
+
 
     <!-- BANNER AREA START -->
     <div class="ltn__banner-area  mt-80">
@@ -555,7 +538,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title-area text-center">
-                        <h1 class="section-title section-title-border">new arrival items</h1>
+                        <h1 class="section-title section-title-border">Sản phẩm mới </h1>
                     </div>
                 </div>
             </div>

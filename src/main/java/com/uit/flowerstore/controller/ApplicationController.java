@@ -68,4 +68,8 @@ public class ApplicationController {
 	public String portfolio() {
 		return "portfolio";
 	}
+	@GetMapping("/shop")
+	public String shop() {
+		return "shop";
+	}
 }
