@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ApplicationController {
 	
 	@GetMapping("/index")
-	public String goHome() {
+	public String goHome() { 
 		return "index";
 	}
 	@GetMapping("/about")
@@ -27,6 +27,7 @@ public class ApplicationController {
 	public String register() {
 		return "register";
 	}
+
 	@GetMapping("/checkout")
 	public String checkout() {
 		return "checkout";
@@ -52,10 +53,13 @@ public class ApplicationController {
 	public String orderTracking() {
 		return "order-tracking";
 	}
+
+
 	@GetMapping("/account")
 	public String account() {
 		return "account";
 	}
+
 	@GetMapping("/wishlist")
 	public String wishlist() {
 		return "wishlist";
@@ -72,4 +76,7 @@ public class ApplicationController {
 	public String shop() {
 		return "shop";
 	}
+
+	
+
 }
