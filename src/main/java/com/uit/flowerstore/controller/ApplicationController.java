@@ -77,6 +77,13 @@ public class ApplicationController {
 		return "shop";
 	}
 
-	
+	@GetMapping("/admin")
+	public String admin() {
+		return "admin";
+	}
+	@GetMapping("/account-admin")
+	public String accountAdmin() {
+		return "account-admin";
+	}
 
 }

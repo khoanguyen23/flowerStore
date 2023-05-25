@@ -393,9 +393,69 @@
                                         <div class="tab-pane fade active show" id="liton_tab_1_1">
                                             <div class="ltn__myaccount-tab-content-inner">
                                                 <p>Xin chào <strong>UserName</strong> (không phải<strong>UserName</strong>? <small><a href="login-register.html">Đăng xuất </a></small> )</p>
-                                                
                                             </div>
-                                            
+                                            <div class="container" id="app">
+		<div class="add-product" :class="{'open': formOpen}">
+
+			<form @submit="cancel()">
+
+				<div class="form--field">
+					<label>Tên hoa </label>
+					<input type="text" class="form--element" name="name" v-model="productData.name"
+						placeholder="Tên hoa" required="">
+				</div>
+				<div class="form--field">
+					<label>Thêm ảnh</label>
+					<div class="custom__image-container">
+						
+						<input type="file" id="add-single-img" accept="image/jpeg" class="form--element" name="image" v-model="productData.image" />
+					</div>
+					
+				</div>
+				<div class="form--container -inline">
+
+					<div class="form--field -short">
+						<label>Giá </label>
+						
+						<input type="text" class="form--element" name="price" v-model="productData.price"
+							placeholder="Giá thường" required="" min="0" max="500" pattern="\d+(\.\d{2})?">
+					</div>
+					<div class="form--field -short">
+						<label>Giá giảm giá </label>
+						
+						<input type="text" class="form--element" name="sale_price" v-model="productData.sale_price"
+							placeholder="Giá giảm giá " required="" min="0" max="500" pattern="\d+(\.\d{2})?">
+					</div>
+					<div class="form--field -short">
+						<label>Loại hoa </label>
+						<span class="form--price"></span>
+
+						<select name="category" id="lang" class="form--element"  v-model="productData.category">
+                            <option value="">Hoa Tình Yêu</option>
+							<option value="">Hoa Chúc Mừng</option>
+							<option value="">Hoa Valentine</option>
+							<option value="">Hoa Tết</option>
+                            <option value="">Hoa Chia Buồn</option>
+                            <option value="">Hoa Trang Trí</option>
+                            <option value="">Hoa Tốt Nghiệp</option>
+                            <option value="">Hoa Cưới</option>
+
+						</select>
+					</div>
+				</div>
+
+				<div class="form--field">
+					<label>Mô tả hoa </label>
+					<textarea class="form--element textarea" v-model="productData.description"
+						placeholder="Description">
+        </textarea>
+				</div>
+
+				<button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase submit-button">Thêm mới </button>
+				<div class="cancel"><span @click="cancel()">Hủy</span></div>
+			</form>
+		</div>
+	</div>
                                         </div>
                                         <div class="tab-pane fade" id="liton_tab_1_2">
                                             <div class="ltn__myaccount-tab-content-inner">

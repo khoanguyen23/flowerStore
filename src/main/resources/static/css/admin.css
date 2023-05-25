@@ -1,0 +1,140 @@
+.container {
+
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.submit-button {
+	display: block;
+	background-color: #3498db;
+	height: 40px;
+	border-radius: 20px;
+	line-height: 36px;
+	text-align: center;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 0.875em;
+	border: none;
+	font-weight: 700;
+	padding: 0 34px;
+	margin: 0 auto;
+
+	&:hover {
+		background-color: darken(#3498db, 10%);
+		cursor: pointer;
+	}
+}
+
+.featured-note {
+	color: #949494;
+	font-size: 12px;
+	margin: 4px 0px;
+	line-height: 18px;
+	font-style: italic;
+}
+
+form * {
+	outline: none;
+}
+
+label {
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	user-select: none;
+
+
+
+}
+
+.form--field {
+	width: 420px;
+	margin: 10px 0;
+
+	&.-short {
+		width: 120px;
+	}
+}
+
+.form--price {
+	position: absolute;
+	line-height: 38px;
+	width: 16px;
+	color: #c7c7c7;
+	text-align: center;
+
+	&+input {
+		padding-left: 14px;
+	}
+}
+
+.form--container {
+	width: 420px;
+
+	&.-inline {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin-bottom: -12px;
+	}
+}
+
+.form--element {
+	background-color: #fff;
+	border: 1px solid #ececec;
+	border-radius: 3px;
+	font-size: 14px;
+	line-height: 28px;
+	padding: 0 4px;
+	color: #3d3d3d;
+	width: 100%;
+	margin: 4px 0;
+	box-sizing: border-box;
+	font-family: "Open Sans", sans-serif;
+
+	&:focus {
+		border: 1px solid #ffc145;
+		border-radius: 2px;
+	}
+
+	&:not(.texteare) {
+		height: 30px;
+	}
+
+	&.textarea {
+		height: 80px;
+		resize: none;
+	}
+}
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+}
+
+body {
+	font-family: "Open Sans", sans-serif;
+	font-size: 16px;
+	background-color: #f3f4f5;
+	cursor: default;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+::selection {
+	background-color: #f5617a;
+	color: #fff;
+}
+
+::-moz-selection {
+	background-color: #f5617a;
+	color: #fff;
+}
