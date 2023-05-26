@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Fiama - Flower Shop eCommerce HTML Template</title>
+	<title>Flora-Kindred Loving Thoughts</title>
 	<meta name="robots" content="noindex, follow" />
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -434,9 +434,10 @@
 
 															</div>
 															<div class="form--container">
-
-																<div class="form--field -short">
-																	<label>Giá </label>
+																<label>Giá </label>
+																<div class="form--field-price">
+																	<div class="form--field -short">
+																	
 
 																	<input type="text" class="form--element"
 																		name="price" v-model="productData.price"
@@ -444,7 +445,7 @@
 																		max="500" pattern="\d+(\.\d{2})?">
 																</div>
 																<div class="form--field -short">
-																	<label>Giá giảm giá </label>
+																	
 
 																	<input type="text" class="form--element"
 																		name="sale_price"
@@ -452,21 +453,34 @@
 																		placeholder="Giá giảm giá " required="" min="0"
 																		max="500" pattern="\d+(\.\d{2})?">
 																</div>
+																
+																	<div class="form--field -short">
+																	
+
+																	<input type="text" class="form--element"
+																		name="quantity" v-model="productData.quantity"
+																		placeholder="Số lượng" required="" min="0"
+																		max="500" pattern="\d+(\.\d{2})?">
+																
+																</div>
+																</div>
+
+																
 																<div class="form--field -short">
 																	<label class ="form--field--name">Loại hoa </label>
 																	
 
 																	<select name="category" id="lang"
-																		class="form--element"
+																		class="form--element-category"
 																		v-model="productData.category">
-																		<option value="">Hoa Tình Yêu</option>
-																		<option value="">Hoa Chúc Mừng</option>
-																		<option value="">Hoa Valentine</option>
-																		<option value="">Hoa Tết</option>
-																		<option value="">Hoa Chia Buồn</option>
-																		<option value="">Hoa Trang Trí</option>
-																		<option value="">Hoa Tốt Nghiệp</option>
-																		<option value="">Hoa Cưới</option>
+																		<option value=""> Tình Yêu</option>
+																		<option value=""> Chúc Mừng</option>
+																		<option value=""> Valentine</option>
+																		<option value=""> Tết</option>
+																		<option value=""> Chia Buồn</option>
+																		<option value=""> Trang Trí</option>
+																		<option value="">Tốt Nghiệp</option>
+																		<option value=""> Cưới</option>
 
 																	</select>
 																</div>
@@ -501,7 +515,7 @@
 																	<th>Giá</th>
 																	<th>Giá giảm giá</th>
 																	<th>Số lượng</th>
-																	<th>Mô tả</th>
+																	
 																	<th>Hình ảnh </th>
 																	
 																</tr>
@@ -514,7 +528,7 @@
 																	<td>$3000</td>
 																	<td>$2000</td>
 																	<td>1</td>
-																	<td>hoa hồng bla bla </td>
+																	
 																	<td>Hình </td>
 																	<td><a href="cart.html">View</a></td>
 																</tr>
@@ -525,7 +539,7 @@
 																	<td>$3000</td>
 																	<td>$2000</td>
 																	<td>1</td>
-																	<td>hoa hồng bla bla </td>
+																	
 																	<td>Hình </td>
 																	<td><a href="cart.html">View</a></td>
 																</tr>
@@ -536,7 +550,7 @@
 																	<td>$3000</td>
 																	<td>$2000</td>
 																	<td>1</td>
-																	<td>hoa hồng bla bla </td>
+																	
 																	<td>Hình </td>
 																	<td><a href="cart.html">View</a></td>
 																</tr>

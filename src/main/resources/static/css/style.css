@@ -12962,3 +12962,13 @@ table .table{
 .table>thead {
     vertical-align: middle;
 }
+.form--field-price {
+	display: flex;
+	justify-content: space-between;
+}
+.form--field-price input[text]{
+	width:50%;
+}
+.form--element-category{
+	width : 150px;
+}
