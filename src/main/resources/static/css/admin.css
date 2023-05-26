@@ -41,15 +41,7 @@ form * {
 	outline: none;
 }
 
-label {
-	display: block;
-	font-size: 14px;
-	font-weight: bold;
-	user-select: none;
 
-
-
-}
 
 .form--field {
 	width: 420px;
@@ -111,30 +103,11 @@ label {
 	}
 }
 
-html,
-body {
-	height: 100%;
-	margin: 0;
-}
-
-body {
-	font-family: "Open Sans", sans-serif;
-	font-size: 16px;
-	background-color: #f3f4f5;
-	cursor: default;
-}
-
-a {
-	text-decoration: none;
-	cursor: pointer;
-}
-
-::selection {
-	background-color: #f5617a;
-	color: #fff;
-}
 
 ::-moz-selection {
 	background-color: #f5617a;
 	color: #fff;
+}
+.form--field--name{
+	display:block;
 }

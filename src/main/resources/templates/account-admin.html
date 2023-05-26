@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="css/style.css">
 	<!-- Responsive css -->
 	<link rel="stylesheet" href="css/responsive.css">
+	
 </head>
 
 <body>
@@ -432,7 +433,7 @@
 																</div>
 
 															</div>
-															<div class="form--container -inline">
+															<div class="form--container">
 
 																<div class="form--field -short">
 																	<label>Giá </label>
@@ -452,8 +453,8 @@
 																		max="500" pattern="\d+(\.\d{2})?">
 																</div>
 																<div class="form--field -short">
-																	<label>Loại hoa </label>
-																	<span class="form--price"></span>
+																	<label class ="form--field--name">Loại hoa </label>
+																	
 
 																	<select name="category" id="lang"
 																		class="form--element"
@@ -471,18 +472,19 @@
 																</div>
 															</div>
 
-															<div class="form--field">
-																<label>Mô tả hoa </label>
+															<div class="form--field -short">
+																</br>
+																
 																<textarea class="form--element textarea"
 																	v-model="productData.description"
-																	placeholder="Description">
-        </textarea>
+																	placeholder="Mô tả hoa " ></textarea>  
+     
 															</div>
 
 															<button type="submit"
 																class="btn theme-btn-1 btn-effect-1 text-uppercase submit-button">Thêm
 																mới </button>
-															<div class="cancel"><span @click="cancel()">Hủy</span></div>
+															<div class="btn btn-transparent btn-effect-3 btn-border cancel"><span @click="cancel()">Hủy</span></div>
 														</form>
 													</div>
 												</div>
@@ -491,35 +493,51 @@
 												<div class="ltn__myaccount-tab-content-inner">
 													<div class="table-responsive">
 														<table class="table">
-															<thead>
+															<thead class="table-header">
 																<tr>
-																	<th>Order</th>
-																	<th>Date</th>
-																	<th>Status</th>
-																	<th>Total</th>
-																	<th>Action</th>
+																	<th>STT</th>
+																	<th>Tên</th>
+																	<th>Loại</th>
+																	<th>Giá</th>
+																	<th>Giá giảm giá</th>
+																	<th>Số lượng</th>
+																	<th>Mô tả</th>
+																	<th>Hình ảnh </th>
+																	
 																</tr>
 															</thead>
 															<tbody>
 																<tr>
 																	<td>1</td>
-																	<td>Jun 22, 2019</td>
-																	<td>Pending</td>
+																	<td>Hoa hồng </td>
+																	<td>Hoa quà tặng</td>
 																	<td>$3000</td>
+																	<td>$2000</td>
+																	<td>1</td>
+																	<td>hoa hồng bla bla </td>
+																	<td>Hình </td>
 																	<td><a href="cart.html">View</a></td>
 																</tr>
 																<tr>
 																	<td>2</td>
-																	<td>Nov 22, 2019</td>
-																	<td>Approved</td>
-																	<td>$200</td>
+																	<td>Hoa hồng </td>
+																	<td>Hoa quà tặng</td>
+																	<td>$3000</td>
+																	<td>$2000</td>
+																	<td>1</td>
+																	<td>hoa hồng bla bla </td>
+																	<td>Hình </td>
 																	<td><a href="cart.html">View</a></td>
 																</tr>
 																<tr>
 																	<td>3</td>
-																	<td>Jan 12, 2020</td>
-																	<td>On Hold</td>
-																	<td>$990</td>
+																	<td>Hoa hồng </td>
+																	<td>Hoa quà tặng</td>
+																	<td>$3000</td>
+																	<td>$2000</td>
+																	<td>1</td>
+																	<td>hoa hồng bla bla </td>
+																	<td>Hình </td>
 																	<td><a href="cart.html">View</a></td>
 																</tr>
 															</tbody>

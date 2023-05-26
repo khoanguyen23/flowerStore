@@ -12945,3 +12945,20 @@ input.cart-plus-minus-box {
     END
 ---------------------------------------------------- */
 
+.form--field--name{
+	display:block;
+}
+.form--field -short {
+	display : inline-block;
+}
+.form--element{
+	margin-bottom: 20px;
+}
+table .table{
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+.table>thead {
+    vertical-align: middle;
+}
