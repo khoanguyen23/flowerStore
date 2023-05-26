@@ -473,7 +473,8 @@
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="account-login-inner">
-                        <form th:action="@{/user/addNew}" method="post" class="ltn__form-box contact-form-box">
+						<div class="alert" th:if="${emailSent}"></div>
+                        <form th:action="@{/newUser}" method="post" class="ltn__form-box contact-form-box">
                             <input type="text" name="firstname" placeholder="First Name">
                             <input type="text" name="lastname" placeholder="Last Name">
                             <input type="text" name="email" placeholder="Email*">
