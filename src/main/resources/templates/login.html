@@ -474,11 +474,11 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="account-login-inner">
-                        <form th:action="@{/login}" method="post" class="ltn__form-box contact-form-box">
-                            <input type="text" name="username" placeholder="name*">
-                            <input type="password" name="password" placeholder="Password*">
+                        <form onsubmit="event.preventDefault()" class="ltn__form-box contact-form-box">
+                            <input type="text" name="username" placeholder="name*" id="username">
+                            <input type="password" name="password" placeholder="Password*" id="password">
                             <div class="btn-wrapper mt-0">
-                                <button class="theme-btn-1 btn btn-block" type="submit">SIGN IN</button>
+                                <button id="loginButton" class="theme-btn-1 btn btn-block" type="submit">SIGN IN</button>
                             </div>
                             <div class="go-to-btn mt-20">
                                 <a href="#"><small>FORGOTTEN YOUR PASSWORD?</small></a>
@@ -698,6 +698,41 @@
 <!-- Body main wrapper end -->
 
     <!-- All JS Plugins -->
+    <!-- Thêm đoạn mã JavaScript sau đoạn mã HTML -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  const API_URL = 'http://localhost:8080/api';
+
+  // Gọi API đăng nhập
+  const signIn = (credentials) => {
+    return axios.post(`${API_URL}/auth/signin`, credentials);
+  };
+
+  // Xử lý sự kiện khi người dùng nhấp vào nút Đăng nhập
+  document.getElementById('loginButton').addEventListener('click', function() {
+    const credentials = {
+      username: document.getElementById('username').value,
+      password: document.getElementById('password').value
+    };
+
+    signIn(credentials)
+      .then(response => {
+        // Xử lý phản hồi từ back-end sau khi đăng nhập thành công
+        console.log(response.data);
+        window.location.href = `/account?username=${response.data.username}&email=${response.data.email}`;
+        
+        console.log()
+        // Hiển thị thông tin người dùng lên trang web
+    const userInfoElement = document.getElementById('userInfo');
+    userInfoElement.innerHTML = `Welcome, ${response.data.username}!`;
+      })
+      .catch(error => {
+        // Xử lý lỗi nếu có
+        console.error(error);
+      });
+  });
+</script>
+
     <script src="js/plugins.js"></script>
     <!-- Main JS -->
     <script src="js/main.js"></script>
