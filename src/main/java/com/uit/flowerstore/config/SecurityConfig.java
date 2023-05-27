@@ -15,15 +15,13 @@ public class SecurityConfig {
         return http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .anyRequest().permitAll()
+                .requestMatchers("/about").permitAll() 
                 .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .formLogin()
-                		.loginPage("/login")
-                		.defaultSuccessUrl("/index", true)
-                		.permitAll()
-                		.and()
-                .build();
+              
+                
+                .authorizeHttpRequests()
+                .requestMatchers("/account").authenticated() 
+                .and().formLogin() 
+                .and().build();
     }
 }

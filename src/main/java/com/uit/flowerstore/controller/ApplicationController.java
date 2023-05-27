@@ -117,7 +117,7 @@ public class ApplicationController {
 	public String shop() {
 		return "shop";
 	}
-<<<<<<< Updated upstream
+
 
 	@GetMapping("/admin")
 	public String admin() {
@@ -125,8 +125,8 @@ public class ApplicationController {
 	}
 	@GetMapping("/account-admin")
 	public String accountAdmin() {
-		return "account-admin";
-=======
+		return "account-admin";}
+
 	@RequestMapping(value="/newUser", method = RequestMethod.POST)
 	public String newUserPost(
 			HttpServletRequest request,
@@ -203,7 +203,7 @@ public class ApplicationController {
 	
 		
 		return "account";
->>>>>>> Stashed changes
+
 	}
 
 }
