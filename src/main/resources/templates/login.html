@@ -564,6 +564,9 @@
       .then(response => {
         // Xử lý phản hồi từ back-end sau khi đăng nhập thành công
         console.log(response.data);
+        // Lưu accessToken vào local storage
+localStorage.setItem('accessToken', 'your_access_token_here');
+
         localStorage.setItem('username', response.data.username);
     localStorage.setItem('email', response.data.email);
     

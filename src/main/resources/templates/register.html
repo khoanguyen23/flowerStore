@@ -474,12 +474,12 @@
                 <div class="col-lg-6 offset-lg-3">
                     <div class="account-login-inner">
 						<div class="alert" th:if="${emailSent}"></div>
-                        <form th:action="@{/newUser}" method="post" class="ltn__form-box contact-form-box">
-                            <input type="text" name="firstname" placeholder="First Name">
-                            <input type="text" name="lastname" placeholder="Last Name">
-                            <input type="text" name="email" placeholder="Email*">
+                        <form id="registerForm" class="ltn__form-box contact-form-box">
+                            <input id="username" type="text" name="username" placeholder="User Name">
+               
+                            <input id="email" type="text" name="email" placeholder="Email*">
                             <input type="password" name="password" placeholder="Password*" id="password">
-                            <input type="password" name="confirmpassword" placeholder="Confirm Password*" id="confirmPassword">
+                            <!--<input type="password" name="confirmpassword" placeholder="Confirm Password*" id="confirmPassword">
                             <label class="checkbox-inline">
                                 <input type="checkbox" value="">
                                 I consent to Herboil processing my personal data in order to send personalized marketing material in accordance with the consent form and the privacy policy.
@@ -487,7 +487,7 @@
                             <label class="checkbox-inline">
                                 <input type="checkbox" value="">
                                 By clicking "create account", I consent to the privacy policy.
-                            </label>
+                            </label>-->
                             <div class="btn-wrapper">
                                 <button class="theme-btn-1 btn reverse-color btn-block" type="submit">CREATE ACCOUNT</button>
                             </div>
@@ -707,6 +707,38 @@
     <!-- Main JS -->
     <script src="js/main.js"></script>
     <script src="register.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+		const API_URL = 'http://localhost:8080/api';
+
+const register = (username, email, password) => {
+  return axios.post(`${API_URL}/auth/signup`, {
+    username,
+    email,
+    password
+  });
+};
+
+// Lắng nghe sự kiện submit form đăng ký
+document.getElementById('registerForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  
+  const username = document.getElementById('username').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  register(username, email, password)
+    .then(response => {
+      console.log(response.data); // Xử lý phản hồi từ backend sau khi đăng ký thành công
+      // Thực hiện hành động sau khi đăng ký thành công (ví dụ: chuyển hướng đến trang login.html)
+      window.location.href = '/login';
+    })
+    .catch(error => {
+      console.error(error); // Xử lý lỗi nếu có
+    });
+});
+		
+	</script>
   
 </body>
 </html>
