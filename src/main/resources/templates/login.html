@@ -719,11 +719,14 @@
       .then(response => {
         // Xử lý phản hồi từ back-end sau khi đăng nhập thành công
         console.log(response.data);
-        window.location.href = `/account?username=${response.data.username}&email=${response.data.email}`;
+        localStorage.setItem('username', response.data.username);
+    localStorage.setItem('email', response.data.email);
+    
+        window.location.href = `/account`;
+
         
-        console.log()
         // Hiển thị thông tin người dùng lên trang web
-    const userInfoElement = document.getElementById('userInfo');
+    const  userInfoElement = document.getElementById('userInfo');
     userInfoElement.innerHTML = `Welcome, ${response.data.username}!`;
       })
       .catch(error => {
@@ -731,8 +734,9 @@
         console.error(error);
       });
   });
-</script>
 
+  
+</script>
     <script src="js/plugins.js"></script>
     <!-- Main JS -->
     <script src="js/main.js"></script>

@@ -392,6 +392,8 @@
                                     <div class="tab-content">
                                         <div class="tab-pane fade active show" id="liton_tab_1_1">
                                             <div class="ltn__myaccount-tab-content-inner">
+												<div id="usernameElement"></div>
+												<div class="emailElement"></div>
                                               <p>Xin chào <strong></strong> (không phải<strong></strong>? <small><a href="login-register.html">Đăng xuất </a></small> )</p>
 
                                                 
@@ -505,21 +507,14 @@
                                                 <div class="ltn__form-box">
                                                     <form action="#">
                                                         <div class="row mb-50">
+                                                            
                                                             <div class="col-md-6">
-                                                                <label>First name:</label>
-                                                                <input type="text" name="ltn__name">
+                                                                <label>User Name:</label>
+                                                                <input id="userNameInput" type="text" name="ltn__lastname" placeholder="Ethan">
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label>Last name:</label>
-                                                                <input type="text" name="ltn__lastname">
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Display Name:</label>
-                                                                <input type="text" name="ltn__lastname" placeholder="Ethan">
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>Display Email:</label>
-                                                                <input type="email" name="ltn__lastname" placeholder="example@example.com">
+                                                                <label> Email:</label>
+                                                                <input class="emailElement" type="email" name="ltn__lastname" placeholder="example@example.com">
                                                             </div>
                                                         </div>
                                                         <fieldset>
@@ -755,14 +750,31 @@
     <script src="js/main.js"></script>
     <script>
 		
-		const urlParams = new URLSearchParams(window.location.search);
-const username = urlParams.get('username');
-console.log(username)
-const email = urlParams.get('email');
-const strongElement = document.querySelectorAll('strong');
+	document.addEventListener('DOMContentLoaded', function() {
+  // Lấy thông tin người dùng từ local storage
+  const username = localStorage.getItem('username');
+  const email = localStorage.getItem('email');
 
-strongElement.textContent = username;
-console.log(strongElement)
+  // Hiển thị thông tin người dùng lên trang account.html
+  const usernameElement = document.getElementById('usernameElement');
+  const emailElements = document.querySelectorAll('.emailElement');
+const userNameInput = document.getElementById('userNameInput');
+
+
+  usernameElement.innerHTML = `Username: ${username}`;
+  //emailElement.innerHTML = `Email: ${email}`;
+  
+  userNameInput.placeholder = username;
+  
+  console.log(emailElement)
+  emailElements.forEach(emailElement => emailElement.innerHTML =`Email: ${email}` )
+  
+  emailElement.value = email;
+});
+
+
+
+
 
 	</script>
   
