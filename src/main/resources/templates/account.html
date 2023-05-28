@@ -31,7 +31,7 @@
 <!-- Body main wrapper start -->
 <div class="body-wrapper">
 
-   <!-- HEADER AREA START (header-3) -->
+  <!-- HEADER AREA START (header-3) -->
     <header class="ltn__header-area ltn__header-3 section-bg-6">        
         <!-- ltn__header-middle-area start -->
         <div class="ltn__header-middle-area">
@@ -205,69 +205,81 @@
     </header>
     <!-- HEADER AREA END -->
 
-  <!-- Utilize Cart Menu Start -->
-    <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
+   <!-- Utilize Mobile Menu Start -->
+    <div id="ltn__utilize-mobile-menu" class="ltn__utilize ltn__utilize-mobile-menu">
         <div class="ltn__utilize-menu-inner ltn__scrollbar">
             <div class="ltn__utilize-menu-head">
-                <span class="ltn__utilize-menu-title">Giỏ hàng </span>
+                <div class="site-logo">
+                    <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+                </div>
                 <button class="ltn__utilize-close">×</button>
             </div>
-            <div class="mini-cart-product-area ltn__scrollbar">
-                <div class="mini-cart-item clearfix">
-                    <div class="mini-cart-img">
-                        <a href="#"><img src="${pageContext.request.contextPath}img/product/Hoa2.jpg" alt="Image"></a>
-                        <span class="mini-cart-item-delete"><i class="icon-trash"></i></span>
-                    </div>
-                    <div class="mini-cart-info">
-                        <h6><a href="#">Premium Joyful</a></h6>
-                        <span class="mini-cart-quantity">1 x $65.00</span>
-                    </div>
-                </div>
-                <div class="mini-cart-item clearfix">
-                    <div class="mini-cart-img">
-                        <a href="#"><img src="img/product/hoa1.jpg" alt="Image"></a>
-                        <span class="mini-cart-item-delete"><i class="icon-trash"></i></span>
-                    </div>
-                    <div class="mini-cart-info">
-                        <h6><a href="#">The White Rose</a></h6>
-                        <span class="mini-cart-quantity">1 x $85.00</span>
-                    </div>
-                </div>
-                <div class="mini-cart-item clearfix">
-                    <div class="mini-cart-img">
-                        <a href="#"><img src="img/product/hoa3.png" alt="Image"></a>
-                        <span class="mini-cart-item-delete"><i class="icon-trash"></i></span>
-                    </div>
-                    <div class="mini-cart-info">
-                        <h6><a href="#">Red Rose Bouquet</a></h6>
-                        <span class="mini-cart-quantity">1 x $92.00</span>
-                    </div>
-                </div>
-                <div class="mini-cart-item clearfix">
-                    <div class="mini-cart-img">
-                        <a href="#"><img src="img/product/4.png" alt="Image"></a>
-                        <span class="mini-cart-item-delete"><i class="icon-trash"></i></span>
-                    </div>
-                    <div class="mini-cart-info">
-                        <h6><a href="#">Pink Flower Tree</a></h6>
-                        <span class="mini-cart-quantity">1 x $68.00</span>
-                    </div>
-                </div>
+            <div class="ltn__utilize-menu-search-form">
+                <form action="#">
+                    <input type="text" placeholder="Search...">
+                    <button><i class="icon-magnifier"></i></button>
+                </form>
             </div>
-            <div class="mini-cart-footer">
-                <div class="mini-cart-sub-total">
-                    <h5>Tổng tiền: <span>$310.00</span></h5>
-                </div>
-                <div class="btn-wrapper">
-                    <a th:href="@{/cart}" class="theme-btn-1 btn btn-effect-1">Xem giỏ hàng </a>
-                    <a th:href="@{/checkout}" class="theme-btn-2 btn btn-effect-2">Thanh toán </a>
-                </div>
-                <p>Miễn phí mọi đơn hàng giá trị trên 500.000 VND!</p>
+            <div class="ltn__utilize-menu">
+                <ul>
+                                        
+                                        
+                                        <li class="menu-icon"><a th:href="@{/shop}">Cửa hàng</a>
+                                            
+                                        </li>
+                                        <li class="menu-icon"><a th:href="@{/portfolio}">Danh mục </a>
+                                            
+                                        </li>
+                                        <li class="menu-icon"><a th:href="@{/about}">Về chúng tôi </a>
+                                            
+                                        </li>
+                                        
+                                        <li class="menu-icon"><a th:href="@{/contact}">Liên hệ </a></li>
+                                        
+                                    </ul>
             </div>
-
+            <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
+                <ul>
+                    <li>
+                        <a th:href="@{/account}" title="My Account">
+                            <span class="utilize-btn-icon">
+                                <i class="icon-user"></i>
+                            </span>
+                           Tài khoản
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/wishlist}" title="Wishlist">
+                            <span class="utilize-btn-icon">
+                                <i class="icon-heart"></i>
+                                <sup>3</sup>
+                            </span>
+                           Danh sách yêu thích
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/cart}" title="Shoping Cart">
+                            <span class="utilize-btn-icon">
+                                <i class="icon-handbag"></i>
+                                <sup>5</sup>
+                            </span>
+                           Giỏ hàng
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="ltn__social-media-2">
+                <ul>
+                    <li><a href="#" title="Facebook"><i class="icon-social-facebook"></i></a></li>
+                    <li><a href="#" title="Twitter"><i class="icon-social-twitter"></i></a></li>
+                    <li><a href="#" title="Pinterest"><i class="icon-social-pinterest"></i></a></li>
+                    <li><a href="#" title="Instagram"><i class="icon-social-instagram"></i></a></li>
+                </ul>
+            </div>
         </div>
     </div>
-    <!-- Utilize Cart Menu End -->
+    <!-- Utilize Mobile Menu End -->
+
 
      <!-- Utilize Mobile Menu Start -->
     <div id="ltn__utilize-mobile-menu" class="ltn__utilize ltn__utilize-mobile-menu">
@@ -392,11 +404,12 @@
                                     <div class="tab-content">
                                         <div class="tab-pane fade active show" id="liton_tab_1_1">
                                             <div class="ltn__myaccount-tab-content-inner">
-												<div id="usernameElement"></div>
+												Xin chào <div class="usernameElement"></div>
 												<div class="emailElement"></div>
-                                              <p>Xin chào <strong></strong> (không phải<strong></strong>? <small><a href="login-register.html">Đăng xuất </a></small> )</p>
+                                            <div>  <p > Không phải <span class="usernameElement"></span> ? </p>
+                                              <small><a th:href="@{/login}">Đăng xuất </a></small>
 
-                                                
+                                                </div>
                                             </div>
                                             
                                         </div>
@@ -510,7 +523,7 @@
                                                             
                                                             <div class="col-md-6">
                                                                 <label>User Name:</label>
-                                                                <input id="userNameInput" type="text" name="ltn__lastname" placeholder="Ethan">
+                                                                <input class="usernameElement" type="text" name="ltn__lastname" placeholder="Example">
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <label> Email:</label>
@@ -593,7 +606,7 @@
     </div>
     <!-- BRAND LOGO AREA END -->
 
-     <!-- FOOTER AREA START -->
+  <!-- FOOTER AREA START -->
     <footer class="ltn__footer-area ">
         <div class="footer-top-area  section-bg-5">
             <div class="container">
@@ -647,7 +660,7 @@
                                 <ul>
                                     <li><a th:href="@{/faq}">Chính sách vận chuyển</a></li>
                                     <li><a th:href="@{/contact}">Trợ giúp & Liên hệ với chúng tôi</a></li>
-                                    <li><a th:href="@{/fag}">Trả hàng & Hoàn tiền</a></li>
+                                    <li><a th:href="@{/faq}">Trả hàng & Hoàn tiền</a></li>
                                     
                                     <li><a th:href="@{/faq}">Chính sách bảo mật</a></li>
                                 </ul>
@@ -756,20 +769,35 @@
   const email = localStorage.getItem('email');
 
   // Hiển thị thông tin người dùng lên trang account.html
-  const usernameElement = document.getElementById('usernameElement');
+  const usernameElements = document.querySelectorAll('.usernameElement');
   const emailElements = document.querySelectorAll('.emailElement');
-const userNameInput = document.getElementById('userNameInput');
+//const userNameInput = document.getElementById('userNameInput');
+ 
 
-
-  usernameElement.innerHTML = `Username: ${username}`;
+  //usernameElement.innerHTML = `Username: ${username}`;
   //emailElement.innerHTML = `Email: ${email}`;
   
-  userNameInput.placeholder = username;
+  //userNameInput.placeholder = username;
   
-  console.log(emailElement)
-  emailElements.forEach(emailElement => emailElement.innerHTML =`Email: ${email}` )
+  console.log(usernameElements)
+  emailElements.forEach((emailElement )=> {
+	  emailElement.innerHTML =`Email: ${email}`
+	  emailElement.value = email;
+  }
+   )
+    console.log(username)
+   usernameElements.forEach((usernameElement)=> {
+	  
+	  usernameElement.innerHTML =`Username: ${username}`
+	  usernameElement.value = username;
+	  
+	  usernameElement.innerText = username;
+	  
+  }
+   )
+   
+ 
   
-  emailElement.value = email;
 });
 
 
