@@ -562,15 +562,29 @@
 
     signIn(credentials)
       .then(response => {
+		  localStorage.setItem('accessToken', 'your_access_token_here');
+      localStorage.setItem('username', response.data.username);
+      localStorage.setItem('email', response.data.email);
+		   if (response.data.roles.includes('ROLE_ADMIN')) {
+        // Nếu là admin, chuyển hướng tới trang admin.html
+        
+        window.location.href = '/account-admin';
+      } else {
+		  
+        // Nếu không phải admin, chuyển hướng tới trang account.html
+        window.location.href = '/account';
+      }
+      // Lưu accessToken vào local storage
+      //localStorage.setItem('accessToken', 'your_access_token_here');
+
+        //localStorage.setItem('username', response.data.username);
+    //localStorage.setItem('email', response.data.email);
         // Xử lý phản hồi từ back-end sau khi đăng nhập thành công
         console.log(response.data);
         // Lưu accessToken vào local storage
-localStorage.setItem('accessToken', 'your_access_token_here');
 
-        localStorage.setItem('username', response.data.username);
-    localStorage.setItem('email', response.data.email);
     
-        window.location.href = `/account`;
+     
 
         
         // Hiển thị thông tin người dùng lên trang web

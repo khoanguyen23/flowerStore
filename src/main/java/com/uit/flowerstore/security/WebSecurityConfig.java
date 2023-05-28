@@ -71,6 +71,7 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
         .authorizeHttpRequests(auth -> auth.requestMatchers("/api/auth/**").permitAll()
         .requestMatchers("/css/**", "/js/**", "/img/**", "/", "/newUser", "/forgetPassword", "/login").permitAll()
         .requestMatchers("/api/test/**").permitAll()
+        
         .anyRequest().permitAll());
     http
 	.csrf().disable().cors().disable()
