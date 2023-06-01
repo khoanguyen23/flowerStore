@@ -91,7 +91,16 @@ public class User {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+	public List<UserShipping> getUserShippings() {
+	    return userShippings;
+	}
+	 
 	
+	public void setUserShippings(List<UserShipping> userShippings) {
+		this.userShippings = userShippings;
+	}
+
+
 	@JsonBackReference
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<UserShipping> userShippings;

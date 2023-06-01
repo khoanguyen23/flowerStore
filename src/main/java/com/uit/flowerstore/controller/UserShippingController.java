@@ -3,16 +3,19 @@ package com.uit.flowerstore.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import com.uit.flowerstore.domain.UserShipping;
 import com.uit.flowerstore.services.UserShippingService;
+import com.uit.flowerstore.security.services.UserDetailsImpl;
 import org.springframework.http.HttpHeaders;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:8081", allowCredentials = "true")
 public class UserShippingController {
     private final UserShippingService userShippingService;
 
@@ -27,10 +30,19 @@ public class UserShippingController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUserShipping);
     }
 
-    @GetMapping("/user-shipping/{id}")
-    public ResponseEntity<UserShipping> getUserShipping(@PathVariable Long id) {
-        UserShipping userShipping = userShippingService.getUserShippingById(id);
-        return ResponseEntity.ok(userShipping);
+//    @GetMapping("/user-shipping/{id}")
+//    public ResponseEntity<UserShipping> getUserShipping(@PathVariable Long id) {
+//        UserShipping userShipping = userShippingService.getUserShippingById(id);
+//        return ResponseEntity.ok(userShipping);
+//    }
+    @GetMapping("/user-shipping")
+    public ResponseEntity<UserShipping> getUserShipping(Authentication authentication) {
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        UserShipping userShipping = userShippingService.getUserShipping(userDetails);
+        if (userShipping != null) {
+            return ResponseEntity.ok(userShipping);
+        }
+        return ResponseEntity.notFound().build();
     }
 
     @PutMapping("/user-shipping/{id}")

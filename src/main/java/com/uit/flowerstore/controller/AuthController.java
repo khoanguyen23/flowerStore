@@ -41,9 +41,9 @@ import org.springframework.http.ResponseEntity;
 
 
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+//@CrossOrigin(origins = "*", maxAge = 3600)
 //for Angular Client (withCredentials)
-//@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600, allowCredentials="true")
+@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600, allowCredentials = "true")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -61,6 +61,8 @@ PasswordEncoder encoder;
 
 @Autowired
 JwtUtils jwtUtils;
+
+
 
 @PostMapping("/signin")
 public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -138,7 +140,11 @@ public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRe
   user.setRoles(roles);
   userRepository.save(user);
 
-  return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+String token = jwtUtils.generateToken(user);
+
+//  return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+
+return ResponseEntity.ok(new AuthResponse("User registered successfully!", token));
 }
 
 
@@ -151,4 +157,32 @@ public ResponseEntity<?> logoutUser() {
   return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString())
       .body(new MessageResponse("You've been signed out!"));
 }
+
+public class AuthResponse {
+    private String message;
+    private String token;
+
+    public AuthResponse(String message, String token) {
+      this.message = message;
+      this.token = token;
+    }
+
+	public String getMessage() {
+		return message;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+    // Getters and setters
+  }
 }

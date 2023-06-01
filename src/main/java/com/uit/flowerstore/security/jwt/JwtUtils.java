@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.WebUtils;
 
+import com.uit.flowerstore.domain.User;
 import com.uit.flowerstore.security.services.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
@@ -29,7 +30,7 @@ public class JwtUtils {
   private int jwtExpirationMs;
 
   @Value("${bezkoder.app.jwtCookieName}")
-  private String jwtCookie;
+  private String jwtCookie = "accessToken";
 
   public String getJwtFromCookies(HttpServletRequest request) {
     Cookie cookie = WebUtils.getCookie(request, jwtCookie);
@@ -85,4 +86,17 @@ public class JwtUtils {
                .signWith(key(), SignatureAlgorithm.HS256)
                .compact();
   }
+  
+  public String generateToken(User user) {
+	    Claims claims = Jwts.claims().setSubject(user.getUsername());
+	    claims.put("email", user.getEmail());
+	    claims.put("roles", user.getRoles());
+
+	    return Jwts.builder()
+	               .setClaims(claims)
+	               .setIssuedAt(new Date())
+	               .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
+	               .signWith(key(), SignatureAlgorithm.HS256)
+	               .compact();
+	  }
 }
