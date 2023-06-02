@@ -24,19 +24,19 @@ public class UserShippingController {
         this.userShippingService = userShippingService;
     }
 
-//    @PostMapping("/user-shipping")
-//    public ResponseEntity<UserShipping> createUserShipping(@RequestBody UserShipping userShipping) {
-//        UserShipping createdUserShipping = userShippingService.createUserShipping(userShipping);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(createdUserShipping);
-//    }
-    
     @PostMapping("/user-shipping")
-    public ResponseEntity<UserShipping> createUserShipping(@RequestBody UserShipping userShipping, Authentication authentication) {
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        userShipping.getUser().setId(userDetails.getId()); 
+    public ResponseEntity<UserShipping> createUserShipping(@RequestBody UserShipping userShipping) {
         UserShipping createdUserShipping = userShippingService.createUserShipping(userShipping);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUserShipping);
     }
+    
+//    @PostMapping("/user-shipping")
+//    public ResponseEntity<UserShipping> createUserShipping(@RequestBody UserShipping userShipping, Authentication authentication) {
+//        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+//        userShipping.getUser().setId(userDetails.getId()); 
+//        UserShipping createdUserShipping = userShippingService.createUserShipping(userShipping);
+//        return ResponseEntity.status(HttpStatus.CREATED).body(createdUserShipping);
+//    }
 
 
     @GetMapping("/user-shipping/{id}")
