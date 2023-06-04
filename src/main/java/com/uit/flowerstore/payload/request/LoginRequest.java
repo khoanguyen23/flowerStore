@@ -1,6 +1,6 @@
 package com.uit.flowerstore.payload.request;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.*;
 
 public class LoginRequest {
 	@NotBlank

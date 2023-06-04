@@ -1,19 +1,23 @@
 package com.uit.flowerstore.security.jwt;
 
+import java.security.Key;
 import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import com.uit.flowerstore.security.services.UserDetailsImpl;
 
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.UnsupportedJwtException;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-
-import java.security.Key;
-
 
 @Component
 public class JwtUtils {
@@ -25,42 +29,41 @@ public class JwtUtils {
   @Value("${bezkoder.app.jwtExpirationMs}")
   private int jwtExpirationMs;
 
-  public String generateJwtToken(UserDetailsImpl userPrincipal) {
-    return generateTokenFromUsername(userPrincipal.getUsername());
-  }
+  public String generateJwtToken(Authentication authentication) {
 
-  public String generateTokenFromUsername(String username) {
-    Key jwtSecretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
+
     return Jwts.builder()
-        .setSubject(username)
+        .setSubject((userPrincipal.getUsername()))
         .setIssuedAt(new Date())
-        .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
-        .signWith(jwtSecretKey, SignatureAlgorithm.HS256)
+        .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
+        .signWith(key(), SignatureAlgorithm.HS256)
         .compact();
+  }
+  
+  private Key key() {
+    return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
   }
 
   public String getUserNameFromJwtToken(String token) {
-    Key jwtSecretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-    Claims claims = Jwts.parserBuilder().setSigningKey(jwtSecretKey).build().parseClaimsJws(token).getBody();
-    return claims.getSubject();
+    return Jwts.parserBuilder().setSigningKey(key()).build()
+               .parseClaimsJws(token).getBody().getSubject();
   }
 
   public boolean validateJwtToken(String authToken) {
     try {
-      Key jwtSecretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-      Jwts.parserBuilder().setSigningKey(jwtSecretKey).build().parseClaimsJws(authToken);
+      Jwts.parserBuilder().setSigningKey(key()).build().parse(authToken);
       return true;
-    } catch (io.jsonwebtoken.security.SecurityException e) {
-      logger.error("Invalid JWT signature: {}", e.getMessage());
-    } catch (io.jsonwebtoken.ExpiredJwtException e) {
-      logger.error("JWT token is expired: {}", e.getMessage());
-    } catch (io.jsonwebtoken.MalformedJwtException e) {
+    } catch (MalformedJwtException e) {
       logger.error("Invalid JWT token: {}", e.getMessage());
-    } catch (io.jsonwebtoken.UnsupportedJwtException e) {
+    } catch (ExpiredJwtException e) {
+      logger.error("JWT token is expired: {}", e.getMessage());
+    } catch (UnsupportedJwtException e) {
       logger.error("JWT token is unsupported: {}", e.getMessage());
     } catch (IllegalArgumentException e) {
       logger.error("JWT claims string is empty: {}", e.getMessage());
     }
+
     return false;
   }
 }

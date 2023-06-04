@@ -1,5 +1,4 @@
 package com.uit.flowerstore.controller;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,21 +20,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.uit.flowerstore.domain.ERole;
-import com.uit.flowerstore.domain.RefreshToken;
 import com.uit.flowerstore.domain.Role;
 import com.uit.flowerstore.domain.User;
-import com.uit.flowerstore.exception.TokenRefreshException;
 import com.uit.flowerstore.payload.request.LoginRequest;
 import com.uit.flowerstore.payload.request.SignupRequest;
-import com.uit.flowerstore.payload.request.TokenRefreshRequest;
 import com.uit.flowerstore.payload.response.JwtResponse;
 import com.uit.flowerstore.payload.response.MessageResponse;
-import com.uit.flowerstore.payload.response.TokenRefreshResponse;
 import com.uit.flowerstore.repository.RoleRepository;
 import com.uit.flowerstore.repository.UserRepository;
 import com.uit.flowerstore.security.jwt.JwtUtils;
-import com.uit.flowerstore.security.services.RefreshTokenService;
 import com.uit.flowerstore.security.services.UserDetailsImpl;
+
+
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -56,43 +52,45 @@ public class AuthController {
   @Autowired
   JwtUtils jwtUtils;
 
-  @Autowired
-  RefreshTokenService refreshTokenService;
-
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
-    Authentication authentication = authenticationManager
-        .authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+    Authentication authentication = authenticationManager.authenticate(
+        new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
     SecurityContextHolder.getContext().setAuthentication(authentication);
-
-    UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-
-    String jwt = jwtUtils.generateJwtToken(userDetails);
-
-    List<String> roles = userDetails.getAuthorities().stream().map(item -> item.getAuthority())
+    String jwt = jwtUtils.generateJwtToken(authentication);
+    
+    UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();    
+    List<String> roles = userDetails.getAuthorities().stream()
+        .map(item -> item.getAuthority())
         .collect(Collectors.toList());
 
-    RefreshToken refreshToken = refreshTokenService.createRefreshToken(userDetails.getId());
-
-    return ResponseEntity.ok(new JwtResponse(jwt, refreshToken.getToken(), userDetails.getId(),
-        userDetails.getUsername(), userDetails.getEmail(), roles));
+    return ResponseEntity.ok(new JwtResponse(jwt, 
+                         userDetails.getId(), 
+                         userDetails.getUsername(), 
+                         userDetails.getEmail(), 
+                         roles));
   }
 
   @PostMapping("/signup")
   public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
     if (userRepository.existsByUsername(signUpRequest.getUsername())) {
-      return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
+      return ResponseEntity
+          .badRequest()
+          .body(new MessageResponse("Error: Username is already taken!"));
     }
 
     if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-      return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
+      return ResponseEntity
+          .badRequest()
+          .body(new MessageResponse("Error: Email is already in use!"));
     }
 
     // Create new user's account
-    User user = new User(signUpRequest.getUsername(), signUpRequest.getEmail(),
-        encoder.encode(signUpRequest.getPassword()));
+    User user = new User(signUpRequest.getUsername(), 
+               signUpRequest.getEmail(),
+               encoder.encode(signUpRequest.getPassword()));
 
     Set<String> strRoles = signUpRequest.getRole();
     Set<Role> roles = new HashSet<>();
@@ -129,28 +127,4 @@ public class AuthController {
 
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
   }
-
-  @PostMapping("/refreshtoken")
-  public ResponseEntity<?> refreshtoken(@Valid @RequestBody TokenRefreshRequest request) {
-    String requestRefreshToken = request.getRefreshToken();
-
-    return refreshTokenService.findByToken(requestRefreshToken)
-        .map(refreshTokenService::verifyExpiration)
-        .map(RefreshToken::getUser)
-        .map(user -> {
-          String token = jwtUtils.generateTokenFromUsername(user.getUsername());
-          return ResponseEntity.ok(new TokenRefreshResponse(token, requestRefreshToken));
-        })
-        .orElseThrow(() -> new TokenRefreshException(requestRefreshToken,
-            "Refresh token is not in database!"));
-  }
-  
-  @PostMapping("/signout")
-  public ResponseEntity<?> logoutUser() {
-    UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    Long userId = userDetails.getId();
-    refreshTokenService.deleteByUserId(userId);
-    return ResponseEntity.ok(new MessageResponse("Log out successful!"));
-  }
-
 }
