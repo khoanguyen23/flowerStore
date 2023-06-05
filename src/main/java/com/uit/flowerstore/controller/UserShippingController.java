@@ -4,20 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-
-import com.uit.flowerstore.domain.UserShipping;
-import com.uit.flowerstore.services.UserShippingService;
-import com.uit.flowerstore.security.services.UserDetailsImpl;
-import org.springframework.http.HttpHeaders;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.*;
-
 import com.uit.flowerstore.domain.UserShipping;
 import com.uit.flowerstore.services.UserShippingService;
 import com.uit.flowerstore.security.services.UserDetailsImpl;
@@ -31,7 +18,6 @@ import java.util.List;
 //@CrossOrigin(origins = "http://localhost:8081", allowCredentials = "true")
 public class UserShippingController {
     private final UserShippingService userShippingService;
-
     @Autowired
     public UserShippingController(UserShippingService userShippingService) {
         this.userShippingService = userShippingService;
@@ -39,10 +25,10 @@ public class UserShippingController {
 
     @PostMapping("/user-shipping")
     public ResponseEntity<UserShipping> createUserShipping(@RequestBody UserShipping userShipping, Principal principal) {
-    	 UserDetailsImpl userDetails = (UserDetailsImpl) ((Authentication) principal).getPrincipal();
-    	 UserShipping createdUserShipping = userShippingService.createUserShipping(userShipping, userDetails);
-         return ResponseEntity.status(HttpStatus.CREATED).body(createdUserShipping);
-    }
+   	 UserDetailsImpl userDetails = (UserDetailsImpl) ((Authentication) principal).getPrincipal();
+   	 UserShipping createdUserShipping = userShippingService.createUserShipping(userShipping, userDetails);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUserShipping);
+   }
     
 
 
@@ -51,7 +37,7 @@ public class UserShippingController {
     public ResponseEntity<UserShipping> getUserShippingById(@PathVariable Long id, Principal principal) {
         UserDetailsImpl userDetails = (UserDetailsImpl) ((Authentication) principal).getPrincipal();
         UserShipping userShipping = userShippingService.getUserShippingById(id, userDetails);
-        
+
         if (userShipping != null) {
             return ResponseEntity.ok(userShipping);
         } else {
@@ -67,13 +53,11 @@ public class UserShippingController {
 //        }
 //        return ResponseEntity.notFound().build();
 //    }
-
     @PutMapping("/user-shipping/{id}")
     public ResponseEntity<UserShipping> updateUserShipping(@PathVariable Long id, @RequestBody UserShipping userShipping) {
         UserShipping updatedUserShipping = userShippingService.updateUserShipping(id, userShipping);
         return ResponseEntity.ok(updatedUserShipping);
     }
-
     @DeleteMapping("user-shipping/{id}")
     public ResponseEntity<Void> deleteUserShipping(@PathVariable Long id) {
         userShippingService.deleteUserShipping(id);
