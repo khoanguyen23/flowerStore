@@ -4,6 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
+
+import com.uit.flowerstore.domain.UserShipping;
+import com.uit.flowerstore.services.UserShippingService;
+import com.uit.flowerstore.security.services.UserDetailsImpl;
+import org.springframework.http.HttpHeaders;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import com.uit.flowerstore.domain.UserShipping;
@@ -32,13 +44,7 @@ public class UserShippingController {
          return ResponseEntity.status(HttpStatus.CREATED).body(createdUserShipping);
     }
     
-//    @PostMapping("/user-shipping")
-//    public ResponseEntity<UserShipping> createUserShipping(@RequestBody UserShipping userShipping, Authentication authentication) {
-//        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-//        userShipping.getUser().setId(userDetails.getId()); 
-//        UserShipping createdUserShipping = userShippingService.createUserShipping(userShipping);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(createdUserShipping);
-//    }
+
 
 
     @GetMapping("/user-shipping/{id}")
@@ -76,4 +82,3 @@ public class UserShippingController {
         return ResponseEntity.noContent().headers(headers).build();
     }
 }
-
