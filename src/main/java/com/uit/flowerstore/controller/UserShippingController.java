@@ -11,6 +11,7 @@ import com.uit.flowerstore.services.UserShippingService;
 import com.uit.flowerstore.security.services.UserDetailsImpl;
 import org.springframework.http.HttpHeaders;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -25,9 +26,10 @@ public class UserShippingController {
     }
 
     @PostMapping("/user-shipping")
-    public ResponseEntity<UserShipping> createUserShipping(@RequestBody UserShipping userShipping) {
-        UserShipping createdUserShipping = userShippingService.createUserShipping(userShipping);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdUserShipping);
+    public ResponseEntity<UserShipping> createUserShipping(@RequestBody UserShipping userShipping, Principal principal) {
+    	 UserDetailsImpl userDetails = (UserDetailsImpl) ((Authentication) principal).getPrincipal();
+    	 UserShipping createdUserShipping = userShippingService.createUserShipping(userShipping, userDetails);
+         return ResponseEntity.status(HttpStatus.CREATED).body(createdUserShipping);
     }
     
 //    @PostMapping("/user-shipping")
@@ -40,9 +42,15 @@ public class UserShippingController {
 
 
     @GetMapping("/user-shipping/{id}")
-    public ResponseEntity<UserShipping> getUserShipping(@PathVariable Long id) {
-        UserShipping userShipping = userShippingService.getUserShippingById(id);
-        return ResponseEntity.ok(userShipping);
+    public ResponseEntity<UserShipping> getUserShippingById(@PathVariable Long id, Principal principal) {
+        UserDetailsImpl userDetails = (UserDetailsImpl) ((Authentication) principal).getPrincipal();
+        UserShipping userShipping = userShippingService.getUserShippingById(id, userDetails);
+        
+        if (userShipping != null) {
+            return ResponseEntity.ok(userShipping);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 //    @GetMapping("/user-shipping")
 //    public ResponseEntity<UserShipping> getUserShipping(Authentication authentication) {

@@ -15,6 +15,7 @@ List<UserShipping> findAllByUserId(Long userId);
     Optional<UserShipping> findByIdAndUserId(Long id, Long userId);
     
     UserShipping save(UserShipping userShipping);
+    List<UserShipping> findAllByUser_Id(Long userId);
     
     void deleteByIdAndUserId(Long id, Long userId);
 }
