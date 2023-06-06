@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-//@CrossOrigin(origins = "http://localhost:8081", allowCredentials = "true")
+@CrossOrigin(origins = "http://localhost:8081", allowCredentials = "true")
 public class UserShippingController {
     private final UserShippingService userShippingService;
     @Autowired
@@ -29,21 +29,7 @@ public class UserShippingController {
    	 UserShipping createdUserShipping = userShippingService.createUserShipping(userShipping, userDetails);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUserShipping);
    }
-    
 
-
-
-    @GetMapping("/user-shipping/{id}")
-    public ResponseEntity<UserShipping> getUserShippingById(@PathVariable Long id, Principal principal) {
-        UserDetailsImpl userDetails = (UserDetailsImpl) ((Authentication) principal).getPrincipal();
-        UserShipping userShipping = userShippingService.getUserShippingById(id, userDetails);
-
-        if (userShipping != null) {
-            return ResponseEntity.ok(userShipping);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
 //    @GetMapping("/user-shipping")
 //    public ResponseEntity<UserShipping> getUserShipping(Authentication authentication) {
 //        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
@@ -65,4 +51,26 @@ public class UserShippingController {
         headers.add("XoaThanhCong", "Xóa thành công");
         return ResponseEntity.noContent().headers(headers).build();
     }
+    
+    @GetMapping("/user-shipping")
+    public ResponseEntity<List<UserShipping>> getUserShippingList(Authentication authentication) {
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        List<UserShipping> userShippingList = userShippingService.getUserShippingList(userDetails);
+        if (!userShippingList.isEmpty()) {
+            return ResponseEntity.ok(userShippingList);
+        }
+        return ResponseEntity.notFound().build();
+    }
+    @GetMapping("/user-shipping/default")
+    public ResponseEntity<UserShipping> getDefaultUserShipping(Authentication authentication) {
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        UserShipping defaultUserShipping = userShippingService.getDefaultUserShipping(userDetails);
+        if (defaultUserShipping != null) {
+            return ResponseEntity.ok(defaultUserShipping);
+        }
+        return ResponseEntity.notFound().build();
+    }
+    
+    
+
 }

@@ -34,11 +34,6 @@ public class UserShippingService {
 	        return null;
 	    }
 
-
-    
-//    public UserShipping createUserShipping(UserShipping userShipping) {
-//        return userShippingRepository.save(userShipping);
-//    }
 	    public UserShipping createUserShipping(UserShipping userShipping, UserDetailsImpl userDetails) {
 	        User user = userRepository.findById(userDetails.getId()).orElse(null);
 	        if (user != null) {
@@ -48,16 +43,6 @@ public class UserShippingService {
 	        throw new EntityNotFoundException("User not found");
 	    }
 
-
- 
-
-//    public UserShipping getUserShippingById(Long id, UserDetailsImpl userDetails) {
-//        User user = userRepository.findById(userDetails.getId()).orElse(null);
-//        if (user != null) {
-//            return userShippingRepository.findByIdAndUserId(id, user.getId()).orElse(null);
-//        }
-//        return null;
-//    }
 	    public UserShipping getUserShippingById(Long id, UserDetailsImpl userDetails) {
 	        User user = userRepository.findById(userDetails.getId()).orElse(null);
 	        if (user != null) {
@@ -125,5 +110,25 @@ public class UserShippingService {
         existingUserShipping.setUserShippingZipcode(updatedUserShipping.getUserShippingZipcode());
         
         return userShippingRepository.save(existingUserShipping);
+    }
+    
+    public List<UserShipping> getUserShippingList(UserDetailsImpl userDetails) {
+        User user = userRepository.findById(userDetails.getId()).orElse(null);
+        if (user != null) {
+            return user.getUserShippings();
+        }
+        return Collections.emptyList();
+    }
+
+    public UserShipping getDefaultUserShipping(UserDetailsImpl userDetails) {
+        User user = userRepository.findById(userDetails.getId()).orElse(null);
+        if (user != null && user.getUserShippings() != null && !user.getUserShippings().isEmpty()) {
+            for (UserShipping userShipping : user.getUserShippings()) {
+                if (userShipping.getUserShippingDefault()) {
+                    return userShipping;
+                }
+            }
+        }
+        return null;
     }
 }
