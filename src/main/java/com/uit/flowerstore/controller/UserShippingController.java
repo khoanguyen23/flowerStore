@@ -61,16 +61,26 @@ public class UserShippingController {
         }
         return ResponseEntity.notFound().build();
     }
-    @GetMapping("/user-shipping/default")
-    public ResponseEntity<UserShipping> getDefaultUserShipping(Authentication authentication) {
+//    @GetMapping("/user-shipping/default")
+//    public ResponseEntity<UserShipping> getDefaultUserShipping(Authentication authentication) {
+//        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+//        UserShipping defaultUserShipping = userShippingService.getDefaultUserShipping(userDetails);
+//        if (defaultUserShipping != null) {
+//            return ResponseEntity.ok(defaultUserShipping);
+//        }
+//        return ResponseEntity.notFound().build();
+//    }
+//    
+    @PutMapping("/user-shipping/default/{shippingId}")
+    public ResponseEntity<?> updateDefaultUserShipping(@PathVariable Long shippingId, Authentication authentication) {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        UserShipping defaultUserShipping = userShippingService.getDefaultUserShipping(userDetails);
+        UserShipping defaultUserShipping = userShippingService.updateDefaultUserShipping(userDetails, shippingId);
         if (defaultUserShipping != null) {
-            return ResponseEntity.ok(defaultUserShipping);
+            return ResponseEntity.ok().build();
         }
         return ResponseEntity.notFound().build();
     }
-    
+
     
 
 }

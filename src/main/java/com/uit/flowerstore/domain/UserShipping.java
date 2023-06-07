@@ -18,8 +18,11 @@ public class UserShipping {
     @Column(name = "user_shipping_country")
     private String userShippingCountry;
 
+//    @Column(name = "user_shipping_default")
+//    private Boolean userShippingDefault;
+    
     @Column(name = "user_shipping_default")
-    private Boolean userShippingDefault;
+    private boolean userShippingDefault;
 
     @Column(name = "user_shipping_name")
     private String userShippingName;
@@ -100,6 +103,10 @@ public class UserShipping {
 
 	public void setUserShippingName(String userShippingName) {
 		this.userShippingName = userShippingName;
+	}
+
+	public void setUserShippingDefault(boolean userShippingDefault) {
+		this.userShippingDefault = userShippingDefault;
 	}
 
 	public String getUserShippingState() {

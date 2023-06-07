@@ -19,9 +19,13 @@ public class UserPayment {
     private int cvc;
 
     @Column(name = "default_payment")
-    private Boolean defaultPayment;
+    private boolean defaultPayment;
 
-    @Column(name = "expiry_month")
+    public void setDefaultPayment(boolean defaultPayment) {
+		this.defaultPayment = defaultPayment;
+	}
+
+	@Column(name = "expiry_month")
     private int expiryMonth;
 
     @Column(name = "expiry_year")
@@ -132,7 +136,7 @@ public class UserPayment {
 		this.user = user;
 	}
 
-    // Constructors, getters, and setters
+
     
 }
 

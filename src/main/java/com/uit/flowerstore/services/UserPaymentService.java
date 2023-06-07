@@ -5,22 +5,38 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.uit.flowerstore.domain.User;
 import com.uit.flowerstore.domain.UserPayment;
+import com.uit.flowerstore.domain.UserShipping;
 import com.uit.flowerstore.repository.UserPaymentRepository;
+import com.uit.flowerstore.repository.UserRepository;
+
+import com.uit.flowerstore.security.services.UserDetailsImpl;
 
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class UserPaymentService {
-    private final UserPaymentRepository userPaymentRepository;
+	private final UserPaymentRepository userPaymentRepository;
+    private final UserRepository userRepository;
 
-    public UserPaymentService(UserPaymentRepository userPaymentRepository) {
+    @Autowired
+    public UserPaymentService(UserPaymentRepository userPaymentRepository, UserRepository userRepository) {
         this.userPaymentRepository = userPaymentRepository;
+        this.userRepository = userRepository;
     }
+	    
     
-    public UserPayment createUserPayment(UserPayment userPayment) {
-    	return userPaymentRepository.save(userPayment);
+    public UserPayment createUserPayment(UserPayment userPayment, UserDetailsImpl userDetails) {
+    	User user = userRepository.findById(userDetails.getId()).orElse(null);
+    	if(user != null) {
+    		userPayment.setUser(user);
+    		return userPaymentRepository.save(userPayment);
+    	}
+    	throw new EntityNotFoundException("User not found");
+ 
     }
+ 
 
     
 

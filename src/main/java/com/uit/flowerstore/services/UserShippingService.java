@@ -120,15 +120,36 @@ public class UserShippingService {
         return Collections.emptyList();
     }
 
-    public UserShipping getDefaultUserShipping(UserDetailsImpl userDetails) {
+//    public UserShipping getDefaultUserShipping(UserDetailsImpl userDetails) {
+//        User user = userRepository.findById(userDetails.getId()).orElse(null);
+//        if (user != null && user.getUserShippings() != null && !user.getUserShippings().isEmpty()) {
+//            for (UserShipping userShipping : user.getUserShippings()) {
+//                if (userShipping.getUserShippingDefault()) {
+//                    return userShipping;
+//                }
+//            }
+//        }
+//        return null;
+//    }
+    public UserShipping updateDefaultUserShipping(UserDetailsImpl userDetails, Long shippingId) {
         User user = userRepository.findById(userDetails.getId()).orElse(null);
         if (user != null && user.getUserShippings() != null && !user.getUserShippings().isEmpty()) {
+            UserShipping defaultUserShipping = null;
             for (UserShipping userShipping : user.getUserShippings()) {
-                if (userShipping.getUserShippingDefault()) {
-                    return userShipping;
+                if (userShipping.getId().equals(shippingId)) {
+                    userShipping.setUserShippingDefault(true);
+                    defaultUserShipping = userShipping;
+                } else {
+                    userShipping.setUserShippingDefault(false);
                 }
             }
+            user.setUserShippings(user.getUserShippings()); //  cập nhật lại danh sách userShippings
+            userRepository.save(user);
+            return defaultUserShipping;
         }
         return null;
     }
+
+
+
 }
