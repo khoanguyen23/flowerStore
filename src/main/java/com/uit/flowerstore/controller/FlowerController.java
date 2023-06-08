@@ -28,7 +28,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/api")
+
 @CrossOrigin(origins = "http://localhost:8081", allowCredentials = "true")
+
 
 public class FlowerController {
 	
@@ -37,7 +39,7 @@ public class FlowerController {
 	FlowerRepository flowerRepository;
     
     public FlowerController(FlowerService flowerService) {
-        this.flowerService= flowerService;
+        this.flowerService= flowerService; 
     }
     
     @PostMapping("/flowers")
@@ -45,51 +47,8 @@ public class FlowerController {
         Flower createdFlower = flowerService.createFlower(flower);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdFlower);
     }
-//    
-//    @PostMapping("/flowers")
-//    public ResponseEntity<Flower> createFlower(@RequestBody Flower flower) {
-//        Flower createdFlower = flowerService.createFlower(flower);
-//        
-//        try {
-//            // Đọc nội dung hiện tại của product.json
-//            String existingData = readExistingData();
-//
-//            // Chuyển đổi đối tượng createdFlower thành chuỗi JSON
-//            String flowerJson = convertToJson(createdFlower);
-//
-//            // Gắn chuỗi JSON mới vào nội dung hiện tại
-//            String updatedData = existingData + "\n" + flowerJson;
-//
-//            // Ghi nội dung mới vào file product.json
-//            writeDataToFile(updatedData);
-//
-//            return ResponseEntity.status(HttpStatus.CREATED).body(createdFlower);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-//        }
-//    }
-//
-//    private String readExistingData() throws IOException {
-//        String filePath = "src/data/products.json";
-//        Path path = Paths.get(filePath);
-//        return Files.readString(path);
-//    }
-//
-//    private String convertToJson(Flower flower) throws JsonProcessingException {
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        return objectMapper.writeValueAsString(flower);
-//    }
-//
-//    private void writeDataToFile(String data) throws IOException {
-//    	String filePath = "src/data/products.json";
-//
-//        Path path = Paths.get(filePath);
-//        Files.write(path, data.getBytes());
-//    }
-//    
-//    
     
+
 
     
     @GetMapping("/flowers")

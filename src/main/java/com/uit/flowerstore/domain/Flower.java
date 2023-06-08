@@ -1,5 +1,8 @@
 package com.uit.flowerstore.domain;
 
+import java.util.List;
+
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,68 +14,91 @@ import jakarta.persistence.Table;
 public class Flower {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-	private String flowerName;
-	private String publicationDate;
-	private String category;
-	private String description;
-	private String image;
-	public String getImage() {
-		return image;
+    private String id;
+	private String name;
+	private String offerEnd;
+	
+	
+	private String shortDescription;
+	private String fullDescription;
+	@ElementCollection
+    private List<String> image;
+	
+	public String getFullDescription() {
+		return fullDescription;
 	}
-	public void setImage(String image) {
-		this.image = image;
+	public void setFullDescription(String fullDescription) {
+		this.fullDescription = fullDescription;
 	}
-	private Integer inStockNumber;
-	private Integer regularPrice;
-	private Integer salePrice;
-	public Long getId() {
+	@ElementCollection
+    private List<String> category;
+	@ElementCollection
+    private List<String> tag;
+	
+	
+	private Integer stock;
+	private Integer price;
+	public List<String> getTag() {
+		return tag;
+	}
+	public void setTag(List<String> tag) {
+		this.tag = tag;
+	}
+	private Integer discount;
+	public Integer getDiscount() {
+		return discount;
+	}
+	public void setDiscount(Integer discount) {
+		this.discount = discount;
+	}
+	
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-	public String getFlowerName() {
-		return flowerName;
+	public String getName() {
+		return name;
 	}
-	public void setFlowerName(String flowerName) {
-		this.flowerName = flowerName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getPublicationDate() {
-		return publicationDate;
+	public String getOfferEnd() {
+		return offerEnd;
 	}
-	public void setPublicationDate(String publicationDate) {
-		this.publicationDate = publicationDate;
+	public void setOfferEnd(String offerEnd) {
+		this.offerEnd = offerEnd;
 	}
-	public String getCategory() {
+	public String getShortDescription() {
+		return shortDescription;
+	}
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription = shortDescription;
+	}
+	public List<String> getImage() {
+		return image;
+	}
+	public void setImage(List<String> image) {
+		this.image = image;
+	}
+	public List<String> getCategory() {
 		return category;
 	}
-	public void setCategory(String category) {
+	public void setCategory(List<String> category) {
 		this.category = category;
 	}
-	public String getDescription() {
-		return description;
+	public Integer getStock() {
+		return stock;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setStock(Integer stock) {
+		this.stock = stock;
 	}
-	public Integer getInStockNumber() {
-		return inStockNumber;
+	public Integer getPrice() {
+		return price;
 	}
-	public void setInStockNumber(Integer inStockNumber) {
-		this.inStockNumber = inStockNumber;
-	}
-	public Integer getRegularPrice() {
-		return regularPrice;
-	}
-	public void setRegularPrice(Integer regularPrice) {
-		this.regularPrice = regularPrice;
-	}
-	public Integer getSalePrice() {
-		return salePrice;
-	}
-	public void setSalePrice(Integer salePrice) {
-		this.salePrice = salePrice;
+	public void setPrice(Integer price) {
+		this.price = price;
 	}
 	
 }

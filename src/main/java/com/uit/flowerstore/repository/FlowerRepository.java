@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.uit.flowerstore.domain.Flower;
 
 
-public interface FlowerRepository extends JpaRepository<Flower, Long> {
+public interface FlowerRepository extends JpaRepository<Flower, String> {
 
 	@SuppressWarnings("unchecked")
 	Flower save(Flower flower);
