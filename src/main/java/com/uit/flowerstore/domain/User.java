@@ -131,4 +131,8 @@ public class User {
 		@JsonBackReference
 		@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 		private List<UserPayment> userPayments;
+	@JsonBackReference
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY) 
+	private List<UserOrder> userOrders; public List<UserOrder> getUserOrders() { return userOrders; } 
+	public void setUserOrders(List<UserOrder> userOrders) { this.userOrders = userOrders; }
 }

@@ -10,7 +10,7 @@ import com.uit.flowerstore.domain.UserShipping;
 
 @Repository
 public interface UserShippingRepository extends JpaRepository<UserShipping, Long> {
-List<UserShipping> findAllByUserId(Long userId);
+	List<UserShipping> findAllByUserId(Long userId);
     
     Optional<UserShipping> findByIdAndUserId(Long id, Long userId);
     
