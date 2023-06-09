@@ -40,6 +40,15 @@ public class UserPaymentController {
         }
         return ResponseEntity.notFound().build();
     }
+    @PutMapping("/user-payment/default/{paymentId}")
+    public ResponseEntity<?> updateDefaultUserPayment(@PathVariable Long paymentId, Authentication authentication) {
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        UserPayment defaultUserPayment = userPaymentService.updateDefaultUserPayment(userDetails, paymentId);
+        if (defaultUserPayment != null) {
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
 
     
     

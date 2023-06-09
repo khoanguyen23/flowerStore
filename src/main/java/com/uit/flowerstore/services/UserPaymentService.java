@@ -77,4 +77,27 @@ public class UserPaymentService {
 
         return userPaymentRepository.save(existingUserPayment);
     }
+    
+    public UserPayment updateDefaultUserPayment(UserDetailsImpl userDetails, Long paymentId) {
+        User user = userRepository.findById(userDetails.getId()).orElse(null);
+        if (user != null && user.getUserPayments() != null && !user.getUserPayments().isEmpty()) {
+            UserPayment defaultUserPayment = null;
+            for (UserPayment userPayment : user.getUserPayments()) {
+                if (userPayment.getId().equals(paymentId)) {
+                    userPayment.setDefaultPayment(true);
+                    defaultUserPayment = userPayment;
+                } else {
+                    userPayment.setDefaultPayment(false);
+                }
+            }
+            user.setUserPayments(user.getUserPayments()); //  cập nhật lại danh sách 
+            userRepository.save(user);
+            return defaultUserPayment;
+        }
+        return null;
+    }
+    
+    
+   
+
 }
