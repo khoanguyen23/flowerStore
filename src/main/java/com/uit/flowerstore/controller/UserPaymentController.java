@@ -30,6 +30,16 @@ public class UserPaymentController {
         UserPayment createdUserPayment = userPaymentService.createUserPayment(userPayment, userDetails);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUserPayment);
     }
+    
+    @GetMapping("/user-payment")
+    public ResponseEntity<List<UserPayment>> getUserPaymentList(Authentication authentication) {
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        List<UserPayment> userPaymentList = userPaymentService.getUserPaymentList(userDetails);
+        if (!userPaymentList.isEmpty()) {
+            return ResponseEntity.ok(userPaymentList);
+        }
+        return ResponseEntity.notFound().build();
+    }
 
     
     

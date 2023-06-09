@@ -116,4 +116,19 @@ public class User {
 	@JsonBackReference
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<UserShipping> userShippings;
+	
+	
+	  public List<UserPayment> getUserPayments() {
+		    return userPayments;
+		}
+		 
+		
+		public void setUserPayments(List<UserPayment> userPayments) {
+			this.userPayments = userPayments;
+		}
+
+
+		@JsonBackReference
+		@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+		private List<UserPayment> userPayments;
 }

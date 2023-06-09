@@ -1,5 +1,6 @@
 package com.uit.flowerstore.services;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,15 @@ public class UserPaymentService {
     	}
     	throw new EntityNotFoundException("User not found");
  
+    }
+    
+    
+    public List<UserPayment> getUserPaymentList(UserDetailsImpl userDetails) {
+        User user = userRepository.findById(userDetails.getId()).orElse(null);
+        if (user != null) {
+            return user.getUserPayments();
+        }
+        return Collections.emptyList();
     }
  
 

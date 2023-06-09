@@ -1,5 +1,7 @@
 package com.uit.flowerstore.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -36,7 +38,14 @@ public class UserPayment {
 
     @Column(name = "type")
     private String type;
+    
+    public UserPayment() {
+        
+    }
 
+    
+    
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;

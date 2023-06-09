@@ -15,6 +15,7 @@ public interface UserPaymentRepository extends JpaRepository<UserPayment, Long> 
 	Optional<UserPayment> findByIdAndUserId(Long id , Long userId);
 	UserPayment save(UserPayment userPayment);
 	List<UserPayment> findAllByUser_Id(Long userId);
+	
 	void deleteByIdAndUserId(Long id, Long userId);
 	
 }

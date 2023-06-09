@@ -21,6 +21,14 @@ public class Flower {
 	
 	private String shortDescription;
 	private String fullDescription;
+	private Integer rating;
+
+	public Integer getRating() {
+		return rating;
+	}
+	public void setRating(Integer rating) {
+		this.rating = rating;
+	}
 	@ElementCollection
     private List<String> image;
 	
