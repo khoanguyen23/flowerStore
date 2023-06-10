@@ -106,6 +106,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -143,6 +144,8 @@ public class UserOrderController {
     @PostMapping("/user-orders")
     public ResponseEntity<UserOrder> createUserOrder(@RequestBody UserOrder userOrder, Principal principal) {
         UserDetailsImpl userDetails = (UserDetailsImpl) ((Authentication) principal).getPrincipal();
+        userOrder.setOrderDate(LocalDateTime.now().toString());
+        userOrder.setShippingDate(LocalDateTime.now().plusDays(3).toString());
         UserOrder createdUserOrder = userOrderService.createOrder(userOrder, userDetails);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUserOrder);
     }
@@ -157,7 +160,7 @@ public class UserOrderController {
             return ResponseEntity.notFound().build();
         }
     }
-
+    
     @DeleteMapping("/user-orders/{id}")
     public ResponseEntity<Void> deleteUserOrder(@PathVariable("id") Long id, Authentication authentication) {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();

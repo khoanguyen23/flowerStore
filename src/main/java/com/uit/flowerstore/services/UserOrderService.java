@@ -1,44 +1,3 @@
-//package com.uit.flowerstore.services;
-//
-//import java.util.List;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//
-//import com.uit.flowerstore.domain.UserOrder;
-//import com.uit.flowerstore.repository.UserOrderRepository;
-//
-//@Service
-//public class UserOrderService {
-//
-//    private final UserOrderRepository userOrderRepository;
-//
-//    @Autowired
-//    public UserOrderService(UserOrderRepository userOrderRepository) {
-//        this.userOrderRepository = userOrderRepository;
-//    }
-//
-//    public List<UserOrder> findAll() {
-//        return userOrderRepository.findAll();
-//    }
-//
-//    public UserOrder findById(long id) {
-//        return userOrderRepository.findById(id).orElse(null);
-//    }
-//
-//    public UserOrder save(UserOrder userOrder) {
-//        return userOrderRepository.save(userOrder);
-//    }
-//
-//    public void deleteById(long id) {
-//        userOrderRepository.deleteById(id);
-//    }
-//
-//    public void deleteAll() {
-//        userOrderRepository.deleteAll();
-//    }
-//}
-
 package com.uit.flowerstore.services;
 
 import java.util.Collections;
@@ -54,6 +13,7 @@ import com.uit.flowerstore.repository.UserRepository;
 import com.uit.flowerstore.security.services.UserDetailsImpl;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 
 @Service
 public class UserOrderService {
@@ -89,7 +49,7 @@ public class UserOrderService {
         }
         throw new EntityNotFoundException("Không tìm thấy người dùng");
     }
-
+    @Transactional
     public void deleteOrder(Long id, UserDetailsImpl userDetails) {
         User user = userRepository.findById(userDetails.getId()).orElse(null);
         if (user != null) {
