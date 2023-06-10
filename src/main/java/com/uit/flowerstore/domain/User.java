@@ -9,6 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -113,7 +114,8 @@ public class User {
 	}
 
 
-	@JsonBackReference
+//	@JsonBackReference
+	@JsonIgnore
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<UserShipping> userShippings;
 	
@@ -128,10 +130,12 @@ public class User {
 		}
 
 
-		@JsonBackReference
+//		@JsonBackReference
+		@JsonIgnore
 		@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 		private List<UserPayment> userPayments;
-	@JsonBackReference
+//	@JsonBackReference
+	@JsonIgnore
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY) 
 	private List<UserOrder> userOrders; public List<UserOrder> getUserOrders() { return userOrders; } 
 	public void setUserOrders(List<UserOrder> userOrders) { this.userOrders = userOrders; }
