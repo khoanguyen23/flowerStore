@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.uit.flowerstore.domain.Flower;
+import com.uit.flowerstore.domain.User;
 import com.uit.flowerstore.domain.UserPayment;
 import com.uit.flowerstore.repository.FlowerRepository;
 import com.uit.flowerstore.repository.UserPaymentRepository;
+import com.uit.flowerstore.security.services.UserDetailsImpl;
 
 @Service
 public class FlowerService {
@@ -25,7 +27,10 @@ public class FlowerService {
 		return flowerRepository.findAll();
         
     }
-	
+    public void deleteFlower(String id) {
+        flowerRepository.deleteById(id);
+    }
+
 
 	
 
