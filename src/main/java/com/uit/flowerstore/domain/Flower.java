@@ -19,6 +19,7 @@ public class Flower {
 	private String offerEnd;
 	
 	
+	
 	private String shortDescription;
 	private String fullDescription;
 	private Integer rating;
