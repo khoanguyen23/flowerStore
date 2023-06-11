@@ -18,11 +18,11 @@ import com.uit.flowerstore.services.WishlistService;
 @RestController
 @RequestMapping("/api")
 public class WishlistController {
-//	private final WishlistService wishlistService;
-//    @Autowired
-//    public WishlistController(WishlistService wishlistService) {
-//        this.wishlistService = wishlistService;
-//    }
+	private final WishlistService wishlistService;
+    @Autowired
+    public WishlistController(WishlistService wishlistService) {
+        this.wishlistService = wishlistService;
+    }
     @Autowired
     private WishlistItemRepository wishlistItemRepository;
 
@@ -31,9 +31,9 @@ public class WishlistController {
         return wishlistItemRepository.findByUserId(userId);
     }
     
-//    @DeleteMapping("/wishlist/{userId}")
-//    public ResponseEntity<?> deleteWishlist(@PathVariable Long userId) {
-//        wishlistService.deleteWishlistByUserId(userId);
-//        return ResponseEntity.ok().build();
-//    }
+    @DeleteMapping("/wishlist/{userId}")
+    public ResponseEntity<?> deleteWishlist(@PathVariable Long userId) {
+        wishlistService.deleteWishlistByUserId(userId);
+        return ResponseEntity.ok().build();
+    }
 }
