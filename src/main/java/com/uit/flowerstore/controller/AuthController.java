@@ -37,6 +37,7 @@ import com.uit.flowerstore.repository.UserRepository;
 import com.uit.flowerstore.security.jwt.JwtUtils;
 import com.uit.flowerstore.security.services.UserDetailsImpl;
 
+
 import jakarta.persistence.EntityManager;
 
 
@@ -62,6 +63,8 @@ public class AuthController {
   
   @Autowired
   private EntityManager entityManager;
+  
+  
 
   @PostMapping("/signin")
   public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
