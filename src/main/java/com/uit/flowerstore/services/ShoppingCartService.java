@@ -52,38 +52,17 @@ public class ShoppingCartService {
         throw new EntityNotFoundException("Không tìm thấy người dùng");
     }
 
+    
     @Transactional
-    public void deleteShoppingCart(Long id, UserDetailsImpl userDetails) {
+    public ShoppingCart updateShoppingCart(ShoppingCart updatedShoppingCart, UserDetailsImpl userDetails) {
         User user = userRepository.findById(userDetails.getId()).orElse(null);
         if (user != null) {
-            shoppingCartRepository.deleteByIdAndUserId(id, user.getId());
-        }
-    }
-
-    public ShoppingCart updateShoppingCart(Long id, ShoppingCart updatedCart, UserDetailsImpl userDetails) {
-        User user = userRepository.findById(userDetails.getId()).orElse(null);
-        if (user != null) {
-            ShoppingCart existingCart = shoppingCartRepository.findByIdAndUserId(id, user.getId())
-                    .orElseThrow(() -> new EntityNotFoundException("Không tìm thấy giỏ hàng với id: " + id));
-            existingCart.setGrandTotal(updatedCart.getGrandTotal());
-            return shoppingCartRepository.save(existingCart);
+            ShoppingCart shoppingCart = user.getShoppingCart();
+            if (shoppingCart != null) {
+                shoppingCart.setGrandTotal(updatedShoppingCart.getGrandTotal());
+                return shoppingCartRepository.save(shoppingCart);
+            }
         }
         return null;
-    }
-
-    public List<ShoppingCart> getAllShoppingCarts() {
-        return shoppingCartRepository.findAll();
-    }
-
-    public void deleteShoppingCart(Long id) {
-        shoppingCartRepository.deleteById(id);
-    }
-
-    public ShoppingCart updateShoppingCart(Long id, ShoppingCart updatedCart) {
-        ShoppingCart existingCart = shoppingCartRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Không tìm thấy giỏ hàng với id: " + id));
-
-        existingCart.setGrandTotal(updatedCart.getGrandTotal());
-        return shoppingCartRepository.save(existingCart);
     }
 }

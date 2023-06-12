@@ -1,4 +1,5 @@
 package com.uit.flowerstore.domain;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -21,7 +22,7 @@ public class UserOrder {
 	@Column(name = "order_status")
 	private String orderStatus;
 	@Column(name = "order_total")
-	private float orderTotal;
+	private double orderTotal;
 	@Column(name = "shipping_date")
 	private String shippingDate;
 	@Column(name = "shipping_method")
@@ -40,7 +41,7 @@ public class UserOrder {
 	public UserOrder() {
 		super();
 	}
-	public UserOrder(String  order_date, String order_status, float order_total, String shipping_date,
+	public UserOrder(String  order_date, String order_status, double order_total, String shipping_date,
 			String shipping_method, int billing_address_id, int payment_id, int shipping_address_id, User user) {
 		super();
 		this.orderDate = order_date;
@@ -53,6 +54,7 @@ public class UserOrder {
 		this.shippingAddressId = shipping_address_id;
 		this.user = user;
 	}
+
 	public Long getId() {
 		return id;
 	}
@@ -71,10 +73,10 @@ public class UserOrder {
 	public void setOrderStatus(String orderStatus) {
 		this.orderStatus = orderStatus;
 	}
-	public float getOrderTotal() {
+	public double getOrderTotal() {
 		return orderTotal;
 	}
-	public void setOrderTotal(float orderTotal) {
+	public void setOrderTotal(double orderTotal) {
 		this.orderTotal = orderTotal;
 	}
 	public String getShippingDate() {

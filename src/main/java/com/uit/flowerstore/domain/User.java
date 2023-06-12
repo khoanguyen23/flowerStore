@@ -21,6 +21,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
@@ -128,8 +130,6 @@ public class User {
 		public void setUserPayments(List<UserPayment> userPayments) {
 			this.userPayments = userPayments;
 		}
-
-
 //		@JsonBackReference
 		@JsonIgnore
 		@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -137,6 +137,22 @@ public class User {
 //	@JsonBackReference
 	@JsonIgnore
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY) 
-	private List<UserOrder> userOrders; public List<UserOrder> getUserOrders() { return userOrders; } 
+	private List<UserOrder> userOrders; 
+	public List<UserOrder> getUserOrders() { return userOrders; } 
 	public void setUserOrders(List<UserOrder> userOrders) { this.userOrders = userOrders; }
+	@OneToOne(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "shopping_cart_id", referencedColumnName = "id")
+	private ShoppingCart shoppingCart;
+	public ShoppingCart getShoppingCart() {
+		return shoppingCart;
+	}
+	public void setShoppingCart(ShoppingCart shoppingCart) {
+		this.shoppingCart = shoppingCart;
+	}
+	 @PrePersist
+	 public void prePersist() {
+	 if (shoppingCart == null) {
+	            shoppingCart = new ShoppingCart(0.0,this,null);
+	 }
+	 }
 }

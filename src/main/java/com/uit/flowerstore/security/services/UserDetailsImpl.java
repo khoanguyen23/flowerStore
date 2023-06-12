@@ -10,6 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.uit.flowerstore.domain.ShoppingCart;
 import com.uit.flowerstore.domain.User;
 
 public class UserDetailsImpl implements UserDetails {
@@ -26,12 +27,12 @@ public class UserDetailsImpl implements UserDetails {
 
   private Collection<? extends GrantedAuthority> authorities;
 
-  public UserDetailsImpl(Long id, String username, String email, String password,
-      Collection<? extends GrantedAuthority> authorities) {
+  public UserDetailsImpl(Long id, String username, String email, String password,ShoppingCart sc, Collection<? extends GrantedAuthority> authorities) {
     this.id = id;
     this.username = username;
     this.email = email;
     this.password = password;
+    this.shoppingCart = sc;
     this.authorities = authorities;
   }
 
@@ -44,7 +45,8 @@ public class UserDetailsImpl implements UserDetails {
         user.getId(), 
         user.getUsername(), 
         user.getEmail(),
-        user.getPassword(), 
+        user.getPassword(),
+        user.getShoppingCart(),
         authorities);
   }
 
@@ -99,5 +101,10 @@ public class UserDetailsImpl implements UserDetails {
       return false;
     UserDetailsImpl user = (UserDetailsImpl) o;
     return Objects.equals(id, user.id);
+  }
+  
+  private final ShoppingCart shoppingCart;
+  public ShoppingCart getShoppingCart() {
+      return shoppingCart;
   }
 }
