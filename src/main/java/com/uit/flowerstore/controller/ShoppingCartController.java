@@ -22,9 +22,9 @@ public class ShoppingCartController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ShoppingCart>> getUserShoppingCarts(Authentication authentication) {
+    public ResponseEntity<ShoppingCart> getUserShoppingCarts(Authentication authentication) {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        List<ShoppingCart> shoppingCarts = shoppingCartService.getUserShoppingCarts(userDetails);
+        ShoppingCart shoppingCarts = shoppingCartService.getUserShoppingCarts(userDetails);
         return ResponseEntity.ok(shoppingCarts);
     }
 }

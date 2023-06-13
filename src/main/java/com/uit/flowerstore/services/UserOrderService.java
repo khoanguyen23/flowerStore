@@ -39,6 +39,25 @@ public class UserOrderService {
         User user = userRepository.findById(userDetails.getId()).orElse(null);
         if (user != null) {
             userOrder.setUser(user);
+            if(user.getUserPayments().isEmpty() == false) {
+            	for(int i = 0; i < user.getUserPayments().size();i++) {
+            		if(user.getUserPayments().get(i).getDefaultPayment() == true) {
+            			userOrder.setUserPayment(user.getUserPayments().get(i));
+            		}
+            	}
+            }else {
+            	throw new EntityNotFoundException("Chưa có Payment");
+            }
+            if(user.getUserShippings().isEmpty() == false) {
+            	userOrder.setUserShippingAddress(user.getUserShippings().get(0));
+            	for(int i = 0; i < user.getUserShippings().size();i++) {
+            		if(user.getUserShippings().get(i).getUserShippingDefault() == true) {
+            			userOrder.setUserShippingAddress(user.getUserShippings().get(i));
+            		}
+            	}
+            }else {
+            	throw new EntityNotFoundException("Chưa có Shipping Address");
+            }
             return userOrderRepository.save(userOrder);
         }
         throw new EntityNotFoundException("User not found");

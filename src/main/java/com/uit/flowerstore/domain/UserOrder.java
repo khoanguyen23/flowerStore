@@ -27,10 +27,12 @@ public class UserOrder {
 	private String shippingDate;
 	@Column(name = "shipping_method")
 	private String shippingMethod;
-	@Column(name = "payment_id")
-	private int paymentId;
-	@Column(name = "shipping_address_id")
-	private int shippingAddressId;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "payment_id")
+	private UserPayment userPayment;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "shipping_address_id")
+	private UserShipping userShippingAddress;
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
@@ -39,17 +41,32 @@ public class UserOrder {
 	public UserOrder() {
 		super();
 	}
-	public UserOrder(String  order_date, String order_status, double order_total, String shipping_date,
-			String shipping_method, int payment_id, int shipping_address_id, User user) {
+	public UserOrder(String orderDate, String orderStatus, double orderTotal, String shippingDate,
+			String shippingMethod, UserPayment userPayment, UserShipping userShippingAddress, User user) {
 		super();
-		this.orderDate = order_date;
-		this.orderStatus = order_status;
-		this.orderTotal = order_total;
-		this.shippingDate = shipping_date;
-		this.shippingMethod = shipping_method;
-		this.paymentId = payment_id;
-		this.shippingAddressId = shipping_address_id;
+		this.orderDate = orderDate;
+		this.orderStatus = orderStatus;
+		this.orderTotal = orderTotal;
+		this.shippingDate = shippingDate;
+		this.shippingMethod = shippingMethod;
+		this.userPayment = userPayment;
+		this.userShippingAddress = userShippingAddress;
 		this.user = user;
+	}
+	public UserPayment getUserPayment() {
+		return userPayment;
+	}
+
+	public void setUserPayment(UserPayment userPayment) {
+		this.userPayment = userPayment;
+	}
+
+	public UserShipping getUserShippingAddress() {
+		return userShippingAddress;
+	}
+
+	public void setUserShippingAddress(UserShipping userShippingAddress) {
+		this.userShippingAddress = userShippingAddress;
 	}
 
 	public Long getId() {
@@ -88,18 +105,7 @@ public class UserOrder {
 	public void setShippingMethod(String shippingMethod) {
 		this.shippingMethod = shippingMethod;
 	}
-	public int getPaymentId() {
-		return paymentId;
-	}
-	public void setPaymentId(int paymentId) {
-		this.paymentId = paymentId;
-	}
-	public int getShippingAddressId() {
-		return shippingAddressId;
-	}
-	public void setShippingAddressId(int shippingAddressId) {
-		this.shippingAddressId = shippingAddressId;
-	}
+
 	public User getUser() {
 		return user;
 	}
@@ -109,7 +115,8 @@ public class UserOrder {
 	@Override
 	public String toString() {
 		return "UserOrder [orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", orderTotal=" + orderTotal
-				+ ", shippingDate=" + shippingDate + ", shippingMethod=" + shippingMethod + ", paymentId=" + paymentId + ", shippingAddressId=" + shippingAddressId + ", user="
-				+ user + "]";
+				+ ", shippingDate=" + shippingDate + ", shippingMethod=" + shippingMethod + ", userPayment="
+				+ userPayment + ", userShippingAddress=" + userShippingAddress + ", user=" + user + "]";
 	}
+	
 }

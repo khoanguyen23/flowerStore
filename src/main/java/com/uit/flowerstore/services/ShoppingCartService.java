@@ -27,12 +27,12 @@ public class ShoppingCartService {
         this.userRepository = userRepository;
     }
 
-    public List<ShoppingCart> getUserShoppingCarts(UserDetailsImpl userDetails) {
+    public ShoppingCart getUserShoppingCarts(UserDetailsImpl userDetails) {
         User user = userRepository.findById(userDetails.getId()).orElse(null);
         if (user != null) {
             return shoppingCartRepository.findAllByUserId(user.getId());
         }
-        return Collections.emptyList();
+        throw new EntityNotFoundException("User not found");
     }
 
     public ShoppingCart createShoppingCart(ShoppingCart shoppingCart, UserDetailsImpl userDetails) {
