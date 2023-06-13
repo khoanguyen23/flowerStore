@@ -75,4 +75,17 @@ public class CartItemService {
             cartItemRepository.save(cartItem);
         }
     }
+    public void deleteAllCart(List<CartItem> cartItems) {
+    	for (CartItem cartItem : cartItems) {
+        if (cartItem != null) {
+            ShoppingCart shoppingCart = cartItem.getShoppingCart();
+            if (shoppingCart != null) {
+                shoppingCart.getCartItems().remove(cartItem);
+                cartItem.setShoppingCart(null);
+                shoppingCartRepository.save(shoppingCart);
+            }
+            cartItemRepository.delete(cartItem);
+        }
+        }
+    }
 }

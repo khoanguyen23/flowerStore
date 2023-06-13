@@ -1,6 +1,7 @@
 package com.uit.flowerstore.controller;
 
 import com.uit.flowerstore.domain.CartItem;
+import com.uit.flowerstore.domain.ShoppingCart;
 import com.uit.flowerstore.services.CartItemService;
 import com.uit.flowerstore.services.FlowerService;
 import com.uit.flowerstore.services.ShoppingCartService;
@@ -62,7 +63,16 @@ public class CartItemController {
         List<CartItem> cartItems = cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart());
         return ResponseEntity.ok(cartItems);
     }
-    
+    @DeleteMapping
+    public ResponseEntity<List<CartItem>> deleteAllCartItem(Authentication authentication) {
+    	UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+    	List<CartItem> cartItems = cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart());
+        cartItemService.deleteAllCart(cartItems);
+        shoppingCartService.updateShoppingCart(userDetails.getShoppingCart(), userDetails);
+        List<CartItem> cartItemsShow = cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart());
+        return ResponseEntity.ok(cartItemsShow);
+    }
+
 }
 
 
