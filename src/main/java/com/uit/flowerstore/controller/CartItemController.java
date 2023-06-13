@@ -1,7 +1,6 @@
 package com.uit.flowerstore.controller;
 
 import com.uit.flowerstore.domain.CartItem;
-import com.uit.flowerstore.domain.ShoppingCart;
 import com.uit.flowerstore.services.CartItemService;
 import com.uit.flowerstore.services.FlowerService;
 import com.uit.flowerstore.services.ShoppingCartService;
@@ -40,7 +39,6 @@ public class CartItemController {
     public ResponseEntity<CartItem> createCartItem(@RequestBody CartItem cartItem, Authentication authentication) {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         CartItem createdCartItem = cartItemService.createCartItem(cartItem, userDetails.getShoppingCart(),flowerService.getFlowerById(cartItem.getFlower().getId()));
-        shoppingCartService.updateShoppingCart(userDetails.getShoppingCart(), userDetails);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdCartItem);
     }
 
