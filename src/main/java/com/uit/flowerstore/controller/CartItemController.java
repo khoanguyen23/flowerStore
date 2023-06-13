@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/cart-items")
+@CrossOrigin(origins = "http://localhost:8081", allowCredentials = "true")
 public class CartItemController {
 
     private final CartItemService cartItemService;
@@ -55,8 +56,9 @@ public class CartItemController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<List<CartItem>> deleteCartItem(@PathVariable("id") Long id,Authentication authentication) {
+    	UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         cartItemService.deleteCartItem(id);
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        shoppingCartService.updateShoppingCart(userDetails.getShoppingCart(), userDetails);
         List<CartItem> cartItems = cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart());
         return ResponseEntity.ok(cartItems);
     }

@@ -75,8 +75,11 @@ public class ShoppingCart {
 		return "ShoppingCart [id=" + id + ", grandTotal=" + grandTotal + ", user=" + user + "]";
 	}
 	public void updateGrandTotal() {
-	    for (CartItem cartItem : cartItems) {
-	    	this.grandTotal  += cartItem.getSubtotal();
-	    }
+		this.grandTotal = 0.0;
+		if(cartItems != null) {
+			for (CartItem cartItem : cartItems) {
+		    	this.grandTotal  += cartItem.getSubtotal();
+		    }	
+		}
 	}
 }

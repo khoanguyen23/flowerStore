@@ -6,11 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.uit.flowerstore.domain.CartItem;
 import com.uit.flowerstore.domain.ShoppingCart;
 import com.uit.flowerstore.domain.User;
 import com.uit.flowerstore.domain.UserOrder;
-import com.uit.flowerstore.repository.ShoppingCartRepository;
 import com.uit.flowerstore.repository.UserOrderRepository;
 import com.uit.flowerstore.repository.UserRepository;
 import com.uit.flowerstore.security.services.UserDetailsImpl;

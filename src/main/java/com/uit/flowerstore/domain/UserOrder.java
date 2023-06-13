@@ -27,8 +27,6 @@ public class UserOrder {
 	private String shippingDate;
 	@Column(name = "shipping_method")
 	private String shippingMethod;
-	@Column(name = "billing_address_id")
-	private int billingAddressId;
 	@Column(name = "payment_id")
 	private int paymentId;
 	@Column(name = "shipping_address_id")
@@ -42,14 +40,13 @@ public class UserOrder {
 		super();
 	}
 	public UserOrder(String  order_date, String order_status, double order_total, String shipping_date,
-			String shipping_method, int billing_address_id, int payment_id, int shipping_address_id, User user) {
+			String shipping_method, int payment_id, int shipping_address_id, User user) {
 		super();
 		this.orderDate = order_date;
 		this.orderStatus = order_status;
 		this.orderTotal = order_total;
 		this.shippingDate = shipping_date;
 		this.shippingMethod = shipping_method;
-		this.billingAddressId = billing_address_id;
 		this.paymentId = payment_id;
 		this.shippingAddressId = shipping_address_id;
 		this.user = user;
@@ -91,12 +88,6 @@ public class UserOrder {
 	public void setShippingMethod(String shippingMethod) {
 		this.shippingMethod = shippingMethod;
 	}
-	public int getBillingAddressId() {
-		return billingAddressId;
-	}
-	public void setBillingAddressId(int billingAddressId) {
-		this.billingAddressId = billingAddressId;
-	}
 	public int getPaymentId() {
 		return paymentId;
 	}
@@ -118,8 +109,7 @@ public class UserOrder {
 	@Override
 	public String toString() {
 		return "UserOrder [orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", orderTotal=" + orderTotal
-				+ ", shippingDate=" + shippingDate + ", shippingMethod=" + shippingMethod + ", billingAddressId="
-				+ billingAddressId + ", paymentId=" + paymentId + ", shippingAddressId=" + shippingAddressId + ", user="
+				+ ", shippingDate=" + shippingDate + ", shippingMethod=" + shippingMethod + ", paymentId=" + paymentId + ", shippingAddressId=" + shippingAddressId + ", user="
 				+ user + "]";
 	}
 }

@@ -5,6 +5,7 @@ import com.uit.flowerstore.domain.CartItem;
 import com.uit.flowerstore.domain.UserOrder;
 import com.uit.flowerstore.security.services.UserDetailsImpl;
 import com.uit.flowerstore.services.CartItemService;
+import com.uit.flowerstore.services.FlowerService;
 import com.uit.flowerstore.services.ShoppingCartService;
 import com.uit.flowerstore.services.UserOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,13 @@ import java.util.List;
 public class UserOrderController {
     private final UserOrderService userOrderService;
     private final CartItemService cartItemService;
+    private final FlowerService flowerService;
     private final ShoppingCartService shoppingCartService;
     @Autowired
-    public UserOrderController(UserOrderService userOrderService,CartItemService cartItemService,ShoppingCartService shoppingCartService) {
+    public UserOrderController(UserOrderService userOrderService,CartItemService cartItemService,FlowerService flowerService, ShoppingCartService shoppingCartService) {
         this.userOrderService = userOrderService;
         this.cartItemService = cartItemService;
+        this.flowerService = flowerService;
         this.shoppingCartService = shoppingCartService;
     }
 
@@ -60,8 +63,9 @@ public class UserOrderController {
         	 userOrder.setOrderDate(LocalDateTime.now().toString());
              userOrder.setShippingDate(LocalDateTime.now().plusDays(3).toString());
              UserOrder createdUserOrder = userOrderService.createOrder(userOrder, userDetails);
-             cartItemService.createOrderAndAddCartItems(cartItems, createdUserOrder);
              userOrderService.updateOrderTotal(createdUserOrder,userDetails.getShoppingCart());
+             cartItemService.createOrderAndAddCartItems(cartItems, createdUserOrder,flowerService);
+             shoppingCartService.updateShoppingCart(userDetails.getShoppingCart(), userDetails);
              return ResponseEntity.status(HttpStatus.CREATED).body(createdUserOrder);
         }
         return ResponseEntity.noContent().build();

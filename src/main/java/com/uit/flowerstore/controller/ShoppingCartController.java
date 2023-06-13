@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/api/shopping-cart")
+@CrossOrigin(origins = "http://localhost:8081", allowCredentials = "true")
 public class ShoppingCartController {
 
     private final ShoppingCartService shoppingCartService;

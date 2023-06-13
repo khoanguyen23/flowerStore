@@ -19,9 +19,6 @@ public class Flower {
     private String id;
 	private String name;
 	private String offerEnd;
-	
-	
-	
 	private String shortDescription;
 	private String fullDescription;
 	private Integer rating;
@@ -111,4 +108,11 @@ public class Flower {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
+	public void decreaseStock(int quantity) {
+        if (quantity <= stock) {
+            stock -= quantity;
+        } else {
+            throw new IllegalArgumentException("Không đủ hàng trong kho");
+        }
+    }
 }
