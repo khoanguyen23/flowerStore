@@ -154,37 +154,7 @@ public class AuthController {
 //
 //    return ResponseEntity.ok(new MessageResponse("User updated successfully!"));
 //  }
-  @PutMapping("users/{userId}")
-  public ResponseEntity<?> updateUser(@PathVariable Long userId, @RequestBody User updatedUser) {
-      User user = userRepository.findById(userId)
-          .orElseThrow(() -> new RuntimeException("Error: User not found."));
-
-      // Kiểm tra và cập nhật username nếu có
-      if (updatedUser.getUsername() != null && !updatedUser.getUsername().isEmpty()) {
-          user.setUsername(updatedUser.getUsername());
-      }
-
-      // Kiểm tra và cập nhật email nếu có
-      if (updatedUser.getEmail() != null && !updatedUser.getEmail().isEmpty()) {
-          user.setEmail(updatedUser.getEmail());
-      }
-      // Kiểm tra và cập nhật sdt nếu có
-      if (updatedUser.getTelephone() != null && !updatedUser.getTelephone().isEmpty()) {
-          user.setTelephone(updatedUser.getTelephone());
-      }
-      // Kiểm tra và cập nhật sdt nếu có
-      if (updatedUser.getFirstName() != null && !updatedUser.getFirstName().isEmpty()) {
-          user.setFirstName(updatedUser.getFirstName());
-      }
-      // Kiểm tra và cập nhật sdt nếu có
-      if (updatedUser.getLastName() != null && !updatedUser.getLastName().isEmpty()) {
-          user.setLastName(updatedUser.getLastName());
-      }
-
-      userRepository.save(user);
-
-      return ResponseEntity.ok(new MessageResponse("User updated successfully!"));
-  }
+ 
 
   
   @PutMapping("/users/{userId}/password")
@@ -222,6 +192,42 @@ public class AuthController {
 
       return ResponseEntity.ok(new MessageResponse("User deleted successfully!"));
   }
+  
+  @PutMapping("/users/{userId}")
+  public ResponseEntity<?> updateUser(@PathVariable Long userId, @RequestBody User updatedUser) {
+      User user = userRepository.findById(userId)
+          .orElseThrow(() -> new RuntimeException("Error: User not found."));
+
+      // Kiểm tra và cập nhật username nếu có
+      if (updatedUser.getUsername() != null && !updatedUser.getUsername().isEmpty()) {
+          user.setUsername(updatedUser.getUsername());
+      }
+
+      // Kiểm tra và cập nhật email nếu có
+      if (updatedUser.getEmail() != null && !updatedUser.getEmail().isEmpty()) {
+          user.setEmail(updatedUser.getEmail());
+      }
+
+      // Kiểm tra và cập nhật sdt nếu có
+      if (updatedUser.getTelephone() != null && !updatedUser.getTelephone().isEmpty()) {
+          user.setTelephone(updatedUser.getTelephone());
+      }
+
+      // Kiểm tra và cập nhật firstName nếu có
+      if (updatedUser.getFirstName() != null && !updatedUser.getFirstName().isEmpty()) {
+          user.setFirstName(updatedUser.getFirstName());
+      }
+
+      // Kiểm tra và cập nhật lastName nếu có
+      if (updatedUser.getLastName() != null && !updatedUser.getLastName().isEmpty()) {
+          user.setLastName(updatedUser.getLastName());
+      }
+
+      userRepository.save(user);
+
+      return ResponseEntity.ok(new MessageResponse("User updated successfully!"));
+  }
+
   
  
 }
