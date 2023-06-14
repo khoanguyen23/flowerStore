@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+
 import com.uit.flowerstore.domain.User;
 import com.uit.flowerstore.domain.UserPayment;
 import com.uit.flowerstore.domain.UserShipping;
@@ -45,6 +47,14 @@ public class UserPaymentService {
             return user.getUserPayments();
         }
         return Collections.emptyList();
+    }
+    
+    public void deleteUserPayment(Long id , UserDetailsImpl userDetails) {
+    	User user = userRepository.findById(userDetails.getId()).orElse(null);
+    	if(user != null) {
+    		userPaymentRepository.deleteByIdAndUserId(id, user.getId());
+    		
+    	}
     }
  
 
@@ -96,6 +106,7 @@ public class UserPaymentService {
         }
         return null;
     }
+   
     
     
    

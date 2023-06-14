@@ -1,6 +1,7 @@
 package com.uit.flowerstore.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -52,17 +53,14 @@ public class UserPaymentController {
 
     
     
+    @DeleteMapping("user-payment/{id}")
+    public ResponseEntity<Void> deleteUserPayment(@PathVariable Long id) {
+        userPaymentService.deleteUserPayment(id);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("XoaThanhCong", "Xóa thành công");
+        return ResponseEntity.noContent().headers(headers).build();
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
     @GetMapping("/user-payment/{id}")
     public ResponseEntity<UserPayment> getUserPayment(@PathVariable Long id) {
         UserPayment userPayment = userPaymentService.getUserPaymentById(id);
@@ -75,9 +73,5 @@ public class UserPaymentController {
         return ResponseEntity.ok(updatedUserPayment);
     }
 
-    @DeleteMapping("/user-payment/{id}")
-    public ResponseEntity<Void> deleteUserPayment(@PathVariable Long id) {
-        userPaymentService.deleteUserPayment(id);
-        return ResponseEntity.noContent().build();
-    }
+    
 }
