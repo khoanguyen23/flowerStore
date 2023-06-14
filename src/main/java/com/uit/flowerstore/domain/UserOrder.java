@@ -22,8 +22,10 @@ public class UserOrder {
 	private Long id;
 	@Column(name = "order_date")
 	private String orderDate;
-	@ElementCollection
-    private List<String> orderStatus;
+	@Column(name = "order_status")
+	private String orderStatus;
+//	@ElementCollection
+//    private List<String> orderStatus;
 	@ElementCollection
     private List<String> shippingMethod;
 	@Column(name = "order_total")
@@ -44,7 +46,7 @@ public class UserOrder {
 	public UserOrder() {
 		super();
 	}
-	public UserOrder(String orderDate, List<String> orderStatus, double orderTotal, String shippingDate,
+	public UserOrder(String orderDate, String orderStatus, double orderTotal, String shippingDate,
 			List<String> shippingMethod, UserPayment userPayment, UserShipping userShippingAddress, User user) {
 		super();
 		this.orderDate = orderDate;
@@ -55,6 +57,12 @@ public class UserOrder {
 		this.userPayment = userPayment;
 		this.userShippingAddress = userShippingAddress;
 		this.user = user;
+	}
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 	public UserPayment getUserPayment() {
 		return userPayment;
@@ -102,12 +110,12 @@ public class UserOrder {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public List<String> getOrderStatus() {
-		return orderStatus;
-	}
-	public void setOrderStatus(List<String> orderStatus) {
-		this.orderStatus = orderStatus;
-	}
+//	public List<String> getOrderStatus() {
+//		return orderStatus;
+//	}
+//	public void setOrderStatus(List<String> orderStatus) {
+//		this.orderStatus = orderStatus;
+//	}
 	public List<String> getShippingMethod() {
 		return shippingMethod;
 	}
