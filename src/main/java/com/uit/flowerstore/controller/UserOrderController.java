@@ -84,7 +84,7 @@ public class UserOrderController {
     public ResponseEntity<UserOrder> createUserOrder(@RequestBody UserOrder userOrder, Principal principal) {
         UserDetailsImpl userDetails = (UserDetailsImpl) ((Authentication) principal).getPrincipal();
         List<CartItem> cartItems = cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart());
-        if(cartItems != null) {
+        if(!cartItems.isEmpty()) {
         	 userOrder.setOrderDate(LocalDateTime.now().toString());
              userOrder.setShippingDate(LocalDateTime.now().plusDays(3).toString());
              UserOrder createdUserOrder = userOrderService.createOrder(userOrder, userDetails);
