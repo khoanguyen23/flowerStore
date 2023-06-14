@@ -28,7 +28,7 @@ public class UserOrder {
 	@Column(name = "order_status")
 	private String orderStatus;
 	@ElementCollection
-    private List<String> shippingMethod;
+    private List<String> shippingMethods;
 	@Column(name = "order_total")
 	private double orderTotal;
 	@Column(name = "shipping_date")
@@ -39,8 +39,8 @@ public class UserOrder {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "shipping_address_id")
 	private UserShipping userShippingAddress;
-	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY)
+//	@JsonIgnore
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	private User user;
 
@@ -48,13 +48,13 @@ public class UserOrder {
 		super();
 	}
 	public UserOrder(String orderDate, String orderStatus, double orderTotal, String shippingDate,
-			List<String> shippingMethod, UserPayment userPayment, UserShipping userShippingAddress, User user) {
+			List<String> shippingMethods, UserPayment userPayment, UserShipping userShippingAddress, User user) {
 		super();
 		this.orderDate = orderDate;
 		this.orderStatus = orderStatus;
 		this.orderTotal = orderTotal;
 		this.shippingDate = shippingDate;
-		this.shippingMethod = shippingMethod;
+		this.shippingMethods = shippingMethods;
 		this.userPayment = userPayment;
 		this.userShippingAddress = userShippingAddress;
 		this.user = user;
@@ -112,10 +112,10 @@ public class UserOrder {
 		this.user = user;
 	}
 	public List<String> getShippingMethod() {
-		return shippingMethod;
+		return shippingMethods;
 	}
 	public void setShippingMethod(List<String> shippingMethod) {
-		this.shippingMethod = shippingMethod;
+		this.shippingMethods = shippingMethod;
 	}
 	@Override
 	public String toString() {
