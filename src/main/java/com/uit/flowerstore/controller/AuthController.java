@@ -168,6 +168,18 @@ public class AuthController {
       if (updatedUser.getEmail() != null && !updatedUser.getEmail().isEmpty()) {
           user.setEmail(updatedUser.getEmail());
       }
+      // Kiểm tra và cập nhật sdt nếu có
+      if (updatedUser.getTelephone() != null && !updatedUser.getTelephone().isEmpty()) {
+          user.setTelephone(updatedUser.getTelephone());
+      }
+      // Kiểm tra và cập nhật sdt nếu có
+      if (updatedUser.getFirstName() != null && !updatedUser.getFirstName().isEmpty()) {
+          user.setFirstName(updatedUser.getFirstName());
+      }
+      // Kiểm tra và cập nhật sdt nếu có
+      if (updatedUser.getLastName() != null && !updatedUser.getLastName().isEmpty()) {
+          user.setLastName(updatedUser.getLastName());
+      }
 
       userRepository.save(user);
 
