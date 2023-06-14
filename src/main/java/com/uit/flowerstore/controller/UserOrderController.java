@@ -2,7 +2,9 @@
 package com.uit.flowerstore.controller;
 
 import com.uit.flowerstore.domain.CartItem;
+import com.uit.flowerstore.domain.User;
 import com.uit.flowerstore.domain.UserOrder;
+import com.uit.flowerstore.repository.UserRepository;
 import com.uit.flowerstore.security.services.UserDetailsImpl;
 import com.uit.flowerstore.services.CartItemService;
 import com.uit.flowerstore.services.FlowerService;
@@ -12,11 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -26,18 +31,29 @@ public class UserOrderController {
     private final CartItemService cartItemService;
     private final FlowerService flowerService;
     private final ShoppingCartService shoppingCartService;
+    private final UserRepository userRepository;
     @Autowired
-    public UserOrderController(UserOrderService userOrderService,CartItemService cartItemService,FlowerService flowerService, ShoppingCartService shoppingCartService) {
+    public UserOrderController(UserOrderService userOrderService,CartItemService cartItemService,FlowerService flowerService, ShoppingCartService shoppingCartService, UserRepository userRepository) {
         this.userOrderService = userOrderService;
         this.cartItemService = cartItemService;
         this.flowerService = flowerService;
         this.shoppingCartService = shoppingCartService;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/user-orders")
     public ResponseEntity<List<UserOrder>> getAllUserOrders(Authentication authentication) {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        List<UserOrder> userOrders = userOrderService.getUserOrders(userDetails);
+        User user = userRepository.findById(userDetails.getId()).orElse(null);
+        List<UserOrder> userOrders;
+        List<GrantedAuthority> authorities = user.getRoles().stream()
+                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
+                .collect(Collectors.toList());
+        if(authorities.stream().anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"))) {
+        	userOrders = userOrderService.getAllOrders(); 	
+		}else {
+			userOrders = userOrderService.getUserOrders(userDetails);
+		}
         if (!userOrders.isEmpty()) {
             return ResponseEntity.ok(userOrders);
         }
