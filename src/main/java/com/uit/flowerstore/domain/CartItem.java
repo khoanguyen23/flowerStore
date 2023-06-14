@@ -35,6 +35,7 @@ public class CartItem {
 		super();
 		this.quantity = quantity;
 		this.subtotal = subtotal;
+//		this.subtotal = quantity * (flower.getPrice()- flower.getPrice()*(flower.getDiscount()/100));
 		this.flower = flower;
 		this.order = order;
 		this.shoppingCart = shoppingCart;
@@ -84,8 +85,8 @@ public class CartItem {
 				+ ", shoppingCart=" + shoppingCart + "]";
 	}
 	public void updateSubTotal() {
-		if (flower != null && flower.getPrice() != null) {
-	        subtotal = quantity * flower.getPrice();
+		if (flower != null && flower.getPrice() != null && flower.getDiscount()!= null) {
+	        subtotal = quantity * (flower.getPrice()-flower.getPrice()*flower.getDiscount()/100);
 	    } else {
 	    	subtotal = 0;
 	    }
