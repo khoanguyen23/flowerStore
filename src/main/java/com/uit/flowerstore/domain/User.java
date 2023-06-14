@@ -152,6 +152,6 @@ public class User {
 	 public void prePersist() {
 	 if (shoppingCart == null) {
 	            shoppingCart = new ShoppingCart(0.0,this,null);
-	 }
+	 	}
 	 }
 }

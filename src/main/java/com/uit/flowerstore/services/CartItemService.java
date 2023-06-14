@@ -71,20 +71,20 @@ public class CartItemService {
         return null;
     }
     public void createOrderAndAddCartItems(List<CartItem> cartItems, UserOrder order,FlowerService flowerService) {
-        for (CartItem cartItem : cartItems) {
-        	cartItem.setOrder(order);
-        	ShoppingCart shoppingCart = cartItem.getShoppingCart();
-            if (shoppingCart != null) {
-                shoppingCart.getCartItems().remove(cartItem);
-                cartItem.setShoppingCart(null);
-                shoppingCartRepository.save(shoppingCart);
-            }
-            Flower flower = cartItem.getFlower();
-            flower.decreaseStock(cartItem.getQuantity());
-            flowerService.updateFlower(flower.getId(),flower);
+    	List<CartItem> cartItemTest = cartItems;
+    	for (CartItem cartItem : cartItemTest) {
+    		Flower flower = cartItem.getFlower();
+	    	flower.decreaseStock(cartItem.getQuantity());
+    	}
+    	for (CartItem cartItem : cartItems) {
+    		cartItem.setOrder(order);  
+            cartItem.setShoppingCart(null);  
+    		Flower flower = cartItem.getFlower();
+        	flower.decreaseStock(cartItem.getQuantity());
+        	flowerService.updateFlower(flower.getId(), flower);
             cartItemRepository.save(cartItem);
+        	}
         }
-    }
     public void deleteAllCart(List<CartItem> cartItems) {
     	for (CartItem cartItem : cartItems) {
         if (cartItem != null) {

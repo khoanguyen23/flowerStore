@@ -108,8 +108,8 @@ public class Flower {
 	public void decreaseStock(int quantity) {
         if (quantity <= stock) {
             stock -= quantity;
-        } else {
-            throw new IllegalArgumentException("Không đủ hàng trong kho");
+        }else {
+        	throw new IllegalArgumentException("Không đủ hàng trong kho");
         }
     }
 }

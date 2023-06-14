@@ -88,7 +88,6 @@ public class UserOrderController {
         	 userOrder.setOrderDate(LocalDateTime.now().toString());
              userOrder.setShippingDate(LocalDateTime.now().plusDays(3).toString());
              UserOrder createdUserOrder = userOrderService.createOrder(userOrder, userDetails);
-             userOrderService.updateOrderTotal(createdUserOrder,userDetails.getShoppingCart());
              cartItemService.createOrderAndAddCartItems(cartItems, createdUserOrder,flowerService);
              shoppingCartService.updateShoppingCart(userDetails.getShoppingCart(), cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart()));
              return ResponseEntity.status(HttpStatus.CREATED).body(createdUserOrder);
@@ -96,15 +95,30 @@ public class UserOrderController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/user-orders/{id}")
-    public ResponseEntity<UserOrder> updateUserOrder(@PathVariable("id") Long id, @RequestBody UserOrder userOrder, Authentication authentication) {
+    @PutMapping("/user-orders/order-status/{id}")
+    public ResponseEntity<UserOrder> updateUserOrderStatus(@PathVariable("id") Long id, @RequestBody UserOrder userOrder, Authentication authentication) {
     	UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         User user = userRepository.findById(userDetails.getId()).orElse(null);
         List<GrantedAuthority> authorities = user.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName().name()))
                 .collect(Collectors.toList());
         if(authorities.stream().anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"))) {
-        	UserOrder updatedUserOrder = userOrderService.updateOrder(id, userOrder);
+        	UserOrder updatedUserOrder = userOrderService.updateOrderStatus(id, userOrder);
+        	if (updatedUserOrder != null) {
+                return ResponseEntity.ok(updatedUserOrder);
+            }
+		}
+        return ResponseEntity.noContent().build();
+    }
+    @PutMapping("/user-orders/shipping-method/{id}")
+    public ResponseEntity<UserOrder> updateUserOrderShippingMethod(@PathVariable("id") Long id, @RequestBody UserOrder userOrder, Authentication authentication) {
+    	UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        User user = userRepository.findById(userDetails.getId()).orElse(null);
+        List<GrantedAuthority> authorities = user.getRoles().stream()
+                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
+                .collect(Collectors.toList());
+        if(authorities.stream().anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"))) {
+        	UserOrder updatedUserOrder = userOrderService.updateShippingMethod(id, userOrder);
         	if (updatedUserOrder != null) {
                 return ResponseEntity.ok(updatedUserOrder);
             }

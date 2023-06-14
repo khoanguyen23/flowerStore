@@ -2,8 +2,10 @@ package com.uit.flowerstore.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
@@ -13,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class UserOrder {
@@ -24,8 +27,6 @@ public class UserOrder {
 	private String orderDate;
 	@Column(name = "order_status")
 	private String orderStatus;
-//	@ElementCollection
-//    private List<String> orderStatus;
 	@ElementCollection
     private List<String> shippingMethod;
 	@Column(name = "order_total")
@@ -128,5 +129,20 @@ public class UserOrder {
 				+ ", shippingDate=" + shippingDate + ", shippingMethod=" + orderStatus + ", userPayment="
 				+ userPayment + ", userShippingAddress=" + userShippingAddress + ", user=" + user + "]";
 	}
-	
+	@JsonBackReference
+	@OneToMany(mappedBy = "order",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CartItem> cartItems;
+
+	public List<CartItem> getCartItems() {
+		return cartItems;
+	}
+	public void setCartItems(List<CartItem> cartItems) {
+		this.cartItems = cartItems;
+	}
+	public void updateOrderTotal() {
+		this.orderTotal = 0.0;
+		for(CartItem cartItem: this.cartItems) {
+			this.orderTotal += cartItem.getSubtotal();
+		}
+	}
 }
