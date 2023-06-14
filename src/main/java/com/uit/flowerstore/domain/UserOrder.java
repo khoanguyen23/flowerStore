@@ -111,12 +111,6 @@ public class UserOrder {
 	public void setUser(User user) {
 		this.user = user;
 	}
-//	public List<String> getOrderStatus() {
-//		return orderStatus;
-//	}
-//	public void setOrderStatus(List<String> orderStatus) {
-//		this.orderStatus = orderStatus;
-//	}
 	public List<String> getShippingMethod() {
 		return shippingMethod;
 	}

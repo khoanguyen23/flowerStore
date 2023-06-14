@@ -1,5 +1,6 @@
 package com.uit.flowerstore.services;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 
@@ -96,9 +97,11 @@ public class UserOrderService {
     }
 
     public UserOrder updateOrderStatus(Long id, UserOrder updatedOrder) {
-        UserOrder existingOrder = userOrderRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Không tìm thấy đơn hàng với id: " + id));
+        UserOrder existingOrder = userOrderRepository.findById(id).orElse(null);
         existingOrder.setOrderStatus(updatedOrder.getOrderStatus());
+        if(updatedOrder.getOrderStatus().equals("Đang giao hàng")) {
+        	existingOrder.setShippingDate(LocalDateTime.now().toString());
+        }
         return userOrderRepository.save(existingOrder);
     }
     public UserOrder updateShippingMethod(Long id, UserOrder updatedOrder) {

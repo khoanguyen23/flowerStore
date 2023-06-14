@@ -86,7 +86,6 @@ public class UserOrderController {
         List<CartItem> cartItems = cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart());
         if(!cartItems.isEmpty()) {
         	 userOrder.setOrderDate(LocalDateTime.now().toString());
-             userOrder.setShippingDate(LocalDateTime.now().plusDays(3).toString());
              UserOrder createdUserOrder = userOrderService.createOrder(userOrder, userDetails);
              cartItemService.createOrderAndAddCartItems(cartItems, createdUserOrder,flowerService);
              shoppingCartService.updateShoppingCart(userDetails.getShoppingCart(), cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart()));
