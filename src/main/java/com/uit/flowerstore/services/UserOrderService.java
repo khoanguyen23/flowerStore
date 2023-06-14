@@ -86,6 +86,7 @@ public class UserOrderService {
             UserOrder existingOrder = userOrderRepository.findByIdAndUser(id, user)
                     .orElseThrow(() -> new EntityNotFoundException("Không tìm thấy đơn hàng với id: " + id));
             existingOrder.setOrderStatus(updatedOrder.getOrderStatus());
+            existingOrder.setShippingMethod(updatedOrder.getShippingMethod());
             return userOrderRepository.save(existingOrder);
         }
         return null;

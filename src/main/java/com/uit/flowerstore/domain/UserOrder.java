@@ -1,8 +1,11 @@
 package com.uit.flowerstore.domain;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -19,14 +22,14 @@ public class UserOrder {
 	private Long id;
 	@Column(name = "order_date")
 	private String orderDate;
-	@Column(name = "order_status")
-	private String orderStatus;
+	@ElementCollection
+    private List<String> orderStatus;
+	@ElementCollection
+    private List<String> shippingMethod;
 	@Column(name = "order_total")
 	private double orderTotal;
 	@Column(name = "shipping_date")
 	private String shippingDate;
-	@Column(name = "shipping_method")
-	private String shippingMethod;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "payment_id")
 	private UserPayment userPayment;
@@ -41,8 +44,8 @@ public class UserOrder {
 	public UserOrder() {
 		super();
 	}
-	public UserOrder(String orderDate, String orderStatus, double orderTotal, String shippingDate,
-			String shippingMethod, UserPayment userPayment, UserShipping userShippingAddress, User user) {
+	public UserOrder(String orderDate, List<String> orderStatus, double orderTotal, String shippingDate,
+			List<String> shippingMethod, UserPayment userPayment, UserShipping userShippingAddress, User user) {
 		super();
 		this.orderDate = orderDate;
 		this.orderStatus = orderStatus;
@@ -81,12 +84,6 @@ public class UserOrder {
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
-	public String getOrderStatus() {
-		return orderStatus;
-	}
-	public void setOrderStatus(String orderStatus) {
-		this.orderStatus = orderStatus;
-	}
 	public double getOrderTotal() {
 		return orderTotal;
 	}
@@ -99,23 +96,28 @@ public class UserOrder {
 	public void setShippingDate(String shippingDate) {
 		this.shippingDate = shippingDate;
 	}
-	public String getShippingMethod() {
-		return shippingMethod;
-	}
-	public void setShippingMethod(String shippingMethod) {
-		this.shippingMethod = shippingMethod;
-	}
-
 	public User getUser() {
 		return user;
 	}
 	public void setUser(User user) {
 		this.user = user;
 	}
+	public List<String> getOrderStatus() {
+		return orderStatus;
+	}
+	public void setOrderStatus(List<String> orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+	public List<String> getShippingMethod() {
+		return shippingMethod;
+	}
+	public void setShippingMethod(List<String> shippingMethod) {
+		this.shippingMethod = shippingMethod;
+	}
 	@Override
 	public String toString() {
 		return "UserOrder [orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", orderTotal=" + orderTotal
-				+ ", shippingDate=" + shippingDate + ", shippingMethod=" + shippingMethod + ", userPayment="
+				+ ", shippingDate=" + shippingDate + ", shippingMethod=" + orderStatus + ", userPayment="
 				+ userPayment + ", userShippingAddress=" + userShippingAddress + ", user=" + user + "]";
 	}
 	
