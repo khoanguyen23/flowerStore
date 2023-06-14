@@ -22,9 +22,11 @@ public class CartItemService {
         this.cartItemRepository = cartItemRepository;
         this.shoppingCartRepository = shoppingCartRepository;
     }
-
     public List<CartItem> getCartItemsByShoppingCart(ShoppingCart shoppingCart) {
         return cartItemRepository.findByShoppingCart(shoppingCart);
+    }
+    public List<CartItem> getCartItemsByOrder(UserOrder order) {
+        return cartItemRepository.findByOrder(order);
     }
     public CartItem createCartItem(CartItem cartItem, ShoppingCart shoppingCart,Flower flower) {
     	cartItem.setShoppingCart(shoppingCart);

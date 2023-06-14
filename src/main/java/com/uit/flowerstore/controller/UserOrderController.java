@@ -62,13 +62,22 @@ public class UserOrderController {
 
     @GetMapping("/user-orders/{id}")
     public ResponseEntity<UserOrder> getUserOrderById(@PathVariable("id") Long id, Authentication authentication) {
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        UserOrder userOrder = userOrderService.getOrderById(id, userDetails);
+    	UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        User user = userRepository.findById(userDetails.getId()).orElse(null);
+        UserOrder userOrder = null;
+        List<GrantedAuthority> authorities = user.getRoles().stream()
+                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
+                .collect(Collectors.toList());
+        if(authorities.stream().anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"))) {
+        	userOrder = userOrderService.getOrderByIdFromAdmin(id);
+        	
+		}else {
+			userOrder = userOrderService.getOrderById(id, userDetails);
+		}
         if (userOrder != null) {
             return ResponseEntity.ok(userOrder);
-        } else {
-            return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/user-orders")

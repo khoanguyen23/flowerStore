@@ -69,6 +69,9 @@ public class UserOrderService {
         }
         throw new EntityNotFoundException("Không tìm thấy người dùng");
     }
+    public UserOrder getOrderByIdFromAdmin(Long id) {
+            return userOrderRepository.findById(id).orElse(null);
+    }
     @Transactional
     public void deleteOrder(Long id, UserDetailsImpl userDetails) {
         User user = userRepository.findById(userDetails.getId()).orElse(null);

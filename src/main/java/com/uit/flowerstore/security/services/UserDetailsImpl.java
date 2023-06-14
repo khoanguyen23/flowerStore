@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.uit.flowerstore.domain.ShoppingCart;
 import com.uit.flowerstore.domain.User;
+import com.uit.flowerstore.domain.UserOrder;
 
 public class UserDetailsImpl implements UserDetails {
   private static final long serialVersionUID = 1L;
@@ -27,13 +28,14 @@ public class UserDetailsImpl implements UserDetails {
 
   private Collection<? extends GrantedAuthority> authorities;
 
-  public UserDetailsImpl(Long id, String username, String email, String password,ShoppingCart sc, Collection<? extends GrantedAuthority> authorities) {
+  public UserDetailsImpl(Long id, String username, String email, String password,ShoppingCart sc,List<UserOrder> userOrders, Collection<? extends GrantedAuthority> authorities) {
     this.id = id;
     this.username = username;
     this.email = email;
     this.password = password;
     this.shoppingCart = sc;
     this.authorities = authorities;
+    this.userOrders = userOrders;
   }
 
   public static UserDetailsImpl build(User user) {
@@ -47,6 +49,7 @@ public class UserDetailsImpl implements UserDetails {
         user.getEmail(),
         user.getPassword(),
         user.getShoppingCart(),
+        user.getUserOrders(),
         authorities);
   }
 
@@ -107,4 +110,9 @@ public class UserDetailsImpl implements UserDetails {
   public ShoppingCart getShoppingCart() {
       return shoppingCart;
   }
+  private final List<UserOrder> userOrders;
+	public List<UserOrder> getUserOrders() {
+		return userOrders;
+	}
+  
 }

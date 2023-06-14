@@ -13,6 +13,6 @@ public interface UserOrderRepository extends JpaRepository<UserOrder, Long> {
     List<UserOrder> findAllByUser(User user);
 
     Optional<UserOrder> findByIdAndUser(Long id, User user);
-
+    Optional<UserOrder> findById(Long id);
     void deleteByIdAndUser(Long id, User user);
 }

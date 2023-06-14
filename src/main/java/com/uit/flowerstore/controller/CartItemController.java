@@ -34,7 +34,13 @@ public class CartItemController {
         List<CartItem> cartItems = cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart());
         return ResponseEntity.ok(cartItems);
     }
-
+    @GetMapping("/user-orders/{id}")
+    public ResponseEntity<List<CartItem>> getCartItemsByUserOrder(@PathVariable("id") int id, Authentication authentication) {
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        List<CartItem> cartItems = cartItemService.getCartItemsByOrder(userDetails.getUserOrders().get(id));
+        return ResponseEntity.ok(cartItems);
+    }
+    
     @PostMapping
     public ResponseEntity<CartItem> createCartItem(@RequestBody CartItem cartItem, Authentication authentication) {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
