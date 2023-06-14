@@ -35,9 +35,8 @@ public class CartItemController {
         return ResponseEntity.ok(cartItems);
     }
     @GetMapping("/user-orders/{id}")
-    public ResponseEntity<List<CartItem>> getCartItemsByUserOrder(@PathVariable("id") int id, Authentication authentication) {
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        List<CartItem> cartItems = cartItemService.getCartItemsByOrder(userDetails.getUserOrders().get(id));
+    public ResponseEntity<List<CartItem>> getCartItemsByUserOrder(@PathVariable("id") Long id) {
+        List<CartItem> cartItems = cartItemService.getCartItemsByOrder(id);
         return ResponseEntity.ok(cartItems);
     }
     

@@ -5,11 +5,13 @@ import com.uit.flowerstore.domain.UserOrder;
 import com.uit.flowerstore.domain.ShoppingCart;
 import com.uit.flowerstore.repository.CartItemRepository;
 import com.uit.flowerstore.repository.ShoppingCartRepository;
+import com.uit.flowerstore.repository.UserOrderRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -17,16 +19,22 @@ public class CartItemService {
 
     private final CartItemRepository cartItemRepository;
     private final ShoppingCartRepository shoppingCartRepository;
+    private final UserOrderRepository userOrderRepository;
     @Autowired
-    public CartItemService(CartItemRepository cartItemRepository, ShoppingCartRepository shoppingCartRepository) {
+    public CartItemService(CartItemRepository cartItemRepository, ShoppingCartRepository shoppingCartRepository, UserOrderRepository userOrderRepository) {
         this.cartItemRepository = cartItemRepository;
         this.shoppingCartRepository = shoppingCartRepository;
+        this.userOrderRepository = userOrderRepository;
     }
     public List<CartItem> getCartItemsByShoppingCart(ShoppingCart shoppingCart) {
         return cartItemRepository.findByShoppingCart(shoppingCart);
     }
-    public List<CartItem> getCartItemsByOrder(UserOrder order) {
-        return cartItemRepository.findByOrder(order);
+    public List<CartItem> getCartItemsByOrder(Long id) {
+        UserOrder order = userOrderRepository.findById(id).orElse(null);
+        if (order != null) {
+            return cartItemRepository.findByOrder(order);
+        }
+        return Collections.emptyList();
     }
     public CartItem createCartItem(CartItem cartItem, ShoppingCart shoppingCart,Flower flower) {
     	cartItem.setShoppingCart(shoppingCart);
