@@ -81,7 +81,7 @@ public class UserOrderController {
              UserOrder createdUserOrder = userOrderService.createOrder(userOrder, userDetails);
              userOrderService.updateOrderTotal(createdUserOrder,userDetails.getShoppingCart());
              cartItemService.createOrderAndAddCartItems(cartItems, createdUserOrder,flowerService);
-             shoppingCartService.updateShoppingCart(userDetails.getShoppingCart(), userDetails);
+             shoppingCartService.updateShoppingCart(userDetails.getShoppingCart(), cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart()));
              return ResponseEntity.status(HttpStatus.CREATED).body(createdUserOrder);
         }
         return ResponseEntity.noContent().build();

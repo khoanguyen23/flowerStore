@@ -29,8 +29,6 @@ public class CartItemService {
     public CartItem createCartItem(CartItem cartItem, ShoppingCart shoppingCart,Flower flower) {
     	cartItem.setShoppingCart(shoppingCart);
         cartItem.setFlower(flower);
-        shoppingCart.updateGrandTotal();
-        shoppingCartRepository.save(shoppingCart);
         return cartItemRepository.save(cartItem);
     }
     public void saveCartItem(CartItem cartItem) {

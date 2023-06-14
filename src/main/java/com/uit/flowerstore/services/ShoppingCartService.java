@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.uit.flowerstore.domain.CartItem;
 import com.uit.flowerstore.domain.ShoppingCart;
 import com.uit.flowerstore.domain.User;
 import com.uit.flowerstore.repository.ShoppingCartRepository;
@@ -54,15 +55,11 @@ public class ShoppingCartService {
 
     
     @Transactional
-    public ShoppingCart updateShoppingCart(ShoppingCart updatedShoppingCart, UserDetailsImpl userDetails) {
-        User user = userRepository.findById(userDetails.getId()).orElse(null);
-        if (user != null) {
-            ShoppingCart shoppingCart = user.getShoppingCart();
-            if (shoppingCart != null) {
-                shoppingCart.setGrandTotal(updatedShoppingCart.getGrandTotal());
-                return shoppingCartRepository.save(shoppingCart);
+    public ShoppingCart updateShoppingCart(ShoppingCart updatedShoppingCart, List<CartItem> cartItems) {
+            if (updatedShoppingCart != null) {
+            	updatedShoppingCart.setCartItems(cartItems);
+                return shoppingCartRepository.save(updatedShoppingCart);
             }
-        }
-        return null;
+            return null;
     }
 }

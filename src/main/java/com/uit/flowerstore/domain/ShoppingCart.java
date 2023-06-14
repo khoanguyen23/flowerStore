@@ -60,7 +60,10 @@ public class ShoppingCart {
     public List<CartItem> getCartItems() {
         return cartItems;
     }
-    
+    public void setCartItems(List<CartItem> cartItems) {
+		this.cartItems = cartItems;
+		updateGrandTotal();
+	}
     public void addCartItem(CartItem cartItem) {
         cartItems.add(cartItem);
         cartItem.setShoppingCart(this);
@@ -74,6 +77,7 @@ public class ShoppingCart {
 	public String toString() {
 		return "ShoppingCart [id=" + id + ", grandTotal=" + grandTotal + ", user=" + user + "]";
 	}
+	
 	public void updateGrandTotal() {
 		this.grandTotal = 0.0;
 		if(cartItems != null) {

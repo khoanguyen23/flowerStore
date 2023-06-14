@@ -39,6 +39,7 @@ public class CartItemController {
     public ResponseEntity<CartItem> createCartItem(@RequestBody CartItem cartItem, Authentication authentication) {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         CartItem createdCartItem = cartItemService.createCartItem(cartItem, userDetails.getShoppingCart(),flowerService.getFlowerById(cartItem.getFlower().getId()));
+        shoppingCartService.updateShoppingCart(userDetails.getShoppingCart(),cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart()));
         return ResponseEntity.status(HttpStatus.CREATED).body(createdCartItem);
     }
 
@@ -46,7 +47,7 @@ public class CartItemController {
     public ResponseEntity<CartItem> updateCartItem(@PathVariable("id") Long id, @RequestBody CartItem updatedCartItem, Authentication authentication) {
     	UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         CartItem cartItem = cartItemService.updateCartItem(id, updatedCartItem, flowerService);
-        shoppingCartService.updateShoppingCart(userDetails.getShoppingCart(), userDetails);
+        shoppingCartService.updateShoppingCart(userDetails.getShoppingCart(),cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart()));
         if (cartItem != null) {
             return ResponseEntity.ok(cartItem);
         }
@@ -57,7 +58,7 @@ public class CartItemController {
     public ResponseEntity<List<CartItem>> deleteCartItem(@PathVariable("id") Long id,Authentication authentication) {
     	UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         cartItemService.deleteCartItem(id);
-        shoppingCartService.updateShoppingCart(userDetails.getShoppingCart(), userDetails);
+        shoppingCartService.updateShoppingCart(userDetails.getShoppingCart(),cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart()));
         List<CartItem> cartItems = cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart());
         return ResponseEntity.ok(cartItems);
     }
@@ -66,7 +67,7 @@ public class CartItemController {
     	UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
     	List<CartItem> cartItems = cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart());
         cartItemService.deleteAllCart(cartItems);
-        shoppingCartService.updateShoppingCart(userDetails.getShoppingCart(), userDetails);
+        shoppingCartService.updateShoppingCart(userDetails.getShoppingCart(),cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart()));
         List<CartItem> cartItemsShow = cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart());
         return ResponseEntity.ok(cartItemsShow);
     }
