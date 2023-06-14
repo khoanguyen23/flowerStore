@@ -98,13 +98,18 @@ public class UserOrderController {
 
     @PutMapping("/user-orders/{id}")
     public ResponseEntity<UserOrder> updateUserOrder(@PathVariable("id") Long id, @RequestBody UserOrder userOrder, Authentication authentication) {
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        UserOrder updatedUserOrder = userOrderService.updateOrder(id, userOrder, userDetails);
-        if (updatedUserOrder != null) {
-            return ResponseEntity.ok(updatedUserOrder);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    	UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        User user = userRepository.findById(userDetails.getId()).orElse(null);
+        List<GrantedAuthority> authorities = user.getRoles().stream()
+                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
+                .collect(Collectors.toList());
+        if(authorities.stream().anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"))) {
+        	UserOrder updatedUserOrder = userOrderService.updateOrder(id, userOrder);
+        	if (updatedUserOrder != null) {
+                return ResponseEntity.ok(updatedUserOrder);
+            }
+		}
+        return ResponseEntity.noContent().build();
     }
     
     @DeleteMapping("/user-orders/{id}")

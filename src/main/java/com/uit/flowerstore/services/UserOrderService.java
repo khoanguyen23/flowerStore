@@ -80,18 +80,6 @@ public class UserOrderService {
         }
     }
 
-    public UserOrder updateOrder(Long id, UserOrder updatedOrder, UserDetailsImpl userDetails) {
-        User user = userRepository.findById(userDetails.getId()).orElse(null);
-        if (user != null) {
-            UserOrder existingOrder = userOrderRepository.findByIdAndUser(id, user)
-                    .orElseThrow(() -> new EntityNotFoundException("Không tìm thấy đơn hàng với id: " + id));
-            existingOrder.setOrderStatus(updatedOrder.getOrderStatus());
-            existingOrder.setShippingMethod(updatedOrder.getShippingMethod());
-            return userOrderRepository.save(existingOrder);
-        }
-        return null;
-    }
-
     public List<UserOrder> getAllOrders() {
         return userOrderRepository.findAll();
     }
@@ -103,8 +91,8 @@ public class UserOrderService {
     public UserOrder updateOrder(Long id, UserOrder updatedOrder) {
         UserOrder existingOrder = userOrderRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Không tìm thấy đơn hàng với id: " + id));
-
         existingOrder.setOrderStatus(updatedOrder.getOrderStatus());
+        existingOrder.setShippingMethod(updatedOrder.getShippingMethod());
         return userOrderRepository.save(existingOrder);
     }
     public void updateOrderTotal(UserOrder userOrder, ShoppingCart shoppingCart) {
