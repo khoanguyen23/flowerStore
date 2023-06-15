@@ -19,7 +19,7 @@ public interface UserOrderRepository extends JpaRepository<UserOrder, Long> {
     void deleteUserOrderById(@Param("id") String id);
     @Query("SELECT o FROM UserOrder o WHERE o.id = :id")
     UserOrder findUserOrderById(@Param("id") String id);
-
+    
     Optional<UserOrder> findByIdAndUser(Long id, User user);
     Optional<UserOrder> findById(Long id);
     void deleteByIdAndUser(Long id, User user);

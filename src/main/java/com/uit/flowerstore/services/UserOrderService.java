@@ -84,7 +84,7 @@ public class UserOrderService {
     	UserOrder userOrder = userOrderRepository.findUserOrderById(id.toString());
     	List<CartItem> cartItems = cartItemRepository.findByOrder(userOrder);
     	for(CartItem cartItem: cartItems) {
-    		cartItemRepository.delete(cartItem);
+    		cartItemRepository.updateCartItemOrderById(cartItem.getId());
     	}
         userOrderRepository.deleteUserOrderById(id.toString());
     }
