@@ -80,24 +80,17 @@ public class UserOrderService {
             return userOrderRepository.findById(id).orElse(null);
     }
     @Transactional
-    public void deleteOrder(Long id, UserDetailsImpl userDetails) {
-        User user = userRepository.findById(userDetails.getId()).orElse(null);
-        if (user != null) {
-        	List<CartItem> cartItems = cartItemRepository.findByOrder(this.getOrderByIdFromAdmin(id));
-    		for(CartItem cartItem: cartItems) {
-    			cartItem.setOrder(null);
-    			cartItemRepository.save(cartItem);
-    		}
-            userOrderRepository.deleteByIdAndUser(id, user);
-        }
+    public void deleteOrder(Long id) {
+    	UserOrder userOrder = userOrderRepository.findUserOrderById(id.toString());
+    	List<CartItem> cartItems = cartItemRepository.findByOrder(userOrder);
+    	for(CartItem cartItem: cartItems) {
+    		cartItemRepository.delete(cartItem);
+    	}
+        userOrderRepository.deleteUserOrderById(id.toString());
     }
 
     public List<UserOrder> getAllOrders() {
         return userOrderRepository.findAll();
-    }
-
-    public void deleteOrder(Long id) {
-        userOrderRepository.deleteById(id);
     }
 
     public UserOrder updateOrderStatus(Long id, UserOrder updatedOrder) {
