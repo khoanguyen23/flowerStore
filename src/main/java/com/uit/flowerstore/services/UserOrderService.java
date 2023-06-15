@@ -40,30 +40,34 @@ public class UserOrderService {
     }
     public UserOrder createOrder(UserOrder userOrder, UserDetailsImpl userDetails) {
         User user = userRepository.findById(userDetails.getId()).orElse(null);
-        List<CartItem> cartItems = cartItemRepository.findByShoppingCart(user.getShoppingCart());
-        userOrder.setUser(user);
-		userOrder.setCartItems(cartItems);
-		userOrder.updateOrderTotal();
-		if (user.getUserPayments().isEmpty() == false) {
-			for (int i = 0; i < user.getUserPayments().size(); i++) {
-				if (user.getUserPayments().get(i).getDefaultPayment() == true) {
-					userOrder.setUserPayment(user.getUserPayments().get(i));
-				}
-			}
-		} else {
-			throw new EntityNotFoundException("Chưa có Payment");
-		}
-		if (user.getUserShippings().isEmpty() == false) {
-			userOrder.setUserShippingAddress(user.getUserShippings().get(0));
-			for (int i = 0; i < user.getUserShippings().size(); i++) {
-				if (user.getUserShippings().get(i).getUserShippingDefault() == true) {
-					userOrder.setUserShippingAddress(user.getUserShippings().get(i));
-				}
-			}
-		} else {
-			throw new EntityNotFoundException("Chưa có Shipping Address");
-		}
-		return userOrderRepository.save(userOrder);
+        if(user != null) {
+        	List<CartItem> cartItems = cartItemRepository.findByShoppingCart(user.getShoppingCart());
+            userOrder.setUser(user);
+    		userOrder.setCartItems(cartItems);
+    		userOrder.updateOrderTotal();
+    		userOrder.setOrderStatus("Chờ xác nhận");
+    		if (user.getUserPayments().isEmpty() == false) {
+    			for (int i = 0; i < user.getUserPayments().size(); i++) {
+    				if (user.getUserPayments().get(i).getDefaultPayment() == true) {
+    					userOrder.setUserPayment(user.getUserPayments().get(i));
+    				}
+    			}
+    		} else {
+    			throw new EntityNotFoundException("Chưa có Payment");
+    		}
+    		if (user.getUserShippings().isEmpty() == false) {
+    			userOrder.setUserShippingAddress(user.getUserShippings().get(0));
+    			for (int i = 0; i < user.getUserShippings().size(); i++) {
+    				if (user.getUserShippings().get(i).getUserShippingDefault() == true) {
+    					userOrder.setUserShippingAddress(user.getUserShippings().get(i));
+    				}
+    			}
+    		} else {
+    			throw new EntityNotFoundException("Chưa có Shipping Address");
+    		}
+    		return userOrderRepository.save(userOrder);
+        }
+        throw new EntityNotFoundException("Không tìm thấy người dùng");
     }
     public UserOrder getOrderById(Long id, UserDetailsImpl userDetails) {
         User user = userRepository.findById(userDetails.getId()).orElse(null);
