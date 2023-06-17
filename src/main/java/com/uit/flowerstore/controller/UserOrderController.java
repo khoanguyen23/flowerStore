@@ -70,7 +70,6 @@ public class UserOrderController {
                 .collect(Collectors.toList());
         if(authorities.stream().anyMatch(auth -> auth.getAuthority().equals("ROLE_ADMIN"))) {
         	userOrder = userOrderService.getOrderByIdFromAdmin(id);
-        	
 		}else {
 			userOrder = userOrderService.getOrderById(id, userDetails);
 		}
@@ -86,7 +85,7 @@ public class UserOrderController {
         List<CartItem> cartItems = cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart());
         if(!cartItems.isEmpty()) {
         	 userOrder.setOrderDate(LocalDateTime.now().toString());
-             UserOrder createdUserOrder = userOrderService.createOrder(userOrder, userDetails);
+             UserOrder createdUserOrder = userOrderService.createOrder(cartItems,userOrder, userDetails);
              cartItemService.createOrderAndAddCartItems(cartItems, createdUserOrder,flowerService);
              shoppingCartService.updateShoppingCart(userDetails.getShoppingCart(), cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart()));
              return ResponseEntity.status(HttpStatus.CREATED).body(createdUserOrder);

@@ -37,7 +37,16 @@ public class CartItemService {
         return Collections.emptyList();
     }
     public CartItem createCartItem(CartItem cartItem, ShoppingCart shoppingCart,Flower flower) {
+    	// Kiểm tra hoa đó đã có trong giỏ hàng chưa
+    	for (CartItem cartItemTest : cartItemRepository.findByShoppingCart(shoppingCart)) {
+    		if(cartItemTest.getFlower().getId() == flower.getId()) {
+    			return null;
+    		}
+    	}
+    	// kiểm tra còn hàng không
+    	if(flower.getStock() == 0) return null;
     	cartItem.setShoppingCart(shoppingCart);
+    	cartItem.setQuantity(1);
         cartItem.setFlower(flower);
         return cartItemRepository.save(cartItem);
     }
@@ -60,8 +69,9 @@ public class CartItemService {
     public CartItem updateCartItem(Long id, CartItem updatedCartItem, FlowerService flowerService) {
         CartItem cartItem = cartItemRepository.findById(id).orElse(null);
         if (cartItem != null) {
+        	Flower flower = flowerService.getFlowerById(cartItem.getFlower().getId());
+        	if(updatedCartItem.getQuantity() > flower.getStock()) return null;
             cartItem.setQuantity(updatedCartItem.getQuantity());
-            Flower flower = flowerService.getFlowerById(cartItem.getFlower().getId());
             cartItem.setFlower(flower);
             if(updatedCartItem.getQuantity() == 0) {
             	cartItem.setShoppingCart(null);
@@ -71,11 +81,6 @@ public class CartItemService {
         return null;
     }
     public void createOrderAndAddCartItems(List<CartItem> cartItems, UserOrder order,FlowerService flowerService) {
-    	List<CartItem> cartItemTest = cartItems;
-    	for (CartItem cartItem : cartItemTest) {
-    		Flower flower = cartItem.getFlower();
-	    	flower.decreaseStock(cartItem.getQuantity());
-    	}
     	for (CartItem cartItem : cartItems) {
     		cartItem.setOrder(order);  
             cartItem.setShoppingCart(null);  

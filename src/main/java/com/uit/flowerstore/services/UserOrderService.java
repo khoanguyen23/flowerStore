@@ -38,10 +38,9 @@ public class UserOrderService {
         }
         return Collections.emptyList();
     }
-    public UserOrder createOrder(UserOrder userOrder, UserDetailsImpl userDetails) {
+    public UserOrder createOrder(List<CartItem> cartItems,UserOrder userOrder, UserDetailsImpl userDetails) {
         User user = userRepository.findById(userDetails.getId()).orElse(null);
         if(user != null) {
-        	List<CartItem> cartItems = cartItemRepository.findByShoppingCart(user.getShoppingCart());
             userOrder.setUser(user);
     		userOrder.setCartItems(cartItems);
     		userOrder.updateOrderTotal();

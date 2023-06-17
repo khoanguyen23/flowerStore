@@ -44,6 +44,7 @@ public class CartItemController {
     public ResponseEntity<CartItem> createCartItem(@RequestBody CartItem cartItem, Authentication authentication) {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         CartItem createdCartItem = cartItemService.createCartItem(cartItem, userDetails.getShoppingCart(),flowerService.getFlowerById(cartItem.getFlower().getId()));
+        if(createdCartItem == null) return ResponseEntity.noContent().build();
         shoppingCartService.updateShoppingCart(userDetails.getShoppingCart(),cartItemService.getCartItemsByShoppingCart(userDetails.getShoppingCart()));
         return ResponseEntity.status(HttpStatus.CREATED).body(createdCartItem);
     }
