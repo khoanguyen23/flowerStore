@@ -46,7 +46,6 @@ public class CartItemService {
     	// kiểm tra còn hàng không
     	if(flower.getStock() == 0) return null;
     	cartItem.setShoppingCart(shoppingCart);
-    	cartItem.setQuantity(1);
         cartItem.setFlower(flower);
         return cartItemRepository.save(cartItem);
     }
